@@ -1,4 +1,7 @@
 package com.soulcode.chamaelas.ChamaElas.repositories;
 
-public interface AdminRepository {
+import com.soulcode.chamaelas.ChamaElas.models.AdminModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AdminRepository extends JpaRepository<AdminModel, Long>  {
 }
