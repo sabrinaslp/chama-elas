@@ -1,4 +1,7 @@
 package com.soulcode.chamaelas.ChamaElas.repositories;
 
-public interface TecnicoRepository {
+import com.soulcode.chamaelas.ChamaElas.models.TecnicoModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TecnicoRepository extends JpaRepository<TecnicoModel ,Long> {
 }
