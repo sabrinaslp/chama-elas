@@ -1,7 +1,7 @@
 package com.soulcode.chamaelas.ChamaElas.repositories;
 
-import com.soulcode.chamaelas.ChamaElas.models.dto.UserDTO;
+import com.soulcode.chamaelas.ChamaElas.models.dto.UsuarioDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<UserDTO, Long> {
+public interface UserRepository extends JpaRepository<UsuarioDTO, Long> {
 }

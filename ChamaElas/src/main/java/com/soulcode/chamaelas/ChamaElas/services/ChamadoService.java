@@ -11,8 +11,10 @@ import java.util.List;
 import java.util.Optional;
 @Service
 public class ChamadoService {
+
     @Autowired
     ChamadoRepository chamadoRepository;
+
     public ChamadoModel save( ) {
 
         ChamadoModel c = new ChamadoModel();
@@ -27,6 +29,7 @@ public class ChamadoService {
     public Optional<ChamadoModel> findById(Long id) {
         return chamadoRepository.findById(id);
     }
+
     public List<ChamadoModel> findByClient(ClienteModel cliente) {
         return chamadoRepository.findByClient(cliente);
     }
@@ -34,6 +37,7 @@ public class ChamadoService {
     public List<ChamadoModel> findByTecnico(TecnicoModel tecnico) {
         return chamadoRepository.findByTecnico(tecnico);
     }
+
     public void deleteById(Long id) {
         chamadoRepository.deleteById(id);
     }

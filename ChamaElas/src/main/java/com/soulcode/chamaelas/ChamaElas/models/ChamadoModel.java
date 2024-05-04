@@ -20,10 +20,11 @@ public class ChamadoModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="ticket_id")
     private Long ticketId;
+
     @Column(columnDefinition = "TEXT")
     private String description;
-    private String department;
 
+    private String department;
 
     @CreationTimestamp
     private Instant creationTimestamp;
@@ -41,7 +42,6 @@ public class ChamadoModel {
 
     private Priority priority;
 
-
     public enum Priority {
         AGUARDANDO,
         BAIXA,
@@ -49,6 +49,7 @@ public class ChamadoModel {
         ALTA;
     }
 
+    @Getter
     public enum TicketStatus {
         OPEN("Aguardando técnico"),
         IN_PROGRESS("Em atendimento"),
@@ -61,9 +62,6 @@ public class ChamadoModel {
             this.description = description;
         }
 
-        public String getDescription() {
-            return description;
-        }
     }
 
 

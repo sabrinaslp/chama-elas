@@ -1,13 +1,9 @@
 package com.soulcode.chamaelas.ChamaElas.services;
 
-import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
 import com.soulcode.chamaelas.ChamaElas.models.RoleModel;
 import com.soulcode.chamaelas.ChamaElas.repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AutenticacaoService {
@@ -28,14 +24,13 @@ public class AutenticacaoService {
     public boolean confirmarSenha(String senha, String confirmSenha) {
         return senha.equals(confirmSenha);
     }
+
     public RoleModel findByEmail(String email) {
         return roleRepository.findByEmail(email);
     }
 
-
     public void deleteById(Long id) {
         roleRepository.deleteById(id);
     }
-
 
 }

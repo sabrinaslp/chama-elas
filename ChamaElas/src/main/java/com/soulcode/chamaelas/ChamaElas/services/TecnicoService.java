@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class TecnicoService {
+
     @Autowired
     TecnicoRepository tecnicoRepository;
 

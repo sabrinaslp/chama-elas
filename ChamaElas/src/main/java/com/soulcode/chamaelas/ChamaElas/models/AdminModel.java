@@ -11,7 +11,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @DiscriminatorValue("admin")
-public class AdminModel extends UserModel {
+public class AdminModel extends UsuarioModel {
 
     @OneToMany(mappedBy = "assignedAdmin", fetch = FetchType.LAZY)
     private List<ChamadoModel> openTickets;

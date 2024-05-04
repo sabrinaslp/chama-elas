@@ -11,7 +11,7 @@ import lombok.*;
 
 @Entity
 @DiscriminatorValue("tech")
-public class TecnicoModel extends UserModel {
+public class TecnicoModel extends UsuarioModel {
 
     private String department;
     private String phone;
