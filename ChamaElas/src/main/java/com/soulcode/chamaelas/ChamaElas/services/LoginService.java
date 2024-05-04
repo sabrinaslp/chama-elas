@@ -2,7 +2,6 @@ package com.soulcode.chamaelas.ChamaElas.services;
 
 import com.soulcode.chamaelas.ChamaElas.models.RoleModel;
 import com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;
-import com.soulcode.chamaelas.ChamaElas.models.dto.RoleDTO;
 import com.soulcode.chamaelas.ChamaElas.models.dto.UsuarioDTO;
 import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ public class LoginService {
 
         autenticacaoService.verifiqueSeOEmailJaFoiCadastrado(email, model);
         autenticacaoService.verifiqueSeAsSenhasSaoIguais(password, confirmSenha, model);
-        RoleModel roleModel = autenticacaoService.atribuiFuncaoAoUsuario(role, model);
+        RoleModel roleModel = autenticacaoService.atribuiFuncaoAoUsuario(role);
 
         UsuarioDTO usuarioDTO = new UsuarioDTO(null, nome, email, password, true, roleModel, Instant.now());
         UsuarioModel usuarioModel = UsuarioDTO.toModel(usuarioDTO);

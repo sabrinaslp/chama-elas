@@ -33,16 +33,14 @@ public class AutenticacaoService {
     }
 
     // Verificação da função (role) do usuário cadastrado
-    public RoleModel atribuiFuncaoAoUsuario(String role, Model model) {
-        RoleDTO roleDTO = null;
+    public RoleModel atribuiFuncaoAoUsuario(String role) {
+        RoleDTO roleDTO;
 
         if (role.equals("tecnico")) {
             roleDTO = new RoleDTO(1L, "Técnico");
         } else {
             roleDTO = new RoleDTO(2L, "Cliente");
         }
-
         return RoleDTO.toModel(roleDTO);
     }
-
 }
