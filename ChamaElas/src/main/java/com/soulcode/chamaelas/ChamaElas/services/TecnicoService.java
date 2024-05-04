@@ -1,13 +1,10 @@
 package com.soulcode.chamaelas.ChamaElas.services;
 
-import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
-import com.soulcode.chamaelas.ChamaElas.repositories.ChamadoRepository;
 import com.soulcode.chamaelas.ChamaElas.repositories.TecnicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-
+@Service
 public class TecnicoService {
 
     @Autowired

@@ -5,6 +5,7 @@ public record RoleDTO(
         Long roleId,
         String name
 ) {
+
     public static RoleDTO fromModel(RoleModel roleModel) {
         return new RoleDTO(
                 roleModel.getRoleId(),

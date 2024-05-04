@@ -19,14 +19,14 @@ public class RoleModel {
     private Long roleId;
     private String name;
 
-    public enum Values {
-        TECH(1L),
-        CLIENT(2L),
+    public enum roleValues {
+        TECNICO(1L),
+        CLIENTE(2L),
         ADMIN(3L);
 
         long roleId;
 
-        Values(long roleId) {
+        roleValues(long roleId) {
             this.roleId = roleId;
         }
     }
