@@ -40,4 +40,16 @@ public class UsuarioModel implements Serializable {
         public void setIsActive(boolean isActive) {
 
         }
+
+        public void desativarUsuario() {
+                this.isActive = false;
+        }
+
+        public void ativarUsuario() {
+                this.isActive = true;
+        }
+
+        public boolean isActive() {
+                return isActive;
+        }
 }

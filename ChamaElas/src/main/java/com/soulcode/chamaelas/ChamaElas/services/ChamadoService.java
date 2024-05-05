@@ -23,7 +23,7 @@ public class ChamadoService {
     }
 
     // Lista chamados disponiveis - sem atribuição de técnico
-    public List<ChamadoModel> getChamadosDisponiveis() {
+    public List<ChamadoModel> getChamadosEmAberto() {
         return chamadoRepository.findByStatus(ChamadoModel.TicketStatus.ABERTO);
     }
 

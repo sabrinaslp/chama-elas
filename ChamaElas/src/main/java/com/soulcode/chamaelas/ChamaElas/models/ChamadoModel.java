@@ -52,7 +52,7 @@ public class ChamadoModel {
     @Getter
     public enum TicketStatus {
         ABERTO("Aguardando técnico"),
-        EM_PROGRESSO("Em atendimento"),
+        EM_ANDAMENTO("Em atendimento"),
         ENCAMINHADO("Escalado para outro setor"),
         FECHADO("Finalizado");
 
