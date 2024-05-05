@@ -9,6 +9,12 @@ import org.springframework.stereotype.Service;
 public class UsuarioService {
 
     @Autowired
-    UsuarioRepository userRepository;
+    private UsuarioRepository userRepository;
+
+    // Listar chamados abertos pelo próprio usuário
+
+    // Mostra detalhes do chamado na pagina de usuário (não tem alterar o status)
+
+    // Listar o chamados na pagina do usuário (chamados abertos e chamados criados anteriormente)
 
 }

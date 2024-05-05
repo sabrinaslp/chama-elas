@@ -25,8 +25,8 @@ public class AutenticacaoService {
     }
 
     // Verificação para confirmar a senha
-    public String verifiqueSeAsSenhasSaoIguais(String senha, String confirmSenha, Model model) {
-        if (!senha.equals(confirmSenha)) {
+    public String verifiqueSeAsSenhasSaoIguais(String senha, String confirmacaoSenha, Model model) {
+        if (!senha.equals(confirmacaoSenha)) {
             model.addAttribute("error", "As senhas não correspondem.");
         }
         return "cadastro-usuario"; // ALTERAR PARA A PÁGINA CORRESPONDENTE

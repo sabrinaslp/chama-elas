@@ -14,7 +14,7 @@ import java.util.Optional;
 public class ChamadoService {
 
     @Autowired
-    ChamadoRepository chamadoRepository;
+    private ChamadoRepository chamadoRepository;
 
     // Salva o chamado no bacno
     public ChamadoModel save( ) {
@@ -28,7 +28,7 @@ public class ChamadoService {
     }
 
     // Lista chamados atribuidos ao técnico logado
-    public List<ChamadoModel> getChamadosEmAtendimento(TecnicoModel tecnico) {
+    public List<ChamadoModel> getChamadosAtribuidos(TecnicoModel tecnico) {
         return chamadoRepository.findByTecnico(tecnico);
     }
 

@@ -61,14 +61,11 @@ public class LoginService {
 
     // Método auxiliar para redirectionar o usuário para a página especifica
     private String obterPaginaRedirecionamento(Long tipoUsuario, String nomeUsuario) {
-        switch (tipoUsuario.intValue()) {
-            case 1:
-                return "/pagina-tecnico?nome=" + nomeUsuario;
-            case 2:
-                return "/pagina-usuario?nome=" + nomeUsuario;
-            default:
-                return "/pagina-admin?nome=" + nomeUsuario;
-        }
+        return switch (tipoUsuario.intValue()) {
+            case 1 -> "/pagina-tecnico?nome=" + nomeUsuario;
+            case 2 -> "/pagina-usuario?nome=" + nomeUsuario;
+            default -> "/pagina-admin?nome=" + nomeUsuario;
+        };
     }
 
 }

@@ -18,9 +18,6 @@ public class TecnicoService {
     private TecnicoRepository tecnicoRepository;
 
     @Autowired
-    private ChamadoService chamadoService;
-
-    @Autowired
     private ChamadoRepository chamadoRepository;
 
     // Atualiza o status do chamado por ID
