@@ -14,15 +14,18 @@ import java.time.Instant;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "Type", discriminatorType = DiscriminatorType.STRING)
-public class UserModel implements Serializable {
+public class UsuarioModel implements Serializable {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "user_id")
         private Long userId;
+
         private String name;
+
         @Column(unique = true)
         private String email;
+
         private String password;
 
         private boolean isActive;
@@ -36,5 +39,17 @@ public class UserModel implements Serializable {
 
         public void setIsActive(boolean isActive) {
 
+        }
+
+        public void desativarUsuario() {
+                this.isActive = false;
+        }
+
+        public void ativarUsuario() {
+                this.isActive = true;
+        }
+
+        public boolean isActive() {
+                return isActive;
         }
 }

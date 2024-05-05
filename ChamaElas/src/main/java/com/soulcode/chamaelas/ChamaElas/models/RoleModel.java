@@ -20,8 +20,8 @@ public class RoleModel {
     private String name;
 
     public enum Values {
-        TECH(1L),
-        CLIENT(2L),
+        TECNICO(1L),
+        CLIENTE(2L),
         ADMIN(3L);
 
         long roleId;

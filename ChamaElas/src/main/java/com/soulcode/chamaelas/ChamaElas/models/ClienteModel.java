@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 @Entity
 @DiscriminatorValue("client")
-public class ClienteModel extends UserModel{
+public class ClienteModel extends UsuarioModel {
 
     private String endereco;
 }

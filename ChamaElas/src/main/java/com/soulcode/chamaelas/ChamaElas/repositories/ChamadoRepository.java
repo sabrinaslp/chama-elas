@@ -14,4 +14,12 @@ public interface ChamadoRepository extends JpaRepository<ChamadoModel, Long> {
     List<ChamadoModel> findByClient(ClienteModel cliente);
 
     List<ChamadoModel> findByTecnico(TecnicoModel tecnico);
+
+    List<ChamadoModel> findByStatus(ChamadoModel.TicketStatus status);
+
+    List<ChamadoModel> findByPriority(ChamadoModel.Priority priority);
+
+    List<ChamadoModel> findByDepartament(String department);
+
+    List<ChamadoModel> findByClientAndStatus(ClienteModel usuario, ChamadoModel.TicketStatus ticketStatus);
 }
