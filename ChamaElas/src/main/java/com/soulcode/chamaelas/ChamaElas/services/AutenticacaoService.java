@@ -32,7 +32,7 @@ public class AutenticacaoService {
         return "cadastro-usuario"; // ALTERAR PARA A PÁGINA CORRESPONDENTE
     }
 
-    // Verificação da função (role) do usuário cadastrado
+    // Atribui uma função (role) do usuário cadastrado
     public RoleModel atribuiFuncaoAoUsuario(String role) {
         RoleDTO roleDTO;
 

@@ -7,7 +7,6 @@ import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-
 import java.time.Instant;
 
 @Service
@@ -19,9 +18,7 @@ public class LoginService {
     @Autowired
     private AutenticacaoService autenticacaoService;
 
-    /////////////////////////////////////////////////////////////////////////////////
-    // Cadastro de novo usuário /////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////
+    // Cadastro de novo usuário
     public String cadastrarNovoUsuario(String nome, String email, String password, String confirmSenha, String role, Model model) {
 
         autenticacaoService.verifiqueSeOEmailJaFoiCadastrado(email, model);
@@ -32,10 +29,46 @@ public class LoginService {
         UsuarioModel usuarioModel = UsuarioDTO.toModel(usuarioDTO);
         usuarioRepository.save(usuarioModel);
 
-        return "login-usuario"; // ALTERAR PARA A PÁGINA CORRESPONDENTE
+        return "pagina-login"; // ALTERAR PARA A PÁGINA CORRESPONDENTE
     }
 
+    // Login do usuário
+    public String loginUsuario(String email, String senha, Model model) {
+        try {
+            if (email == null || senha == null || email.isEmpty() || senha.isEmpty()) {
+                throw new IllegalArgumentException("E-mail e/ou senha não podem ser vazios");
+            }
 
+            UsuarioModel usuario = usuarioRepository.findByEmail(email);
 
+            if (usuario == null) {
+                throw new RuntimeException("Usuário não encontrado");
+            }
+
+            if (!usuario.getPassword().equals(senha)) {
+                throw new RuntimeException("Senha incorreta");
+            }
+
+            Long tipoUsuario = usuario.getRole().getRoleId();
+            String paginaRedirecionamento = obterPaginaRedirecionamento(tipoUsuario, usuario.getName());
+            return "redirect:" + paginaRedirecionamento;
+
+        } catch (RuntimeException e) {
+            model.addAttribute("error", e.getMessage());
+            return "pagina-login";
+        }
+    }
+
+    // Método auxiliar para redirectionar o usuário para a página especifica
+    private String obterPaginaRedirecionamento(Long tipoUsuario, String nomeUsuario) {
+        switch (tipoUsuario.intValue()) {
+            case 1:
+                return "/pagina-tecnico?nome=" + nomeUsuario;
+            case 2:
+                return "/pagina-usuario?nome=" + nomeUsuario;
+            default:
+                return "/pagina-admin?nome=" + nomeUsuario;
+        }
+    }
 
 }

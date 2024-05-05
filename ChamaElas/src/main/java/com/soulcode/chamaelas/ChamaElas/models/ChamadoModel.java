@@ -51,10 +51,10 @@ public class ChamadoModel {
 
     @Getter
     public enum TicketStatus {
-        OPEN("Aguardando técnico"),
-        IN_PROGRESS("Em atendimento"),
-        FORWARDED("Escalado para outro setor"),
-        CLOSED("Finalizado");
+        ABERTO("Aguardando técnico"),
+        EM_PROGRESSO("Em atendimento"),
+        ENCAMINHADO("Escalado para outro setor"),
+        FECHADO("Finalizado");
 
         private final String description;
 
