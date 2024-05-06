@@ -9,17 +9,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ChamadoRepository extends JpaRepository<ChamadoModel, Long> {
-    List<ChamadoModel> findByStatusId(int statusId);
-
-    List<ChamadoModel> findByClient(ClienteModel cliente);
+    List<ChamadoModel> findByCliente(ClienteModel cliente);
 
     List<ChamadoModel> findByTecnico(TecnicoModel tecnico);
 
     List<ChamadoModel> findByStatus(ChamadoModel.TicketStatus status);
 
-    List<ChamadoModel> findByPriority(ChamadoModel.Priority priority);
+    List<ChamadoModel> findByPrioridade(ChamadoModel.Prioridade prioridade);
 
-    List<ChamadoModel> findByDepartament(String department);
+    List<ChamadoModel> findBySetor(String setor);
 
-    List<ChamadoModel> findByClientAndStatus(ClienteModel usuario, ChamadoModel.TicketStatus ticketStatus);
+    List<ChamadoModel> findByClienteAndStatus(ClienteModel usuario, ChamadoModel.TicketStatus ticketStatus);
 }

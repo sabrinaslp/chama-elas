@@ -22,27 +22,30 @@ public class ChamadoModel {
     private Long ticketId;
 
     @Column(columnDefinition = "TEXT")
-    private String description;
+    private String descricao;
 
-    private String department;
+    private String setor;
 
     @CreationTimestamp
-    private Instant creationTimestamp;
+    private Instant dataRegistro;
 
     @UpdateTimestamp
-    private Instant updatedTimestamp;
+    private Instant dataRegistroAtualizada;
 
     @ManyToOne
-    private ClienteModel client;
+    private ClienteModel cliente;
 
     @ManyToOne
-    private TecnicoModel technician;
+    private TecnicoModel tecnico;
 
     private TicketStatus status;
 
-    private Priority priority;
+    private Prioridade prioridade;
 
-    public enum Priority {
+    @ManyToOne
+    private AdminModel adminAtribuido;
+
+    public enum Prioridade {
         AGUARDANDO,
         BAIXA,
         MEDIA,
@@ -56,10 +59,10 @@ public class ChamadoModel {
         ENCAMINHADO("Escalado para outro setor"),
         FECHADO("Finalizado");
 
-        private final String description;
+        private final String descricao;
 
-        TicketStatus(String description) {
-            this.description = description;
+        TicketStatus(String descricao) {
+            this.descricao = descricao;
         }
 
     }

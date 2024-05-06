@@ -44,7 +44,7 @@ public class ChamadoService {
 
     // Procura um chamado pelo cliente
     public List<ChamadoModel> findByClient(ClienteModel cliente) {
-        return chamadoRepository.findByClient(cliente);
+        return chamadoRepository.findByCliente(cliente);
     }
 
     // Deleta um chamado pelo ID

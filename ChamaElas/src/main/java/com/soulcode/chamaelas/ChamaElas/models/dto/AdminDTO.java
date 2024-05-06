@@ -6,15 +6,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public record AdminDTO(
-        List<ChamadoDTO> openTickets,
-        List<ClienteDTO> registeredClients
+        List<ChamadoDTO> ticketsAbertos,
+        List<ClienteDTO> clientesRegistrados
 ) {
     public static AdminDTO fromModel(AdminModel adminModel) {
         return new AdminDTO(
-                adminModel.getOpenTickets().stream()
+                adminModel.getTicketsAbertos().stream()
                         .map(ChamadoDTO::fromModel)
                         .collect(Collectors.toList()),
-                adminModel.getRegisteredClients().stream()
+                adminModel.getClientesRegistrados().stream()
                         .map(ClienteDTO::fromModel)
                         .collect(Collectors.toList())
         );
@@ -22,14 +22,14 @@ public record AdminDTO(
 
     public static AdminModel toModel(AdminDTO adminDTO) {
         AdminModel adminModel = new AdminModel();
-        List<ChamadoModel> chamadoModels = adminDTO.openTickets().stream()
+        List<ChamadoModel> chamadoModels = adminDTO.ticketsAbertos().stream()
                 .map(ChamadoDTO::toModel)
                 .collect(Collectors.toList());
-        adminModel.setOpenTickets(chamadoModels);
-        List<ClienteModel> clienteModels = adminDTO.registeredClients().stream()
+        adminModel.setTicketsAbertos(chamadoModels);
+        List<ClienteModel> clienteModels = adminDTO.clientesRegistrados().stream()
                 .map(ClienteDTO::toModel)
                 .collect(Collectors.toList());
-        adminModel.setRegisteredClients(clienteModels);
+        adminModel.setClientesRegistrados(clienteModels);
 
         return adminModel;
     }

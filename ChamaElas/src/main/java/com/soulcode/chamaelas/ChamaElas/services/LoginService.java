@@ -1,6 +1,6 @@
 package com.soulcode.chamaelas.ChamaElas.services;
 
-import com.soulcode.chamaelas.ChamaElas.models.RoleModel;
+import com.soulcode.chamaelas.ChamaElas.models.FuncaoModel;
 import com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;
 import com.soulcode.chamaelas.ChamaElas.models.dto.UsuarioDTO;
 import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
@@ -23,9 +23,9 @@ public class LoginService {
 
         autenticacaoService.verifiqueSeOEmailJaFoiCadastrado(email, model);
         autenticacaoService.verifiqueSeAsSenhasSaoIguais(password, confirmSenha, model);
-        RoleModel roleModel = autenticacaoService.atribuiFuncaoAoUsuario(role);
+        FuncaoModel funcaoModel = autenticacaoService.atribuiFuncaoAoUsuario(role);
 
-        UsuarioDTO usuarioDTO = new UsuarioDTO(null, nome, email, password, true, roleModel, Instant.now());
+        UsuarioDTO usuarioDTO = new UsuarioDTO(null, nome, email, password, true, funcaoModel, Instant.now());
         UsuarioModel usuarioModel = UsuarioDTO.toModel(usuarioDTO);
         usuarioRepository.save(usuarioModel);
 
@@ -45,12 +45,12 @@ public class LoginService {
                 throw new RuntimeException("Usuário não encontrado");
             }
 
-            if (!usuario.getPassword().equals(senha)) {
+            if (!usuario.getSenha().equals(senha)) {
                 throw new RuntimeException("Senha incorreta");
             }
 
-            Long tipoUsuario = usuario.getRole().getRoleId();
-            String paginaRedirecionamento = obterPaginaRedirecionamento(tipoUsuario, usuario.getName());
+            Long tipoUsuario = usuario.getFuncao().getFuncaoId();
+            String paginaRedirecionamento = obterPaginaRedirecionamento(tipoUsuario, usuario.getNome());
             return "redirect:" + paginaRedirecionamento;
 
         } catch (RuntimeException e) {

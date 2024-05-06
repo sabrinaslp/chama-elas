@@ -1,39 +1,39 @@
 package com.soulcode.chamaelas.ChamaElas.models.dto;
 import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
-import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel.Priority;
+import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel.Prioridade;
 import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel.TicketStatus;
 
 public record ChamadoDTO(
         Long ticketId,
-        String description,
-        String department,
+        String descricao,
+        String departamento,
         String status,
-        String priority
+        String prioridade
 ) {
 
     public static ChamadoDTO fromModel(ChamadoModel chamadoModel) {
         return new ChamadoDTO(
                 chamadoModel.getTicketId(),
-                chamadoModel.getDescription(),
-                chamadoModel.getDepartment(),
-                chamadoModel.getStatus().getDescription(),
-                chamadoModel.getPriority().name()
+                chamadoModel.getDescricao(),
+                chamadoModel.getSetor(),
+                chamadoModel.getStatus().getDescricao(),
+                chamadoModel.getPrioridade().name()
         );
     }
 
     public static ChamadoModel toModel(ChamadoDTO chamadoDTO) {
         ChamadoModel chamadoModel = new ChamadoModel();
         chamadoModel.setTicketId(chamadoDTO.ticketId());
-        chamadoModel.setDescription(chamadoDTO.description());
-        chamadoModel.setDepartment(chamadoDTO.department());
+        chamadoModel.setDescricao(chamadoDTO.descricao());
+        chamadoModel.setSetor(chamadoDTO.departamento());
         chamadoModel.setStatus(getTicketStatus(chamadoDTO.status()));
-        chamadoModel.setPriority(getPriority(chamadoDTO.priority()));
+        chamadoModel.setPrioridade(getPrioridade(chamadoDTO.prioridade()));
         return chamadoModel;
     }
 
     public static TicketStatus getTicketStatus(String status) {
         for (TicketStatus ticketStatus : TicketStatus.values()) {
-            if (ticketStatus.getDescription().equalsIgnoreCase(status)) {
+            if (ticketStatus.getDescricao().equalsIgnoreCase(status)) {
                 return ticketStatus;
             }
         }
@@ -41,12 +41,12 @@ public record ChamadoDTO(
         throw new IllegalArgumentException("Chamado inválido status: " + status);
     }
 
-    public static Priority getPriority(String priority) {
-        for (Priority prio : Priority.values()) {
-            if (prio.name().equalsIgnoreCase(priority)) {
+    public static Prioridade getPrioridade(String prioridade) {
+        for (Prioridade prio : Prioridade.values()) {
+            if (prio.name().equalsIgnoreCase(prioridade)) {
                 return prio;
             }
         }
-        throw new IllegalArgumentException("Prioridade inválida: " + priority);
+        throw new IllegalArgumentException("Prioridade inválida: " + prioridade);
     }
 }

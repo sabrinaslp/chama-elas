@@ -10,24 +10,25 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="tb_roles")
-public class RoleModel {
+@Table(name="tb_funcao")
+public class FuncaoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_id")
-    private Long roleId;
-    private String name;
+    @Column(name = "funcao_id")
+    private Long funcaoId;
+
+    private String nome;
 
     public enum Values {
         TECNICO(1L),
         CLIENTE(2L),
         ADMIN(3L);
 
-        long roleId;
+        long funcaoId;
 
-        Values(long roleId) {
-            this.roleId = roleId;
+        Values(long funcaoId) {
+            this.funcaoId = this.funcaoId;
         }
     }
 

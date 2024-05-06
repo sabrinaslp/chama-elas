@@ -18,12 +18,12 @@ public class UsuarioService {
 
     // Listar todos os chamados criados pelo usuário
     public List<ChamadoModel> listarTodosOsChamadosDoUsuario(ClienteModel usuario) {
-        return chamadoRepository.findByClient(usuario);
+        return chamadoRepository.findByCliente(usuario);
     }
 
     // Listar todos os chamados criados pelo usuário que ainda estão em aberto
     public List<ChamadoModel> listarChamadosEmAbertoDoUsuario(ClienteModel usuario) {
-        return chamadoRepository.findByClientAndStatus(usuario, ChamadoModel.TicketStatus.ABERTO);
+        return chamadoRepository.findByClienteAndStatus(usuario, ChamadoModel.TicketStatus.ABERTO);
     }
 
     // Mostra detalhes do chamado na pagina de usuário (não deve ter alterar o status na pagina)
