@@ -28,11 +28,11 @@ public class TecnicoService {
             if (novoStatus != null) {
                 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
                 String nomeTecnico = authentication.getName();
-                TecnicoModel tecnico = tecnicoRepository.findByName(nomeTecnico);
+                TecnicoModel tecnico = tecnicoRepository.findByNome(nomeTecnico);
 
                 if (tecnico != null) {
                     chamado.setStatus(novoStatus);
-                    chamado.setTechnician(tecnico);
+                    chamado.setTecnico(tecnico);
                     chamadoRepository.save(chamado);
                 }
             }

@@ -3,31 +3,31 @@ import com.soulcode.chamaelas.ChamaElas.models.TecnicoModel;
 
 public record TecnicoDTO(
         Long userId,
-        String name,
+        String nome,
         String email,
-        boolean isActive,
-        String department,
-        String phone
+        boolean estaAtivo,
+        String setor,
+        String telefone
 ) {
     public static TecnicoDTO fromModel(TecnicoModel tecnicoModel) {
         return new TecnicoDTO(
-                tecnicoModel.getUserId(),
-                tecnicoModel.getName(),
+                tecnicoModel.getUsuarioId(),
+                tecnicoModel.getNome(),
                 tecnicoModel.getEmail(),
-                tecnicoModel.isActive(),
-                tecnicoModel.getDepartment(),
-                tecnicoModel.getPhone()
+                tecnicoModel.isEstaAtivo(),
+                tecnicoModel.getSetor(),
+                tecnicoModel.getTelefone()
         );
     }
 
     public static TecnicoModel toModel(TecnicoDTO tecnicoDTO) {
         TecnicoModel tecnicoModel = new TecnicoModel();
-        tecnicoModel.setUserId(tecnicoDTO.userId());
-        tecnicoModel.setName(tecnicoDTO.name());
+        tecnicoModel.setUsuarioId(tecnicoDTO.userId());
+        tecnicoModel.setNome(tecnicoDTO.nome());
         tecnicoModel.setEmail(tecnicoDTO.email());
-        tecnicoModel.setIsActive(tecnicoDTO.isActive());
-        tecnicoModel.setDepartment(tecnicoDTO.department());
-        tecnicoModel.setPhone(tecnicoDTO.phone());
+        tecnicoModel.setEstaAtivo(tecnicoDTO.estaAtivo());
+        tecnicoModel.setSetor(tecnicoDTO.setor());
+        tecnicoModel.setTelefone(tecnicoDTO.telefone());
         return tecnicoModel;
     }
 }

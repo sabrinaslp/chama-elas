@@ -12,4 +12,9 @@ import lombok.*;
 public class ClienteModel extends UsuarioModel {
 
     private String endereco;
+
+    @ManyToOne
+    @JoinColumn(name = "admin_atribuido_id")
+    private AdminModel adminAtribuido;
+
 }

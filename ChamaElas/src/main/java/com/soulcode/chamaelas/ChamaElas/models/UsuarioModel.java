@@ -19,37 +19,35 @@ public class UsuarioModel implements Serializable {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "user_id")
-        private Long userId;
+        private Long usuarioId;
 
-        private String name;
+        private String nome;
 
         @Column(unique = true)
         private String email;
 
-        private String password;
+        private String senha;
 
-        private boolean isActive;
+        @Getter
+        private boolean estaAtivo;
 
         @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-        @JoinColumn(name = "role_id")
-        private RoleModel role;
+        @JoinColumn(name = "funcao_id")
+        private FuncaoModel funcao;
 
         @CreationTimestamp
-        private Instant creationTimeStamp;
+        private Instant dataRegistro;
 
-        public void setIsActive(boolean isActive) {
+        public void setEstaAtivo(boolean estaAtivo) {
 
         }
 
         public void desativarUsuario() {
-                this.isActive = false;
+                this.estaAtivo = false;
         }
 
         public void ativarUsuario() {
-                this.isActive = true;
+                this.estaAtivo = true;
         }
 
-        public boolean isActive() {
-                return isActive;
-        }
 }

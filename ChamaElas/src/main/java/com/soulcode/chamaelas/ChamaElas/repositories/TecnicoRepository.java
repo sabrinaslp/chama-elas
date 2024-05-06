@@ -4,5 +4,5 @@ import com.soulcode.chamaelas.ChamaElas.models.TecnicoModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TecnicoRepository extends JpaRepository<TecnicoModel ,Long> {
-    TecnicoModel findByName(String name);
+    TecnicoModel findByNome(String nome);
 }

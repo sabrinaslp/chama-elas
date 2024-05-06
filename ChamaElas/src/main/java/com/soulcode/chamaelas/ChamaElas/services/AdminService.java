@@ -33,13 +33,13 @@ public class AdminService {
     }
 
     // Lista chamados por prioridade
-    public List<ChamadoModel> getChamadosPorPrioridade(ChamadoModel.Priority priority) {
-        return chamadoRepository.findByPriority(priority);
+    public List<ChamadoModel> getChamadosPorPrioridade(ChamadoModel.Prioridade prioridade) {
+        return chamadoRepository.findByPrioridade(prioridade);
     }
 
     // Lista chamados por setores
-    public List<ChamadoModel> getChamadosPorSetor(String departament) {
-        return chamadoRepository.findByDepartament(departament);
+    public List<ChamadoModel> getChamadosPorSetor(String setor) {
+        return chamadoRepository.findBySetor(setor);
     }
 
     // Desativar usuário pelo ID

@@ -13,10 +13,10 @@ import java.util.List;
 @DiscriminatorValue("admin")
 public class AdminModel extends UsuarioModel {
 
-    @OneToMany(mappedBy = "assignedAdmin", fetch = FetchType.LAZY)
-    private List<ChamadoModel> openTickets;
+    @OneToMany(mappedBy = "adminAtribuido", fetch = FetchType.LAZY)
+    private List<ChamadoModel> ticketsAbertos;
 
-    @OneToMany(mappedBy = "assignedAdmin", fetch = FetchType.LAZY)
-    private List<ClienteModel> registeredClients;
+    @OneToMany(mappedBy = "adminAtribuido", fetch = FetchType.LAZY)
+    private List<ClienteModel> clientesRegistrados;
 
 }

@@ -1,8 +1,8 @@
 package com.soulcode.chamaelas.ChamaElas.services;
 
-import com.soulcode.chamaelas.ChamaElas.models.RoleModel;
+import com.soulcode.chamaelas.ChamaElas.models.FuncaoModel;
 import com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;
-import com.soulcode.chamaelas.ChamaElas.models.dto.RoleDTO;
+import com.soulcode.chamaelas.ChamaElas.models.dto.FuncaoDTO;
 import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,14 +33,14 @@ public class AutenticacaoService {
     }
 
     // Atribui uma função (role) do usuário cadastrado
-    public RoleModel atribuiFuncaoAoUsuario(String role) {
-        RoleDTO roleDTO;
+    public FuncaoModel atribuiFuncaoAoUsuario(String role) {
+        FuncaoDTO roleDTO;
 
         if (role.equals("tecnico")) {
-            roleDTO = new RoleDTO(1L, "Técnico");
+            roleDTO = new FuncaoDTO(1L, "Técnico");
         } else {
-            roleDTO = new RoleDTO(2L, "Cliente");
+            roleDTO = new FuncaoDTO(2L, "Cliente");
         }
-        return RoleDTO.toModel(roleDTO);
+        return FuncaoDTO.toModel(roleDTO);
     }
 }

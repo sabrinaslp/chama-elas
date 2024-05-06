@@ -8,12 +8,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-
 @Entity
 @DiscriminatorValue("tech")
 public class TecnicoModel extends UsuarioModel {
 
-    private String department;
-    private String phone;
+    private String setor;
+    private String telefone;
 
 }
