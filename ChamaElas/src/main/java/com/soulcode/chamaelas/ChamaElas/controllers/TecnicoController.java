@@ -1,31 +1,30 @@
 package com.soulcode.chamaelas.ChamaElas.controllers;
 
 import com.soulcode.chamaelas.ChamaElas.models.TecnicoModel;
-import com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;
 import com.soulcode.chamaelas.ChamaElas.repositories.TecnicoRepository;
-import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 @RestController
 public class TecnicoController {
+
     @Autowired
     private TecnicoRepository tecnicoRepository;
-    @RequestMapping(value = "/criartecnico", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/criar-tecnico", method = RequestMethod.POST)
     public TecnicoModel criarTecnico(@RequestBody TecnicoModel tecnico) {
         return tecnicoRepository.save(tecnico);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/buscar-tecnico/{id}")
     public TecnicoModel buscarTecnicoPorId(@PathVariable Long id) {
         return tecnicoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/atualizar-tecnico/{id}")
     public TecnicoModel atualizarTecnico(@PathVariable Long id, @RequestBody TecnicoModel tecnicoAtualizado) {
         Optional<TecnicoModel> tecnicoModelOptional = tecnicoRepository.findById(id);
         if (tecnicoModelOptional.isPresent()) {
@@ -39,7 +38,7 @@ public class TecnicoController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/excluir-tecnico/{id}")
     public void excluirTecnico(@PathVariable Long id) {
         tecnicoRepository.deleteById(id);
     }

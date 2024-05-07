@@ -2,31 +2,29 @@ package com.soulcode.chamaelas.ChamaElas.controllers;
 
 
 import com.soulcode.chamaelas.ChamaElas.models.AdminModel;
-import com.soulcode.chamaelas.ChamaElas.models.TecnicoModel;
 import com.soulcode.chamaelas.ChamaElas.repositories.AdminRepository;
-import com.soulcode.chamaelas.ChamaElas.repositories.TecnicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 @RestController
 public class AdminController {
+
     @Autowired
     private AdminRepository adminRepository;
-    @RequestMapping(value = "/criartecnico", method = RequestMethod.POST)
+    @RequestMapping(value = "/criar-admin", method = RequestMethod.POST)
     public AdminModel criarAdmin(@RequestBody AdminModel admin) {
         return adminRepository.save(admin);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/buscar-admin/{id}")
     public AdminModel buscarAdminPorId(@PathVariable Long id) {
         return adminRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/atualizar-admin/{id}")
     public AdminModel atualizarAdmin(@PathVariable Long id, @RequestBody AdminModel adminAtualizado) {
         Optional<AdminModel> adminModelOptional = adminRepository.findById(id);
         if (adminModelOptional.isPresent()) {
@@ -40,7 +38,7 @@ public class AdminController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/excluir-admin/{id}")
     public void excluirAdmin(@PathVariable Long id) {
         adminRepository.deleteById(id);
     }

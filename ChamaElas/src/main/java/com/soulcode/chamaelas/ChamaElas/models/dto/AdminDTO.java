@@ -2,14 +2,10 @@ package com.soulcode.chamaelas.ChamaElas.models.dto;
 import com.soulcode.chamaelas.ChamaElas.models.AdminModel;
 import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
 import com.soulcode.chamaelas.ChamaElas.models.ClienteModel;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Getter
-@Setter
 public record AdminDTO(
         List<ChamadoDTO> ticketsAbertos,
         List<ClienteDTO> clientesRegistrados

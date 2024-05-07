@@ -34,10 +34,10 @@ public class AutenticacaoService {
     }
 
     // Atribui uma função (role) do usuário cadastrado
-    public FuncaoModel atribuiFuncaoAoUsuario(String role) {
+    public FuncaoModel atribuiFuncaoAoUsuario(String funcao) {
         FuncaoDTO roleDTO;
 
-        if (role.equals("tecnico")) {
+        if (funcao.equals("tecnico")) {
             roleDTO = new FuncaoDTO(1L, "Técnico");
         } else {
             roleDTO = new FuncaoDTO(2L, "Cliente");
