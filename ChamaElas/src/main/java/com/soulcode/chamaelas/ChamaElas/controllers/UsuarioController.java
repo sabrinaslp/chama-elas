@@ -9,8 +9,10 @@ import java.util.Optional;
 
 @RestController
 public class UsuarioController {
+
     @Autowired
     private UsuarioRepository usuarioRepository;
+
     @RequestMapping(value = "/criar-usuario", method = RequestMethod.POST)
     public UsuarioModel criarUsuario(@RequestBody UsuarioModel usuario) {
         return usuarioRepository.save(usuario);
@@ -22,7 +24,7 @@ public class UsuarioController {
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
     }
 
-    @PutMapping("/ataulizar-usuario/{id}")
+    @PutMapping("/atualizar-usuario/{id}")
     public UsuarioModel atualizarUsuario(@PathVariable Long id, @RequestBody UsuarioModel usuarioAtualizado) {
         Optional<UsuarioModel> usuarioDTOOptional = usuarioRepository.findById(id);
         if (usuarioDTOOptional.isPresent()) {

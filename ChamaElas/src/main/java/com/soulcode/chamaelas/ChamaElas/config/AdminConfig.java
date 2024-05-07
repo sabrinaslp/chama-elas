@@ -16,8 +16,10 @@ public class AdminConfig implements CommandLineRunner {
 
     @Autowired
     private FuncaoRepository funcaoRepository;
+
     @Autowired
     private UsuarioRepository usuarioRepository;
+
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
