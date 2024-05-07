@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-br">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>ChamaElas</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/vendor.css">
+    <link rel="stylesheet" href="../static/css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="../static/js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+
+<body id="top">
+
+<!-- preloader
+================================================== -->
+<div id="preloader">
+    <div id="loader" class="dots-jump">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+<!-- header
+================================================== -->
+<header class="s-header">
+
+
+    <nav class="header-nav">
+
+        <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+
+        <h3>Menu</h3>
+
+        <div class="header-nav__content">
+
+            <ul class="header-nav__list">
+                <li><a class="smoothscroll" href="#home" title="home">Início</a></li>
+                <li><a class="smoothscroll" href="#about" title="about">Sobre nós</a></li>
+                <li><a class="smoothscroll" href="#services" title="services">Sistema</a></li>
+                <li><a class="smoothscroll" href="#contact" title="contact">Contato</a></li>
+            </ul>
+
+            <p>© 2024 ChamaElas. Todos os direitos reservados.</p>
+
+
+        </div> <!-- end header-nav__content -->
+
+    </nav> <!-- end header-nav -->
+
+    <a class="header-menu-toggle" href="#0">
+        <span class="header-menu-icon"></span>
+    </a>
+
+</header> <!-- end s-header -->
+
+
+
+
+<div class="custom-form">
+    <div class="col-six tab-full">
+        <h2>Bem vindo!</h2>
+        <h3>Formulário de Cadastro</h3>
+        <form>
+            <div>
+                <label for="emailInput">E-mail</label>
+                <input class="full-width" type="email" placeholder="test@mailbox.com" id="emailInput" required>
+            </div>
+            <div>
+                <label for="phoneInput">Telefone</label>
+                <input class="full-width" type="tel" pattern="[0-9]{10,}" placeholder="Somente números" id="phoneInput" required>
+            </div>
+            <div>
+                <label for="userTypeInput">Tipo de login</label>
+                <select class="full-width" id="userTypeInput" required>
+                    <option value="">Selecione o tipo de usuário</option>
+                    <option value="user" style="color: black;">Usuário</option>
+                    <option value="technician" style="color: black;">Técnico</option>
+                </select>
+            </div>
+            <div>
+                <label for="passwordInput">Senha</label>
+                <input class="full-width" type="password" placeholder="Sua senha" id="passwordInput" required>
+            </div>
+            <div>
+                <label for="confirmPasswordInput">Confirmar Senha</label>
+                <input class="full-width" type="password" placeholder="Confirme sua senha" id="confirmPasswordInput" required>
+            </div>
+            <input class="btn--primary full-width" type="submit" value="Enviar">
+        </form>
+    </div>
+</div>
+
+
+
+<!-- Java Script
+================================================== -->
+<script src="../static/js/jquery-3.2.1.min.js"></script>
+<script src="../static/js/plugins.js"></script>
+<script src="../static/js/main.js"></script>
+
+
+</body>
+</html>

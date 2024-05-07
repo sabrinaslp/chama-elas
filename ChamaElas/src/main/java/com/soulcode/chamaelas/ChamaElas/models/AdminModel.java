@@ -19,4 +19,5 @@ public class AdminModel extends UsuarioModel {
     @OneToMany(mappedBy = "adminAtribuido", fetch = FetchType.LAZY)
     private List<ClienteModel> clientesRegistrados;
 
+
 }

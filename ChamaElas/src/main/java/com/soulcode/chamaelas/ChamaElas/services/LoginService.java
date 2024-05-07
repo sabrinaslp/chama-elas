@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import java.time.Instant;
+import java.util.Optional;
 
 @Service
 public class LoginService {
@@ -39,11 +40,13 @@ public class LoginService {
                 throw new IllegalArgumentException("E-mail e/ou senha não podem ser vazios");
             }
 
-            UsuarioModel usuario = usuarioRepository.findByEmail(email);
+            Optional<UsuarioModel> usuarioOptional = usuarioRepository.findByEmail(email);
 
-            if (usuario == null) {
+            if (usuarioOptional.isEmpty()) {
                 throw new RuntimeException("Usuário não encontrado");
             }
+
+            UsuarioModel usuario = usuarioOptional.get();
 
             if (!usuario.getSenha().equals(senha)) {
                 throw new RuntimeException("Senha incorreta");

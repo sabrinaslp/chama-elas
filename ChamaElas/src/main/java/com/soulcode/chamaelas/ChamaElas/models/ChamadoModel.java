@@ -13,12 +13,12 @@ import java.time.Instant;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="tickets")
+@Table(name="tb_chamados")
 public class ChamadoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="ticket_id")
+    @Column(name ="chamado_id")
     private Long ticketId;
 
     @Column(columnDefinition = "TEXT")
