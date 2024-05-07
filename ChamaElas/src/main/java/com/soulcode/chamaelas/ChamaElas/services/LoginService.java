@@ -34,7 +34,6 @@ public class LoginService {
     }
 
     // Login do usuário
-    // Login do usuário
     public String loginUsuario(String email, String senha, Model model) {
         try {
             if (email == null || senha == null || email.isEmpty() || senha.isEmpty()) {

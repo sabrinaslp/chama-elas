@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="pt-br">
+<html class="no-js" lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 
     <!--- basic page needs
@@ -15,13 +15,13 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="../static/css/base.css">
-    <link rel="stylesheet" href="../static/css/vendor.css">
-    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/vendor.css">
+    <link rel="stylesheet" href="/css/main.css">
 
     <!-- script
     ================================================== -->
-    <script src="../templates/js/modernizr.js"></script>
+    <script src="/js/modernizr.js"></script>
 
     <!-- favicons
     ================================================== -->
@@ -79,7 +79,7 @@
 
 <!-- home
 ================================================== -->
-<section id="home" class="s-home page-hero target-section" data-parallax="scroll" data-image-src="../static/images/foto.index.jpg"
+<section id="home" class="s-home page-hero target-section" data-parallax="scroll" data-image-src="/images/foto.index.jpg"
          data-natural-width=3000 data-natural-height=2000 data-position-y=center>
 
     <div class="grid-overlay">
@@ -212,10 +212,10 @@
                 <div class="item-folio">
 
                     <div class="item-folio__thumb">
-                        <a href="../static/images/portfolio/gallery/g-shutterbug.jpg" class="thumb-link" title="Shutterbug"
+                        <a href="/images/portfolio/gallery/g-shutterbug.jpg" class="thumb-link" title="Shutterbug"
                            data-size="1050x700">
-                            <img src="../static/images/portfolio/lady-shutterbug.jpg"
-                                 srcset="../static/images/portfolio/lady-shutterbug.jpg 1x, ../static/images/portfolio/lady-shutterbug@2x.jpg 2x"
+                            <img src="/images/portfolio/lady-shutterbug.jpg"
+                                 srcset="/images/portfolio/lady-shutterbug.jpg 1x, /images/portfolio/lady-shutterbug@2x.jpg 2x"
                                  alt="">
                         </a>
                     </div>
@@ -245,10 +245,10 @@
                 <div class="item-folio">
 
                     <div class="item-folio__thumb">
-                        <a href="../static/images/portfolio/gallery/g-woodcraft.jpg" class="thumb-link" title="Woodcraft"
+                        <a href="/images/portfolio/gallery/g-woodcraft.jpg" class="thumb-link" title="Woodcraft"
                            data-size="1050x700">
-                            <img src="../static/images/portfolio/woodcraft.jpg"
-                                 srcset="../static/images/portfolio/woodcraft.jpg 1x, ../static/images/portfolio/woodcraft@2x.jpg 2x"
+                            <img src="/images/portfolio/woodcraft.jpg"
+                                 srcset="/images/portfolio/woodcraft.jpg 1x, /images/portfolio/woodcraft@2x.jpg 2x"
                                  alt="">
                         </a>
                     </div>
@@ -278,10 +278,10 @@
                 <div class="item-folio">
 
                     <div class="item-folio__thumb">
-                        <a href="../static/images/portfolio/gallery/g-beetle.jpg" class="thumb-link" title="The Beetle Car"
+                        <a href="/images/portfolio/gallery/g-beetle.jpg" class="thumb-link" title="The Beetle Car"
                            data-size="1050x700">
-                            <img src="../static/images/portfolio/the-beetle.jpg"
-                                 srcset="../static/images/portfolio/the-beetle.jpg 1x, ../static/images/portfolio/the-beetle@2x.jpg 2x"
+                            <img src="/images/portfolio/the-beetle.jpg"
+                                 srcset="/images/portfolio/the-beetle.jpg 1x, /images/portfolio/the-beetle@2x.jpg 2x"
                                  alt="">
                         </a>
                     </div>
@@ -311,10 +311,10 @@
                 <div class="item-folio">
 
                     <div class="item-folio__thumb">
-                        <a href="../static/images/portfolio/gallery/g-salad.jpg" class="thumb-link" title="Grow Green"
+                        <a href="/images/portfolio/gallery/g-salad.jpg" class="thumb-link" title="Grow Green"
                            data-size="1050x700">
-                            <img src="../static/images/portfolio/salad.jpg"
-                                 srcset="../static/images/portfolio/salad.jpg 1x, ../static/images/portfolio/salad@2x.jpg 2x" alt="">
+                            <img src="/images/portfolio/salad.jpg"
+                                 srcset="/images/portfolio/salad.jpg 1x, /images/portfolio/salad@2x.jpg 2x" alt="">
                         </a>
                     </div>
 
@@ -343,10 +343,10 @@
                 <div class="item-folio">
 
                     <div class="item-folio__thumb">
-                        <a href="../static/images/portfolio/gallery/g-lamp.jpg" class="thumb-link" title="Guitarist"
+                        <a href="/images/portfolio/gallery/g-lamp.jpg" class="thumb-link" title="Guitarist"
                            data-size="1050x700">
-                            <img src="../static/images/portfolio/lamp.jpg"
-                                 srcset="../static/images/portfolio/lamp.jpg 1x, ../static/images/portfolio/lamp@2x.jpg 2x" alt="">
+                            <img src="/images/portfolio/lamp.jpg"
+                                 srcset="/images/portfolio/lamp.jpg 1x, /images/portfolio/lamp@2x.jpg 2x" alt="">
                         </a>
                     </div>
 
@@ -375,10 +375,10 @@
                 <div class="item-folio">
 
                     <div class="item-folio__thumb">
-                        <a href="../static/images/portfolio/gallery/g-fuji.jpg" class="thumb-link" title="Palmeira"
+                        <a href="/images/portfolio/gallery/g-fuji.jpg" class="thumb-link" title="Palmeira"
                            data-size="1050x700">
-                            <img src="../static/images/portfolio/fuji.jpg"
-                                 srcset="../static/images/portfolio/fuji.jpg 1x, ../static/images/portfolio/fuji@2x.jpg 2x" alt="">
+                            <img src="/images/portfolio/fuji.jpg"
+                                 srcset="/images/portfolio/fuji.jpg 1x, /images/portfolio/fuji@2x.jpg 2x" alt="">
                         </a>
                     </div>
 
@@ -435,42 +435,36 @@
             <div class="col-four tab-full">
                 <div class="row">
                     <div class="col-six">
-                        <img class="dev-image" src="../static/images/hero-bg.jpg" alt="Desenvolvedora 5">
-                        <h4>Nome da Desenvolvedora 5</h4>
-
+                        <img class="dev-image" src="/images/hero-bg.jpg" alt="Desenvolvedora 5">
+                        <h4>Anna Maria</h4>
                     </div>
                     <div class="col-six">
-                        <img class="dev-image" src="../static/images/hero-bg.jpg" alt="Desenvolvedora 6">
-                        <h4>Nome da Desenvolvedora 6</h4>
-
+                        <img class="dev-image" src="/images/hero-bg.jpg" alt="Desenvolvedora 6">
+                        <h4>Andressa Pereira</h4>
                     </div>
                 </div>
             </div>
             <div class="col-four tab-full">
                 <div class="row">
                     <div class="col-six">
-                        <img class="dev-image" src="../static/images/hero-bg.jpg" alt="Desenvolvedora 5">
-                        <h4>Nome da Desenvolvedora 5</h4>
-
+                        <img class="dev-image" src="/images/hero-bg.jpg" alt="Desenvolvedora 5">
+                        <h4>Cecília Galvão</h4>
                     </div>
                     <div class="col-six">
-                        <img  class="dev-image" src="../static/images/hero-bg.jpg" alt="Desenvolvedora 6">
-                        <h4>Nome da Desenvolvedora 6</h4>
-
+                        <img  class="dev-image" src="/images/hero-bg.jpg" alt="Desenvolvedora 6">
+                        <h4>Larissa Lisboa</h4>
                     </div>
                 </div>
             </div>
             <div class="col-four tab-full">
                 <div class="row">
                     <div class="col-six">
-                        <img class="dev-image" src="../static/images/hero-bg.jpg" alt="Desenvolvedora 5">
-                        <h4>Nome da Desenvolvedora 5</h4>
-
+                        <img class="dev-image" src="/images/hero-bg.jpg" alt="Desenvolvedora 5">
+                        <h4>Rayane Souza</h4>
                     </div>
                     <div class="col-six">
-                        <img class="dev-image" src="../static/images/hero-bg.jpg" alt="Desenvolvedora 6">
-                        <h4>Nome da Desenvolvedora 6</h4>
-
+                        <img  class="dev-image" src="/images/hero-bg.jpg" alt="Desenvolvedora 6">
+                        <h4>Sabrina Satriany</h4>
                     </div>
                 </div>
             </div>
@@ -649,9 +643,10 @@
 
             <!-- Java Script
             ================================================== -->
-            <script src="js/jquery-3.2.1.min.js"></script>
-            <script src="js/plugins.js"></script>
-            <script src="js/main.js"></script>
+            <script src="/js/jquery-3.2.1.min.js"></script>
+            <script src="/js/plugins.js"></script>
+            <script src="/js/main.js"></script>
+
 
 </body>
 
