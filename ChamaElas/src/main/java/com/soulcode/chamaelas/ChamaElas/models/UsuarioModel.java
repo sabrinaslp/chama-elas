@@ -14,11 +14,12 @@ import java.time.Instant;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "Type", discriminatorType = DiscriminatorType.STRING)
+@Table(name="tb_usuario")
 public class UsuarioModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "usuario_id")
     private Long usuarioId;
 
     private String nome;
