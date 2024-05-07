@@ -5,12 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="tb_funcao")
+@Table(name = "tb_funcao")
 public class FuncaoModel {
 
     @Id
@@ -20,16 +21,21 @@ public class FuncaoModel {
 
     private String nome;
 
-    public enum Values {
-        TECNICO(1L),
-        CLIENTE(2L),
-        ADMIN(3L);
-
-        long funcaoId;
-
-        Values(long funcaoId) {
-            this.funcaoId = this.funcaoId;
-        }
+    public String getName() {
+        return null;
     }
 
+    public enum Values {
+        TECNICO(1L, "Técnico"),
+        CLIENTE(2L, "Cliente"),
+        ADMIN(3L, "Admin");
+
+        private final long funcaoId;
+        private final String nome;
+
+        Values(long funcaoId, String nome) {
+            this.funcaoId = funcaoId;
+            this.nome = nome;
+        }
+    }
 }

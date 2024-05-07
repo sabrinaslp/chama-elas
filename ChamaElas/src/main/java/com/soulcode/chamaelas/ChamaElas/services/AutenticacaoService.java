@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import java.util.Optional;
+
 
 @Service
 public class AutenticacaoService {
@@ -17,13 +19,12 @@ public class AutenticacaoService {
 
     // Verificação se o email já existe na base de dados
     public String verifiqueSeOEmailJaFoiCadastrado(String email, Model model) {
-        UsuarioModel usuarioExistente = usuarioRepository.findByEmail(email);
-        if (usuarioExistente != null) {
+        Optional<UsuarioModel> usuarioExistenteOptional = usuarioRepository.findByEmail(email);
+        if (usuarioExistenteOptional.isPresent()) {
             model.addAttribute("error", "Este e-mail já está em uso. Por favor, escolha outro.");
         }
         return "cadastro-usuario";
     }
-
     // Verificação para confirmar a senha
     public String verifiqueSeAsSenhasSaoIguais(String senha, String confirmacaoSenha, Model model) {
         if (!senha.equals(confirmacaoSenha)) {

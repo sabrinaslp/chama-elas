@@ -5,49 +5,60 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.io.Serializable;
 import java.time.Instant;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
+@Getter
+@Setter
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "Type", discriminatorType = DiscriminatorType.STRING)
 public class UsuarioModel implements Serializable {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "user_id")
-        private Long usuarioId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private Long usuarioId;
 
-        private String nome;
+    private String nome;
 
-        @Column(unique = true)
-        private String email;
+    @Column(unique = true)
+    private String email;
 
-        private String senha;
+    private String senha;
 
-        @Getter
-        private boolean estaAtivo;
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
+    private boolean isActive;
 
-        @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-        @JoinColumn(name = "funcao_id")
-        private FuncaoModel funcao;
+    @Getter
+    private boolean estaAtivo;
 
-        @CreationTimestamp
-        private Instant dataRegistro;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "funcao_id")
+    private FuncaoModel funcao;
 
-        public void setEstaAtivo(boolean estaAtivo) {
+    @CreationTimestamp
+    private Instant dataRegistro;
 
-        }
 
-        public void desativarUsuario() {
-                this.estaAtivo = false;
-        }
+    public void desativarUsuario() {
+        this.estaAtivo = false;
+    }
 
-        public void ativarUsuario() {
-                this.estaAtivo = true;
-        }
+    public void ativarUsuario() {
+        this.estaAtivo = true;
+    }
+
+    public void setPassword(String encode) {
+    }
+
+    public void setRole(FuncaoModel roleAdmin) {
+
+    }
+
+    public String getPassword() {
+        return this.senha;
+    }
 
 }
