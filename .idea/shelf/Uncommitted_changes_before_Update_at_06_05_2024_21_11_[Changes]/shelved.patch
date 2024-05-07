@@ -1,0 +1,228 @@
+Index: ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/UsuarioController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.soulcode.chamaelas.ChamaElas.controllers;\r\n\r\nimport org.springframework.stereotype.Controller;\r\n\r\n@Controller\r\npublic class UsuarioController {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/UsuarioController.java b/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/UsuarioController.java
+--- a/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/UsuarioController.java	(revision b2ffe6cd4e81e56b72f9bf3e5f1c760fc416f2c1)
++++ b/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/UsuarioController.java	(date 1715040367160)
+@@ -1,7 +1,45 @@
+ package com.soulcode.chamaelas.ChamaElas.controllers;
+ 
++import com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;
++import com.soulcode.chamaelas.ChamaElas.repositories.ClienteRepository;
++import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
++import jakarta.persistence.Id;
++import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Controller;
++import org.springframework.web.bind.annotation.*;
+ 
+-@Controller
++import java.util.Optional;
++
++@RestController
+ public class UsuarioController {
++    @Autowired
++    private ClienteRepository pizzariaRepository;
++    @RequestMapping(value = "/criacliente", method = RequestMethod.POST)
++    public UsuarioModel criarUsuario(@RequestBody UsuarioModel cliente) {
++        return UsuarioRepository.save(UsuarioModel);
++    }
++
++    @GetMapping("/{id}")
++    public UsuarioModel buscarUsuarioPorId(@PathVariable Long id) {
++        return UsuarioRepository.findById(id)
++                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
++    }
++
++    @PutMapping("/{id}")
++    public UsuarioModel atualizarUsuario(@PathVariable Long id, @RequestBody UsuarioModel usuarioModelAtualizado) {
++        Optional<UsuarioModel> usuarioModelOptional = UsuarioRepository.findById(id);
++        if (usuarioModelOptional.isPresent()) {
++            UsuarioModel usuario = usuarioModelOptional.get();
++            usuario.set
++        (usuarioModelAtualizado.getNome());
++            return UsuarioRepository.save(usuario);
++        } else {
++            throw new RuntimeException("Cliente não encontrado");
++        }
++    }
++
++    @DeleteMapping("/{id}")
++    public void excluirUsuario(@PathVariable Long id) {
++        UsuarioRepository.deleteById(id);
++    }
+ }
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1715016530487)
++++ b/.idea/modules.xml	(date 1715016530487)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/chama-elas.iml" filepath="$PROJECT_DIR$/.idea/chama-elas.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+new file mode 100644
+--- /dev/null	(date 1715016530511)
++++ b/.idea/compiler.xml	(date 1715016530511)
+@@ -0,0 +1,18 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <annotationProcessing>
++      <profile name="Maven default annotation processors profile" enabled="true">
++        <sourceOutputDir name="target/generated-sources/annotations" />
++        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
++        <outputRelativeToContentRoot value="true" />
++        <module name="ChamaElas" />
++      </profile>
++    </annotationProcessing>
++  </component>
++  <component name="JavacSettings">
++    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
++      <module name="ChamaElas" options="-parameters" />
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/chama-elas.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/chama-elas.iml b/.idea/chama-elas.iml
+new file mode 100644
+--- /dev/null	(date 1715016530467)
++++ b/.idea/chama-elas.iml	(date 1715016530467)
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$" />
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1715016530821)
++++ b/.idea/.gitignore	(date 1715016530821)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: .idea/jarRepositories.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/jarRepositories.xml b/.idea/jarRepositories.xml
+new file mode 100644
+--- /dev/null	(date 1715016530555)
++++ b/.idea/jarRepositories.xml	(date 1715016530555)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RemoteRepositoriesConfiguration">
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Central Repository" />
++      <option name="url" value="https://repo.maven.apache.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Maven Central repository" />
++      <option name="url" value="https://repo1.maven.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="jboss.community" />
++      <option name="name" value="JBoss Community repository" />
++      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
++    </remote-repository>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1715016530567)
++++ b/.idea/vcs.xml	(date 1715016530567)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1715016530525)
++++ b/.idea/misc.xml	(date 1715016530525)
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="MavenProjectsManager">
++    <option name="originalFiles">
++      <list>
++        <option value="$PROJECT_DIR$/ChamaElas/pom.xml" />
++      </list>
++    </option>
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+new file mode 100644
+--- /dev/null	(date 1715016530539)
++++ b/.idea/encodings.xml	(date 1715016530539)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Encoding">
++    <file url="file://$PROJECT_DIR$/ChamaElas/src/main/java" charset="UTF-8" />
++  </component>
++</project>
+\ No newline at end of file

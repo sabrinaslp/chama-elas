@@ -1,0 +1,387 @@
+Index: ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/UsuarioController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.soulcode.chamaelas.ChamaElas.controllers;\r\n\r\nimport org.springframework.stereotype.Controller;\r\n\r\n@Controller\r\npublic class UsuarioController {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/UsuarioController.java b/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/UsuarioController.java
+--- a/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/UsuarioController.java	(revision 087ced658789526de86d3a6597aec5b797af5e08)
++++ b/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/UsuarioController.java	(date 1715043137728)
+@@ -1,7 +1,46 @@
+ package com.soulcode.chamaelas.ChamaElas.controllers;
+ 
++import com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;
++import com.soulcode.chamaelas.ChamaElas.repositories.ClienteRepository;
++import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
++import jakarta.persistence.Id;
++import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Controller;
++import org.springframework.web.bind.annotation.*;
+ 
+-@Controller
++import java.util.Optional;
++
++@RestController
+ public class UsuarioController {
++    @Autowired
++    private UsuarioRepository usuarioRepository;
++    @RequestMapping(value = "/criausuario", method = RequestMethod.POST)
++    public UsuarioModel criarUsuario(@RequestBody UsuarioModel usuarioModel) {
++        return usuarioRepository.save(usuarioModel);
++    }
++
++    @GetMapping("/{id}")
++    public UsuarioModel buscarUsuarioPorId(@PathVariable Long id) {
++        return usuarioRepository.findById(id)
++                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
++    }
++
++    @PutMapping("/{id}")
++    public UsuarioModel atualizarUsuario(@PathVariable Long id, @RequestBody UsuarioModel usuarioModelAtualizado) {
++        Optional<UsuarioModel> usuarioModelOptional = usuarioRepository.findById(id);
++        if (usuarioModelOptional.isPresent()) {
++            UsuarioModel usuario = usuarioModelOptional.get();
++            usuario.setNome(usuarioModelAtualizado.getNome());
++            usuario.setEmail(usuarioModelAtualizado.getEmail());
++            usuario.setSenha(usuarioModelAtualizado.getSenha());
++            return usuarioRepository.save(usuario);
++        } else {
++            throw new RuntimeException("Cliente não encontrado");
++        }
++    }
++
++    @DeleteMapping("/{id}")
++    public void excluirUsuario(@PathVariable Long id) {
++        usuarioRepository.deleteById(id);
++    }
+ }
+Index: ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/TecnicoController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.soulcode.chamaelas.ChamaElas.controllers;\r\n\r\nimport org.springframework.stereotype.Controller;\r\n\r\n@Controller\r\npublic class TecnicoController {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/TecnicoController.java b/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/TecnicoController.java
+--- a/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/TecnicoController.java	(revision 087ced658789526de86d3a6597aec5b797af5e08)
++++ b/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/TecnicoController.java	(date 1715044154798)
+@@ -1,7 +1,44 @@
+ package com.soulcode.chamaelas.ChamaElas.controllers;
+ 
++import com.soulcode.chamaelas.ChamaElas.models.TecnicoModel;
++import com.soulcode.chamaelas.ChamaElas.repositories.TecnicoRepository;
++import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Controller;
++import org.springframework.web.bind.annotation.*;
+ 
+-@Controller
++import java.util.Optional;
++
++@RestController
+ public class TecnicoController {
++    @Autowired
++    private TecnicoRepository tecnicoRepository;
++    @RequestMapping(value = "/criartecnico", method = RequestMethod.POST)
++    public TecnicoModel criarTecnico(@RequestBody TecnicoModel tecnicoModel) {
++        return tecnicoRepository.save(tecnicoModel);
++    }
++
++    @GetMapping("/{id}")
++    public TecnicoModel buscarTecnicoPorId(@PathVariable Long id) {
++        return tecnicoRepository.findById(id)
++                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
++    }
++
++    @PutMapping("/{id}")
++    public TecnicoModel atualizarTecnico(@PathVariable Long id, @RequestBody TecnicoModel tecnicoModelAtualizado) {
++        Optional<TecnicoModel> tecnicoModelOptional = tecnicoRepository.findById(id);
++        if (tecnicoModelOptional.isPresent()) {
++            TecnicoModel tecnico = tecnicoModelOptional.get();
++            tecnico.setNome(tecnicoModelAtualizado.getNome());
++            tecnico.setEmail(tecnicoModelAtualizado.getEmail());
++            tecnico.setSenha(tecnicoModelAtualizado.getSenha());
++            return tecnicoRepository.save(tecnico);
++        } else {
++            throw new RuntimeException("Cliente não encontrado");
++        }
++    }
++
++    @DeleteMapping("/{id}")
++    public void excluirUsuario(@PathVariable Long id) {
++        tecnicoRepository.deleteById(id);
++    }
+ }
+Index: ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/dto/AdminDTO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.soulcode.chamaelas.ChamaElas.models.dto;\r\nimport com.soulcode.chamaelas.ChamaElas.models.AdminModel;\r\nimport com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;\r\nimport com.soulcode.chamaelas.ChamaElas.models.ClienteModel;\r\nimport java.util.List;\r\nimport java.util.stream.Collectors;\r\n\r\npublic record AdminDTO(\r\n        List<ChamadoDTO> ticketsAbertos,\r\n        List<ClienteDTO> clientesRegistrados\r\n) {\r\n    public static AdminDTO fromModel(AdminModel adminModel) {\r\n        return new AdminDTO(\r\n                adminModel.getTicketsAbertos().stream()\r\n                        .map(ChamadoDTO::fromModel)\r\n                        .collect(Collectors.toList()),\r\n                adminModel.getClientesRegistrados().stream()\r\n                        .map(ClienteDTO::fromModel)\r\n                        .collect(Collectors.toList())\r\n        );\r\n    }\r\n\r\n    public static AdminModel toModel(AdminDTO adminDTO) {\r\n        AdminModel adminModel = new AdminModel();\r\n        List<ChamadoModel> chamadoModels = adminDTO.ticketsAbertos().stream()\r\n                .map(ChamadoDTO::toModel)\r\n                .collect(Collectors.toList());\r\n        adminModel.setTicketsAbertos(chamadoModels);\r\n        List<ClienteModel> clienteModels = adminDTO.clientesRegistrados().stream()\r\n                .map(ClienteDTO::toModel)\r\n                .collect(Collectors.toList());\r\n        adminModel.setClientesRegistrados(clienteModels);\r\n\r\n        return adminModel;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/dto/AdminDTO.java b/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/dto/AdminDTO.java
+--- a/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/dto/AdminDTO.java	(revision 087ced658789526de86d3a6597aec5b797af5e08)
++++ b/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/dto/AdminDTO.java	(date 1715117989390)
+@@ -5,7 +5,7 @@
+ import java.util.List;
+ import java.util.stream.Collectors;
+ 
+-public record AdminDTO(
++public record AdminDTO (
+         List<ChamadoDTO> ticketsAbertos,
+         List<ClienteDTO> clientesRegistrados
+ ) {
+Index: ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/AdminController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.soulcode.chamaelas.ChamaElas.controllers;\r\n\r\n\r\nimport org.springframework.stereotype.Controller;\r\n\r\n@Controller\r\npublic class AdminController {\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/AdminController.java b/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/AdminController.java
+--- a/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/AdminController.java	(revision 087ced658789526de86d3a6597aec5b797af5e08)
++++ b/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/AdminController.java	(date 1715117989385)
+@@ -1,9 +1,47 @@
+ package com.soulcode.chamaelas.ChamaElas.controllers;
+ 
+ 
++import com.soulcode.chamaelas.ChamaElas.models.AdminModel;
++import com.soulcode.chamaelas.ChamaElas.models.TecnicoModel;
++import com.soulcode.chamaelas.ChamaElas.models.dto.AdminDTO;
++import com.soulcode.chamaelas.ChamaElas.repositories.AdminRepository;
++import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Controller;
++import org.springframework.web.bind.annotation.*;
+ 
+-@Controller
++import java.util.Optional;
++
++@RestController
+ public class AdminController {
++    @Autowired
++    private AdminRepository adminRepository;
++    @RequestMapping(value = "/criaradmin", method = RequestMethod.POST)
++    public AdminModel criarAdmin(@RequestBody AdminModel adminModel) {
++        return adminRepository.save(adminModel);
++    }
++
++    @GetMapping("/{id}")
++    public AdminModel buscarAdminPorId(@PathVariable Long id) {
++        return adminRepository.findById(id)
++                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
++    }
+ 
++    @PutMapping("/{id}")
++    public AdminModel atualizarAdmin(@PathVariable Long id, @RequestBody TecnicoModel adminAtualizado) {
++        Optional<AdminModel> adminModelOptional = adminRepository.findById(id);
++        if (adminModelOptional.isPresent()) {
++            AdminModel admin = adminModelOptional.get();
++            admin.setNome(adminAtualizado.getNome());
++            admin.setEmail(adminAtualizado.getEmail());
++            admin.setSenha(adminAtualizado.getSenha());
++            return adminRepository.save(admin);
++        } else {
++            throw new RuntimeException("Cliente não encontrado");
++        }
++    }
++
++    @DeleteMapping("/{id}")
++    public void excluirAdmin(@PathVariable Long id) {
++        adminRepository.deleteById(id);
++    }
+ }
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+new file mode 100644
+--- /dev/null	(date 1715040683796)
++++ b/.idea/compiler.xml	(date 1715040683796)
+@@ -0,0 +1,18 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <annotationProcessing>
++      <profile name="Maven default annotation processors profile" enabled="true">
++        <sourceOutputDir name="target/generated-sources/annotations" />
++        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
++        <outputRelativeToContentRoot value="true" />
++        <module name="ChamaElas" />
++      </profile>
++    </annotationProcessing>
++  </component>
++  <component name="JavacSettings">
++    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
++      <module name="ChamaElas" options="-parameters" />
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/chama-elas.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/chama-elas.iml b/.idea/chama-elas.iml
+new file mode 100644
+--- /dev/null	(date 1715040683804)
++++ b/.idea/chama-elas.iml	(date 1715040683804)
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$" />
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1715040683790)
++++ b/.idea/modules.xml	(date 1715040683790)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/chama-elas.iml" filepath="$PROJECT_DIR$/.idea/chama-elas.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1715040683825)
++++ b/.idea/vcs.xml	(date 1715040683825)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1715040683832)
++++ b/.idea/misc.xml	(date 1715040683832)
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="MavenProjectsManager">
++    <option name="originalFiles">
++      <list>
++        <option value="$PROJECT_DIR$/ChamaElas/pom.xml" />
++      </list>
++    </option>
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1715040683812)
++++ b/.idea/.gitignore	(date 1715040683812)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: .idea/jarRepositories.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/jarRepositories.xml b/.idea/jarRepositories.xml
+new file mode 100644
+--- /dev/null	(date 1715040683820)
++++ b/.idea/jarRepositories.xml	(date 1715040683820)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RemoteRepositoriesConfiguration">
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Central Repository" />
++      <option name="url" value="https://repo.maven.apache.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Maven Central repository" />
++      <option name="url" value="https://repo1.maven.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="jboss.community" />
++      <option name="name" value="JBoss Community repository" />
++      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
++    </remote-repository>
++  </component>
++</project>
+\ No newline at end of file
+Index: ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/dto/UsuarioDTO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.soulcode.chamaelas.ChamaElas.models.dto;\r\nimport com.soulcode.chamaelas.ChamaElas.models.FuncaoModel;\r\nimport com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;\r\nimport java.time.Instant;\r\n\r\npublic record UsuarioDTO(\r\n        Long usuarioId,\r\n        String nome,\r\n        String email,\r\n        String senha,\r\n        boolean estaAtivo,\r\n        FuncaoModel funcao,\r\n        Instant dataRegistro\r\n) {\r\n    public static UsuarioDTO fromModel(UsuarioModel usuarioModel) {\r\n        return new UsuarioDTO(\r\n                usuarioModel.getUsuarioId(),\r\n                usuarioModel.getNome(),\r\n                usuarioModel.getEmail(),\r\n                usuarioModel.getSenha(),\r\n                usuarioModel.isEstaAtivo(),\r\n                usuarioModel.getFuncao(),\r\n                usuarioModel.getDataRegistro()\r\n        );\r\n    }\r\n\r\n    public static UsuarioModel toModel(UsuarioDTO usuarioDTO) {\r\n        UsuarioModel usuarioModel = new UsuarioModel();\r\n        usuarioModel.setUsuarioId(usuarioDTO.usuarioId());\r\n        usuarioModel.setNome(usuarioDTO.nome());\r\n        usuarioModel.setEmail(usuarioDTO.email());\r\n        usuarioModel.setSenha(usuarioDTO.senha());\r\n        usuarioModel.setEstaAtivo(usuarioDTO.estaAtivo());\r\n        usuarioModel.setFuncao(usuarioDTO.funcao());\r\n        usuarioModel.setDataRegistro(usuarioDTO.dataRegistro());\r\n\r\n        return usuarioModel;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/dto/UsuarioDTO.java b/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/dto/UsuarioDTO.java
+--- a/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/dto/UsuarioDTO.java	(revision 087ced658789526de86d3a6597aec5b797af5e08)
++++ b/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/dto/UsuarioDTO.java	(date 1715042558709)
+@@ -1,8 +1,13 @@
+ package com.soulcode.chamaelas.ChamaElas.models.dto;
+ import com.soulcode.chamaelas.ChamaElas.models.FuncaoModel;
+ import com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;
++import lombok.Getter;
++import lombok.Setter;
++
+ import java.time.Instant;
+ 
++@Getter
++@Setter
+ public record UsuarioDTO(
+         Long usuarioId,
+         String nome,
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+new file mode 100644
+--- /dev/null	(date 1715040683838)
++++ b/.idea/encodings.xml	(date 1715040683838)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Encoding">
++    <file url="file://$PROJECT_DIR$/ChamaElas/src/main/java" charset="UTF-8" />
++  </component>
++</project>
+\ No newline at end of file
