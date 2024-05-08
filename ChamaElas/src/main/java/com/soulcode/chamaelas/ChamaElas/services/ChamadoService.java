@@ -4,9 +4,7 @@ import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
 import com.soulcode.chamaelas.ChamaElas.models.ClienteModel;
 import com.soulcode.chamaelas.ChamaElas.models.TecnicoModel;
 import com.soulcode.chamaelas.ChamaElas.repositories.ChamadoRepository;
-import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -115,4 +113,3 @@ public class ChamadoService {
         return chamadoRepository.findByTecnico(tecnicoLogado);
     }
 }
-
