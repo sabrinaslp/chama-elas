@@ -40,20 +40,23 @@ public class UsuarioService {
     }
 
     private FuncaoModel obterOuCriarFuncao(String nomeFuncao) {
-        FuncaoModel funcaoModel = switch (nomeFuncao) {
-            case "Cliente" -> funcaoRepository.findByNome(FuncaoModel.Values.CLIENTE.getNome());
-            case "Tecnico" -> funcaoRepository.findByNome(FuncaoModel.Values.TECNICO.getNome());
-            default -> throw new IllegalArgumentException("Tipo de usuário inválido: " + nomeFuncao);
-        };
-
-        if (funcaoModel == null) {
-            funcaoModel = switch (nomeFuncao) {
-                case "Cliente" -> funcaoRepository.save(new FuncaoModel(2L, "Cliente"));
-                case "Tecnico" -> funcaoRepository.save(new FuncaoModel(1L, "Técnico"));
-                default -> throw new IllegalArgumentException("Tipo de usuário inválido: " + nomeFuncao);
-            };
+        FuncaoModel funcaoModel;
+        switch (nomeFuncao) {
+            case "Cliente":
+                funcaoModel = funcaoRepository.findByNome(FuncaoModel.Values.CLIENTE.getNome());
+                if (funcaoModel == null) {
+                    funcaoModel = funcaoRepository.save(new FuncaoModel(2L, "Cliente"));
+                }
+                break;
+            case "Tecnico":
+                funcaoModel = funcaoRepository.findByNome(FuncaoModel.Values.TECNICO.getNome());
+                if (funcaoModel == null) {
+                    funcaoModel = funcaoRepository.save(new FuncaoModel(1L, "Técnico"));
+                }
+                break;
+            default:
+                throw new IllegalArgumentException("Tipo de usuário inválido: " + nomeFuncao);
         }
-
         return funcaoModel;
     }
 
