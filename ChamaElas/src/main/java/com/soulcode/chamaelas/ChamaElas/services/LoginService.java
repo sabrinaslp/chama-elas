@@ -1,13 +1,11 @@
 package com.soulcode.chamaelas.ChamaElas.services;
 
-import com.soulcode.chamaelas.ChamaElas.models.FuncaoModel;
 import com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;
-import com.soulcode.chamaelas.ChamaElas.models.dto.UsuarioDTO;
 import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import java.time.Instant;
+
 import java.util.Optional;
 
 @Service
@@ -18,20 +16,6 @@ public class LoginService {
 
     @Autowired
     private AutenticacaoService autenticacaoService;
-
-    // Cadastro de novo usuário
-//    public String cadastrarNovoUsuario(String nome, String email, String senha, String confirmacaoSenha, String funcao, Model model) {
-//
-//        autenticacaoService.verifiqueSeOEmailJaFoiCadastrado(email, model);
-//        autenticacaoService.verifiqueSeAsSenhasSaoIguais(senha, confirmacaoSenha, model);
-//        FuncaoModel funcaoModel = autenticacaoService.atribuiFuncaoAoUsuario(funcao);
-//
-//        UsuarioDTO usuarioDTO = new UsuarioDTO(null, nome, email, senha, true, funcaoModel, Instant.now());
-//        UsuarioModel usuarioModel = UsuarioDTO.toModel(usuarioDTO);
-//        usuarioRepository.save(usuarioModel);
-//
-//        return "login-usuario";
-//    }
 
     // Login do usuário
     public String loginUsuario(String email, String senha, Model model) {

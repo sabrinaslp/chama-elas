@@ -39,7 +39,7 @@ public class AdminConfig implements CommandLineRunner {
             user.setEmail("admin@chamaelas.com");
             user.setPassword(passwordEncoder.encode("1234"));
             // Define a função de administrador no usuário
-            user.setRole(roleAdmin);
+            user.setFuncao(roleAdmin);
             usuarioRepository.save(user);
         }
     }

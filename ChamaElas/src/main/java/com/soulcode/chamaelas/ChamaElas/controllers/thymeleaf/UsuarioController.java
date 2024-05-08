@@ -1,10 +1,6 @@
 package com.soulcode.chamaelas.ChamaElas.controllers.thymeleaf;
 
-import com.soulcode.chamaelas.ChamaElas.models.FuncaoModel;
-import com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;
-import com.soulcode.chamaelas.ChamaElas.repositories.FuncaoRepository;
-import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
-import com.soulcode.chamaelas.ChamaElas.services.AutenticacaoService;
+import com.soulcode.chamaelas.ChamaElas.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -17,13 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UsuarioController {
 
     @Autowired
-    private AutenticacaoService autenticacaoService;
-
-    @Autowired
-    private UsuarioRepository usuarioRepository;
-
-    @Autowired
-    private FuncaoRepository funcaoRepository;
+    private UsuarioService usuarioService;
 
     @GetMapping("/cadastro-usuario")
     public String mostrarPaginaCadastroUsuario() {
@@ -38,41 +28,7 @@ public class UsuarioController {
                                        @RequestParam("funcao") String funcao,
                                        Model model) {
         try {
-            System.out.println("Entrou no cadastro de usuário");
-            autenticacaoService.verifiqueSeOEmailJaFoiCadastrado(email);
-            autenticacaoService.verifiqueSeAsSenhasSaoIguais(senha, confirmacaoSenha);
-
-            FuncaoModel funcaoModel = null;
-
-            if (funcao.equals("Cliente")) {
-                funcaoModel = funcaoRepository.findByNome(FuncaoModel.Values.CLIENTE.name());
-                if (funcaoModel == null) {
-                    funcaoModel = new FuncaoModel(1L, FuncaoModel.Values.CLIENTE.name());
-                    funcaoModel = funcaoRepository.save(funcaoModel);
-                }
-            } else if (funcao.equals("Tecnico")) {
-                funcaoModel = funcaoRepository.findByNome(FuncaoModel.Values.TECNICO.name());
-                if (funcaoModel == null) {
-                    funcaoModel = new FuncaoModel(2L, FuncaoModel.Values.TECNICO.name());
-                    funcaoModel = funcaoRepository.save(funcaoModel);
-                }
-            } else {
-                throw new IllegalArgumentException("Tipo de usuário inválido: " + funcao);
-            }
-
-            System.out.println("Passou das verificações");
-
-            UsuarioModel usuarioModel = new UsuarioModel();
-            usuarioModel.setNome(nome);
-            usuarioModel.setEmail(email);
-            usuarioModel.setSenha(senha);
-            usuarioModel.setFuncao(funcaoModel);
-            System.out.println("Definiu os atributos");
-            System.out.println("Nome: " + usuarioModel.getNome() + " Função: " + usuarioModel.getFuncao().getNome());
-
-            usuarioRepository.save(usuarioModel);
-            System.out.println("Registrou no banco");
-            model.addAttribute("successMessage", "Usuário cadastrado com sucesso! Faça o login para acessar sua conta.");
+            usuarioService.cadastrarNovoUsuario(nome, email, senha, confirmacaoSenha, funcao, model);
             return "login-usuario";
         } catch (DataIntegrityViolationException | IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());

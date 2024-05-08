@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba0dc791-a15a-44c9-9843-69f38623fcf0" name="Changes" comment="Adicionando mensagem de verificação de senha">
+    <list default="true" id="ba0dc791-a15a-44c9-9843-69f38623fcf0" name="Changes" comment="Adicionando mensagem de sucesso quando o cadastro é realizado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/config/AdminConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/config/AdminConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/thymeleaf/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/thymeleaf/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/FuncaoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/FuncaoModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/UsuarioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/UsuarioModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/repositories/FuncaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/repositories/FuncaoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/AutenticacaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/AutenticacaoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/UsuarioService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/cadastro-usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/cadastro-usuario.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/login-usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/login-usuario.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +121,7 @@
       <workItem from="1715118413227" duration="1037000" />
       <workItem from="1715179061518" duration="87000" />
       <workItem from="1715179258275" duration="101000" />
-      <workItem from="1715179469071" duration="5216000" />
+      <workItem from="1715179469071" duration="12946000" />
     </task>
     <task id="LOCAL-00001" summary="implementação spring security">
       <option name="closed" value="true" />
@@ -181,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715182427422</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Adicionando mensagem de sucesso quando o cadastro é realizado">
+      <option name="closed" value="true" />
+      <created>1715184795828</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715184795828</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +219,7 @@
     <MESSAGE value="Implementando o backend do cadastro de usuário no front end" />
     <MESSAGE value="Adicionando mensagem de verificação de email" />
     <MESSAGE value="Adicionando mensagem de verificação de senha" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adicionando mensagem de verificação de senha" />
+    <MESSAGE value="Adicionando mensagem de sucesso quando o cadastro é realizado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adicionando mensagem de sucesso quando o cadastro é realizado" />
   </component>
 </project>

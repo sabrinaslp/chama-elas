@@ -51,10 +51,6 @@ public class UsuarioModel implements Serializable {
     public void setPassword(String encode) {
     }
 
-    public void setRole(FuncaoModel roleAdmin) {
-
-    }
-
     public String getPassword() {
         return this.senha;
     }

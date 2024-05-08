@@ -21,6 +21,7 @@ public class FuncaoModel {
 
     private String nome;
 
+    @Getter
     public enum Values {
         TECNICO(1L, "Técnico"),
         CLIENTE(2L, "Cliente"),
