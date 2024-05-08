@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="pt-br">
+<html class="no-js" lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 
     <!--- basic page needs
@@ -21,7 +21,7 @@
 
     <!-- script
     ================================================== -->
-    <script src="../static/js/modernizr.js"></script>
+    <script src="/js/modernizr.js"></script>
 
     <!-- favicons
     ================================================== -->
@@ -81,19 +81,30 @@
 <div class="row form-wrapper justify-content-center align-items-center" style="height: 100vh;">
     <div class="col-md-6">
         <h3 class="text-center">Olá!</h3>
-        <form>
-            <div class="form-group">
-                <label for="loginEmail">Seu email</label>
-                <input class="form-control" type="email" placeholder="Seu email" id="loginEmail" required>
-            </div>
-            <div class="form-group">
-                <label for="loginPassword">Sua senha</label>
-                <input class="form-control" type="password" placeholder="Sua senha" id="loginPassword" required>
-            </div>
-            <a class="btn btn--primary full-width" href="#0">Login</a>
-        </form>
+        <div th:if="${successMessage}" class="alert-box alert-box--success hideit" style="text-align: center">
+            <p th:text="${successMessage}" style="margin-bottom: 0;"></p>
+            <i class="fa fa-check alert-box__close" aria-hidden="true"></i>
+        </div>
+        <!-- Adicione uma div para envolver o formulário -->
+        <div class="login-form">
+            <!-- Formulário de login -->
+            <form>
+                <div class="form-group">
+                    <label for="loginEmail">Seu email</label>
+                    <!-- Adicione a classe form-control a ambos os campos de entrada -->
+                    <input class="form-control" type="email" placeholder="Seu email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Sua senha</label>
+                    <!-- Adicione a classe form-control a ambos os campos de entrada -->
+                    <input class="form-control" type="password" placeholder="Sua senha" id="loginPassword" required>
+                </div>
+                <a class="btn btn--primary full-width" href="#0">Login</a>
+            </form>
+        </div>
     </div>
 </div>
+
 
 
 

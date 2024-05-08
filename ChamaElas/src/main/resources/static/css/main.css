@@ -4223,3 +4223,8 @@ color: #ffd900; /* Amarelo dos botões */
     display: block;
     margin: 0 auto;
 }
+
+.login-form .form-group input[type="email"],
+.login-form .form-group input[type="password"] {
+  width: 100%;
+}

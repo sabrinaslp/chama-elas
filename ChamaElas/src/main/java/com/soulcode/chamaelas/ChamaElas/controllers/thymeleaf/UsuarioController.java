@@ -72,8 +72,8 @@ public class UsuarioController {
 
             usuarioRepository.save(usuarioModel);
             System.out.println("Registrou no banco");
-
-            return "redirect:/login";
+            model.addAttribute("successMessage", "Usuário cadastrado com sucesso! Faça o login para acessar sua conta.");
+            return "login-usuario";
         } catch (DataIntegrityViolationException | IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());
             return "cadastro-usuario";

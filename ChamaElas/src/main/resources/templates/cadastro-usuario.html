@@ -83,8 +83,8 @@
     <div class="col-six tab-full">
         <h2>Bem vinda!</h2>
         <h3>Formulário de Cadastro</h3>
-        <div th:if="${error}" class="alert-box alert-box--error">
-            <p th:text="${error}"></p>
+        <div th:if="${error}" class="alert-box alert-box--error" style="text-align: center">
+            <p th:text="${error}" style="margin-bottom: 0;"></p>
             <i class="fa fa-times alert-box__close" aria-hidden="true"></i>
         </div>
         <form action="/cadastro-usuario" method="post">
