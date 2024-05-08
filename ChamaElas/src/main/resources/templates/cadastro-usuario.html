@@ -15,13 +15,13 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="../static/css/base.css">
-    <link rel="stylesheet" href="../static/css/vendor.css">
-    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/vendor.css">
+    <link rel="stylesheet" href="/css/main.css">
 
     <!-- script
     ================================================== -->
-    <script src="../static/js/modernizr.js"></script>
+    <script src="/js/modernizr.js"></script>
 
     <!-- favicons
     ================================================== -->
@@ -81,33 +81,38 @@
 
 <div class="custom-form">
     <div class="col-six tab-full">
-        <h2>Bem vindo!</h2>
+        <h2>Bem vinda!</h2>
         <h3>Formulário de Cadastro</h3>
-        <form th:action="@{/cadastrar}" method="post" th:object="${usuarioDTO}">
+        <div th:if="${error}" class="alert-box alert-box--error" style="text-align: center">
+            <p th:text="${error}" style="margin-bottom: 0;"></p>
+            <i class="fa fa-times alert-box__close" aria-hidden="true"></i>
+        </div>
+        <form action="/cadastro-usuario" method="post">
+            <div>
+                <label for="nameInput">Nome</label>
+                <input class="full-width" type="text" name="nome" placeholder="Nome completo" id="nameInput" required>
+            </div>
             <div>
                 <label for="emailInput">E-mail</label>
-                <input class="full-width" type="email" th:field="*{email}" placeholder="test@mailbox.com" id="emailInput" required>
-            </div>
-            <div>
-                <label for="phoneInput">Telefone</label>
-                <input class="full-width" type="tel" pattern="[0-9]{10,}" th:field="*{telefone}" placeholder="Somente números" id="phoneInput" required>
-            </div>
-            <div>
-                <label for="userTypeInput">Tipo de login</label>
-                <select class="full-width" th:field="*{funcao}" id="userTypeInput" required>
-                    <option value="">Selecione o tipo de usuário</option>
-                    <option value="user" style="color: black;">Usuário</option>
-                    <option value="technician" style="color: black;">Técnico</option>
-                </select>
+                <input class="full-width" type="email" name="email" placeholder="test@mailbox.com" id="emailInput" required>
             </div>
             <div>
                 <label for="passwordInput">Senha</label>
-                <input class="full-width" type="password" th:field="*{password}" placeholder="Sua senha" id="passwordInput" required>
+                <input class="full-width" type="password" name="senha" placeholder="Sua senha" id="passwordInput" required>
             </div>
             <div>
                 <label for="confirmPasswordInput">Confirmar Senha</label>
-                <input class="full-width" type="password" th:field="*{confirmSenha}" placeholder="Confirme sua senha" id="confirmPasswordInput" required>
+                <input class="full-width" type="password" name="confirmaSenha" placeholder="Confirme sua senha" id="confirmPasswordInput" required>
             </div>
+            <div>
+                <label for="userTypeInput">Tipo de login</label>
+                <select class="full-width" name="funcao" id="userTypeInput" required>
+                    <option value="">Selecione o tipo de usuário</option>
+                    <option value="Cliente" style="color: black;">Cliente</option>
+                    <option value="Tecnico" style="color: black;">Técnico</option>
+                </select>
+            </div>
+
             <input class="btn--primary full-width" type="submit" value="Enviar">
         </form>
 
@@ -118,9 +123,9 @@
 
 <!-- Java Script
 ================================================== -->
-<script src="../static/js/jquery-3.2.1.min.js"></script>
-<script src="../static/js/plugins.js"></script>
-<script src="../static/js/main.js"></script>
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
 
 
 </body>

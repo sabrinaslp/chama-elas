@@ -22,7 +22,7 @@ public class UserConfig implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> authorities = new HashSet<>();
         if (usuarioModel.getFuncao() != null) {
-            authorities.add(new SimpleGrantedAuthority(usuarioModel.getFuncao().getName()));
+            authorities.add(new SimpleGrantedAuthority(usuarioModel.getFuncao().getNome()));
         }
         return authorities;
     }

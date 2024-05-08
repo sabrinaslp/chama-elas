@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FuncaoRepository extends JpaRepository<FuncaoModel, Long> {
-    FuncaoModel findByNome(String name);
+    FuncaoModel findByNome(String nome);
 }

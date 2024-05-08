@@ -29,10 +29,7 @@ public class UsuarioModel implements Serializable {
 
     private String senha;
 
-    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
-    private boolean isActive;
-
-    @Getter
+    @Column(name = "esta_ativo", nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
     private boolean estaAtivo;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -52,10 +49,6 @@ public class UsuarioModel implements Serializable {
     }
 
     public void setPassword(String encode) {
-    }
-
-    public void setRole(FuncaoModel roleAdmin) {
-
     }
 
     public String getPassword() {
