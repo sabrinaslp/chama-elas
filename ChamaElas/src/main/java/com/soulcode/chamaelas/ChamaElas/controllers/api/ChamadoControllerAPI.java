@@ -5,7 +5,6 @@ import com.soulcode.chamaelas.ChamaElas.services.ChamadoService;
 import com.soulcode.chamaelas.ChamaElas.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -28,7 +27,7 @@ public class ChamadoControllerAPI {
         // Obtém o cliente logado a partir do contexto de segurança
         ClienteModel clienteLogado = usuarioService.getClienteLogado();
 
-        // Verifica se o cliente Logado é nulo (por exemplo, se não houver cliente autenticado)
+        // Verifica se o clienteLogado é nulo (por exemplo, se não houver cliente autenticado)
         if (clienteLogado == null) {
             return Collections.emptyList();
         }
