@@ -7,7 +7,6 @@ import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import java.util.Optional;
 
@@ -19,7 +18,7 @@ public class AutenticacaoService {
     private UsuarioRepository usuarioRepository;
 
     // Verificação se o email já existe na base de dados
-    public void verifiqueSeOEmailJaFoiCadastrado(String email, Model model) throws DataIntegrityViolationException {
+    public void verifiqueSeOEmailJaFoiCadastrado(String email) throws DataIntegrityViolationException {
         Optional<UsuarioModel> usuarioExistente = usuarioRepository.findByEmail(email);
         if (usuarioExistente.isPresent()) {
             throw new DataIntegrityViolationException("O email '" + email + "' já está cadastrado.");
@@ -27,9 +26,9 @@ public class AutenticacaoService {
     }
 
     // Verificação para confirmar a senha
-    public void verifiqueSeAsSenhasSaoIguais(String senha, String confirmacaoSenha, Model model) {
+    public void verifiqueSeAsSenhasSaoIguais(String senha, String confirmacaoSenha) {
         if (!senha.equals(confirmacaoSenha)) {
-            model.addAttribute("error", "As senhas não correspondem.");
+            throw new IllegalArgumentException("As senhas não correspondem.");
         }
     }
 

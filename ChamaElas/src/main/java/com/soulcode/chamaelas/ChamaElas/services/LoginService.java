@@ -20,18 +20,18 @@ public class LoginService {
     private AutenticacaoService autenticacaoService;
 
     // Cadastro de novo usuário
-    public String cadastrarNovoUsuario(String nome, String email, String senha, String confirmSenha, String funcao, Model model) {
-
-        autenticacaoService.verifiqueSeOEmailJaFoiCadastrado(email, model);
-        autenticacaoService.verifiqueSeAsSenhasSaoIguais(senha, confirmSenha, model);
-        FuncaoModel funcaoModel = autenticacaoService.atribuiFuncaoAoUsuario(funcao);
-
-        UsuarioDTO usuarioDTO = new UsuarioDTO(null, nome, email, senha, true, funcaoModel, Instant.now());
-        UsuarioModel usuarioModel = UsuarioDTO.toModel(usuarioDTO);
-        usuarioRepository.save(usuarioModel);
-
-        return "login-usuario";
-    }
+//    public String cadastrarNovoUsuario(String nome, String email, String senha, String confirmacaoSenha, String funcao, Model model) {
+//
+//        autenticacaoService.verifiqueSeOEmailJaFoiCadastrado(email, model);
+//        autenticacaoService.verifiqueSeAsSenhasSaoIguais(senha, confirmacaoSenha, model);
+//        FuncaoModel funcaoModel = autenticacaoService.atribuiFuncaoAoUsuario(funcao);
+//
+//        UsuarioDTO usuarioDTO = new UsuarioDTO(null, nome, email, senha, true, funcaoModel, Instant.now());
+//        UsuarioModel usuarioModel = UsuarioDTO.toModel(usuarioDTO);
+//        usuarioRepository.save(usuarioModel);
+//
+//        return "login-usuario";
+//    }
 
     // Login do usuário
     public String loginUsuario(String email, String senha, Model model) {

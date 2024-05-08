@@ -34,13 +34,13 @@ public class UsuarioController {
     public String cadastrarNovoUsuario(@RequestParam("nome") String nome,
                                        @RequestParam("email") String email,
                                        @RequestParam("senha") String senha,
-                                       @RequestParam("confirmSenha") String confirmSenha,
+                                       @RequestParam("confirmaSenha") String confirmacaoSenha,
                                        @RequestParam("funcao") String funcao,
                                        Model model) {
         try {
             System.out.println("Entrou no cadastro de usuário");
-            autenticacaoService.verifiqueSeOEmailJaFoiCadastrado(email, model);
-            autenticacaoService.verifiqueSeAsSenhasSaoIguais(senha, confirmSenha, model);
+            autenticacaoService.verifiqueSeOEmailJaFoiCadastrado(email);
+            autenticacaoService.verifiqueSeAsSenhasSaoIguais(senha, confirmacaoSenha);
 
             FuncaoModel funcaoModel = null;
 
@@ -74,7 +74,7 @@ public class UsuarioController {
             System.out.println("Registrou no banco");
 
             return "redirect:/login";
-        } catch (DataIntegrityViolationException e) {
+        } catch (DataIntegrityViolationException | IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());
             return "cadastro-usuario";
         } catch (Exception e) {
