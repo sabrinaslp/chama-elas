@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba0dc791-a15a-44c9-9843-69f38623fcf0" name="Changes" comment="Adicionando mensagem de sucesso quando o cadastro é realizado">
+    <list default="true" id="ba0dc791-a15a-44c9-9843-69f38623fcf0" name="Changes" comment="Ajuste no método obterOuCriarFuncao">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/config/AdminConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/config/AdminConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/UsuarioService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" afterDir="false" />
     </list>
@@ -187,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715184795828</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Ajuste no método obterOuCriarFuncao">
+      <option name="closed" value="true" />
+      <created>1715194535528</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1715194535528</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +221,7 @@
     <MESSAGE value="Adicionando mensagem de verificação de email" />
     <MESSAGE value="Adicionando mensagem de verificação de senha" />
     <MESSAGE value="Adicionando mensagem de sucesso quando o cadastro é realizado" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adicionando mensagem de sucesso quando o cadastro é realizado" />
+    <MESSAGE value="Ajuste no método obterOuCriarFuncao" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajuste no método obterOuCriarFuncao" />
   </component>
 </project>
