@@ -4,7 +4,10 @@ import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
 import com.soulcode.chamaelas.ChamaElas.models.ClienteModel;
 import com.soulcode.chamaelas.ChamaElas.models.TecnicoModel;
 import com.soulcode.chamaelas.ChamaElas.repositories.ChamadoRepository;
+import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,23 +19,25 @@ public class ChamadoService {
     @Autowired
     private ChamadoRepository chamadoRepository;
 
-    // Salva o chamado no bacno
-    public ChamadoModel save( ) {
-        ChamadoModel novoChamado = new ChamadoModel();
-        return chamadoRepository.save(novoChamado);
+    @Autowired
+    private UsuarioService usuarioService;
+
+    // Salva o chamado no banco
+    public ChamadoModel save(ChamadoModel chamado) {
+        return chamadoRepository.save(chamado);
     }
 
-    // Lista chamados disponiveis - sem atribuição de técnico
+    // Lista chamados disponíveis - sem atribuição de técnico
     public List<ChamadoModel> getChamadosEmAberto() {
         return chamadoRepository.findByStatus(ChamadoModel.TicketStatus.ABERTO);
     }
 
-    // Lista chamados atribuidos ao técnico logado
+    // Lista chamados atribuídos ao técnico logado
     public List<ChamadoModel> getChamadosAtribuidos(TecnicoModel tecnico) {
         return chamadoRepository.findByTecnico(tecnico);
     }
 
-    // Lista todos os chamados disponíveis (atribuidos ou não)
+    // Lista todos os chamados disponíveis (atribuídos ou não)
     public List<ChamadoModel> findAll() {
         return chamadoRepository.findAll();
     }
@@ -51,4 +56,63 @@ public class ChamadoService {
     public void deleteById(Long id) {
         chamadoRepository.deleteById(id);
     }
+
+    // Cria um novo chamado
+    public ChamadoModel criarChamado() {
+        ChamadoModel novoChamado = new ChamadoModel();
+        return chamadoRepository.save(novoChamado);
+    }
+
+    // Lista chamados relacionados ao usuário
+    public List<ChamadoModel> listarChamadosUsuario(ClienteModel cliente) {
+        return usuarioService.listarChamadosUsuario(cliente);
+    }
+
+
+    // Edita um chamado do usuário
+    public ChamadoModel editarChamadoUsuario(Long ticketId) {
+        return chamadoRepository.findById(ticketId).orElse(null);
+    }
+
+    // Edita um chamado do técnico
+    public ChamadoModel editarChamadoTecnico(Long ticketId) {
+        return chamadoRepository.findById(ticketId).orElse(null);
+    }
+
+    // Atualiza um chamado do usuário
+    public ChamadoModel atualizarChamadoUsuario(Long ticketId, ChamadoModel chamadoAtualizado) {
+        Optional<ChamadoModel> optionalChamado = chamadoRepository.findById(ticketId);
+        if (optionalChamado.isPresent()) {
+            ChamadoModel chamadoExistente = optionalChamado.get();
+            chamadoExistente.setDescricao(chamadoAtualizado.getDescricao());
+            return chamadoRepository.save(chamadoExistente);
+        } else {
+            return null;
+        }
+    }
+
+    // Atualiza um chamado do técnico
+    public ChamadoModel atualizarChamadoTecnico(Long ticketId, ChamadoModel chamadoAtualizado) {
+        Optional<ChamadoModel> optionalChamado = chamadoRepository.findById(ticketId);
+        if (optionalChamado.isPresent()) {
+            ChamadoModel chamadoExistente = optionalChamado.get();
+            chamadoExistente.setDescricao(chamadoAtualizado.getDescricao());
+            return chamadoRepository.save(chamadoExistente);
+        } else {
+            return null;
+        }
+    }
+
+    // Lista todos os chamados para o administrador
+    public List<ChamadoModel> listarTodosChamadosAdmin() {
+        return chamadoRepository.findAll();
+    }
+
+
+    // Listar todos os chamados atribuidos do Tecnico Logado
+    public List<ChamadoModel> getChamadosAtribuidosAoTecnicoLogado() {
+        TecnicoModel tecnicoLogado = (TecnicoModel) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return chamadoRepository.findByTecnico(tecnicoLogado);
+    }
 }
+

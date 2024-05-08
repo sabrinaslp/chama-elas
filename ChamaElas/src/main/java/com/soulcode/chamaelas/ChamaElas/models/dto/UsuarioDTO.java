@@ -11,7 +11,7 @@ public record UsuarioDTO(
         boolean estaAtivo,
         FuncaoModel funcao,
         Instant dataRegistro
-) {
+){
     public static UsuarioDTO fromModel(UsuarioModel usuarioModel) {
         return new UsuarioDTO(
                 usuarioModel.getUsuarioId(),
@@ -36,4 +36,9 @@ public record UsuarioDTO(
 
         return usuarioModel;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
 }

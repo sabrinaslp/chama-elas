@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface ChamadoRepository extends JpaRepository<ChamadoModel, Long> {
+
     List<ChamadoModel> findByCliente(ClienteModel cliente);
 
     List<ChamadoModel> findByTecnico(TecnicoModel tecnico);
@@ -19,5 +20,5 @@ public interface ChamadoRepository extends JpaRepository<ChamadoModel, Long> {
 
     List<ChamadoModel> findBySetor(String setor);
 
-    List<ChamadoModel> findByClienteAndStatus(ClienteModel usuario, ChamadoModel.TicketStatus ticketStatus);
+    List<ChamadoModel> findByClienteAndStatus(ClienteModel cliente, ChamadoModel.TicketStatus status);
 }
