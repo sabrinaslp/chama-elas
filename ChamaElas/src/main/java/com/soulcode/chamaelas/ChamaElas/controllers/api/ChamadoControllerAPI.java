@@ -28,7 +28,7 @@ public class ChamadoControllerAPI {
         // Obtém o cliente logado a partir do contexto de segurança
         ClienteModel clienteLogado = usuarioService.getClienteLogado();
 
-        // Verifica se o clienteLogado é nulo (por exemplo, se não houver cliente autenticado)
+        // Verifica se o cliente Logado é nulo (por exemplo, se não houver cliente autenticado)
         if (clienteLogado == null) {
             return Collections.emptyList();
         }

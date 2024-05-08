@@ -12,7 +12,7 @@ import com.soulcode.chamaelas.ChamaElas.services.UsuarioService;
 import java.util.List;
 
 @RestController
-public class SetorController {
+public class SetorControllerAPI {
 
     @Autowired
     private SetorService setorService;
