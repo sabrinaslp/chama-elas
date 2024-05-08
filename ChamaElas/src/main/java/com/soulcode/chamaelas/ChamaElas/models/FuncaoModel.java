@@ -21,10 +21,6 @@ public class FuncaoModel {
 
     private String nome;
 
-    public String getName() {
-        return null;
-    }
-
     public enum Values {
         TECNICO(1L, "Técnico"),
         CLIENTE(2L, "Cliente"),

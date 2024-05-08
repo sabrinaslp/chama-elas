@@ -30,7 +30,7 @@ public class LoginService {
         UsuarioModel usuarioModel = UsuarioDTO.toModel(usuarioDTO);
         usuarioRepository.save(usuarioModel);
 
-        return "pagina-login"; // ALTERAR PARA A PÁGINA CORRESPONDENTE
+        return "login-usuario";
     }
 
     // Login do usuário

@@ -18,19 +18,17 @@ public class AutenticacaoService {
     private UsuarioRepository usuarioRepository;
 
     // Verificação se o email já existe na base de dados
-    public String verifiqueSeOEmailJaFoiCadastrado(String email, Model model) {
+    public void verifiqueSeOEmailJaFoiCadastrado(String email, Model model) {
         Optional<UsuarioModel> usuarioExistenteOptional = usuarioRepository.findByEmail(email);
         if (usuarioExistenteOptional.isPresent()) {
             model.addAttribute("error", "Este e-mail já está em uso. Por favor, escolha outro.");
         }
-        return "cadastro-usuario";
     }
     // Verificação para confirmar a senha
-    public String verifiqueSeAsSenhasSaoIguais(String senha, String confirmacaoSenha, Model model) {
+    public void verifiqueSeAsSenhasSaoIguais(String senha, String confirmacaoSenha, Model model) {
         if (!senha.equals(confirmacaoSenha)) {
             model.addAttribute("error", "As senhas não correspondem.");
         }
-        return "cadastro-usuario"; // ALTERAR PARA A PÁGINA CORRESPONDENTE
     }
 
     // Atribui uma função (role) do usuário cadastrado
