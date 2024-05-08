@@ -33,13 +33,15 @@ public class AdminConfig implements CommandLineRunner {
             UsuarioModel user = userAdminOptional.get();
             System.out.println("Adm já existente");
         } else {
-            // Recupera a função de administrador do repositório
-            FuncaoModel roleAdmin = funcaoRepository.findByNome(FuncaoModel.Values.ADMIN.name());
+            var funcaoTecnico = funcaoRepository.save(new FuncaoModel(1L, "Técnico"));
+            var funcaoCliente = funcaoRepository.save(new FuncaoModel(2L, "Cliente"));
+            var funcaoAdmin = funcaoRepository.save(new FuncaoModel(3L, "Admin"));
+
             var user = new UsuarioModel();
+
             user.setEmail("admin@chamaelas.com");
             user.setPassword(passwordEncoder.encode("1234"));
-            // Define a função de administrador no usuário
-            user.setRole(roleAdmin);
+            user.setFuncao(funcaoAdmin);
             usuarioRepository.save(user);
         }
     }
