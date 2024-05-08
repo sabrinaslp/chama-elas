@@ -5,8 +5,8 @@ import com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;
 import com.soulcode.chamaelas.ChamaElas.repositories.FuncaoRepository;
 import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
 import com.soulcode.chamaelas.ChamaElas.services.AutenticacaoService;
-import com.soulcode.chamaelas.ChamaElas.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -74,8 +74,11 @@ public class UsuarioController {
             System.out.println("Registrou no banco");
 
             return "redirect:/login";
-        } catch (Exception e) {
+        } catch (DataIntegrityViolationException e) {
             model.addAttribute("error", e.getMessage());
+            return "cadastro-usuario";
+        } catch (Exception e) {
+            model.addAttribute("error", "Ocorreu um erro ao processar o cadastro do usuário.");
             return "cadastro-usuario";
         }
     }
