@@ -1,4 +1,4 @@
-package com.soulcode.chamaelas.ChamaElas.controllers;
+package com.soulcode.chamaelas.ChamaElas.controllers.api;
 
 import com.soulcode.chamaelas.ChamaElas.models.TecnicoModel;
 import com.soulcode.chamaelas.ChamaElas.repositories.TecnicoRepository;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-public class TecnicoController {
+public class TecnicoControllerAPI {
 
     @Autowired
     private TecnicoRepository tecnicoRepository;

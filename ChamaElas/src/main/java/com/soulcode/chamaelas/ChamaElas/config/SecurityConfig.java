@@ -23,12 +23,11 @@ public class SecurityConfig {
         return new SimpleUrlAuthenticationSuccessHandler("/");
     }
 
-
     @Bean
     public SecurityFilterChain securityFilter(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests( authorize -> authorize
-                        .requestMatchers( "/", "/assets/**", "/css/**", "/images/**", "/js/**", "/criar-usuario", "/atualizar-usuario/**", "/login").permitAll()
+                        .requestMatchers( "/", "/assets/**", "/css/**", "/images/**", "/js/**", "/criar-usuario", "/atualizar-usuario/**", "/cadastro-usuario", "/login").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login")
                         .successHandler(authenticationSuccessHandler()).permitAll())

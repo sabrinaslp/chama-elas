@@ -20,13 +20,13 @@ public class LoginService {
     private AutenticacaoService autenticacaoService;
 
     // Cadastro de novo usuário
-    public String cadastrarNovoUsuario(String nome, String email, String password, String confirmSenha, String role, Model model) {
+    public String cadastrarNovoUsuario(String nome, String email, String senha, String confirmSenha, String funcao, Model model) {
 
         autenticacaoService.verifiqueSeOEmailJaFoiCadastrado(email, model);
-        autenticacaoService.verifiqueSeAsSenhasSaoIguais(password, confirmSenha, model);
-        FuncaoModel funcaoModel = autenticacaoService.atribuiFuncaoAoUsuario(role);
+        autenticacaoService.verifiqueSeAsSenhasSaoIguais(senha, confirmSenha, model);
+        FuncaoModel funcaoModel = autenticacaoService.atribuiFuncaoAoUsuario(funcao);
 
-        UsuarioDTO usuarioDTO = new UsuarioDTO(null, nome, email, password, true, funcaoModel, Instant.now());
+        UsuarioDTO usuarioDTO = new UsuarioDTO(null, nome, email, senha, true, funcaoModel, Instant.now());
         UsuarioModel usuarioModel = UsuarioDTO.toModel(usuarioDTO);
         usuarioRepository.save(usuarioModel);
 

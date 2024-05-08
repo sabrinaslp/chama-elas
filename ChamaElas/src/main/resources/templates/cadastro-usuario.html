@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="pt-br">
+<html class="no-js" lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 
     <!--- basic page needs
@@ -83,18 +83,18 @@
     <div class="col-six tab-full">
         <h2>Bem vindo!</h2>
         <h3>Formulário de Cadastro</h3>
-        <form>
+        <form th:action="@{/cadastrar}" method="post" th:object="${usuarioDTO}">
             <div>
                 <label for="emailInput">E-mail</label>
-                <input class="full-width" type="email" placeholder="test@mailbox.com" id="emailInput" required>
+                <input class="full-width" type="email" th:field="*{email}" placeholder="test@mailbox.com" id="emailInput" required>
             </div>
             <div>
                 <label for="phoneInput">Telefone</label>
-                <input class="full-width" type="tel" pattern="[0-9]{10,}" placeholder="Somente números" id="phoneInput" required>
+                <input class="full-width" type="tel" pattern="[0-9]{10,}" th:field="*{telefone}" placeholder="Somente números" id="phoneInput" required>
             </div>
             <div>
                 <label for="userTypeInput">Tipo de login</label>
-                <select class="full-width" id="userTypeInput" required>
+                <select class="full-width" th:field="*{funcao}" id="userTypeInput" required>
                     <option value="">Selecione o tipo de usuário</option>
                     <option value="user" style="color: black;">Usuário</option>
                     <option value="technician" style="color: black;">Técnico</option>
@@ -102,14 +102,15 @@
             </div>
             <div>
                 <label for="passwordInput">Senha</label>
-                <input class="full-width" type="password" placeholder="Sua senha" id="passwordInput" required>
+                <input class="full-width" type="password" th:field="*{password}" placeholder="Sua senha" id="passwordInput" required>
             </div>
             <div>
                 <label for="confirmPasswordInput">Confirmar Senha</label>
-                <input class="full-width" type="password" placeholder="Confirme sua senha" id="confirmPasswordInput" required>
+                <input class="full-width" type="password" th:field="*{confirmSenha}" placeholder="Confirme sua senha" id="confirmPasswordInput" required>
             </div>
             <input class="btn--primary full-width" type="submit" value="Enviar">
         </form>
+
     </div>
 </div>
 

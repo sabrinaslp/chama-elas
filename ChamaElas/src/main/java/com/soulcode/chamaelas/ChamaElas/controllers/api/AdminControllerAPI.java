@@ -1,4 +1,4 @@
-package com.soulcode.chamaelas.ChamaElas.controllers;
+package com.soulcode.chamaelas.ChamaElas.controllers.api;
 
 
 import com.soulcode.chamaelas.ChamaElas.models.AdminModel;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-public class AdminController {
+public class AdminControllerAPI {
 
     @Autowired
     private AdminRepository adminRepository;
