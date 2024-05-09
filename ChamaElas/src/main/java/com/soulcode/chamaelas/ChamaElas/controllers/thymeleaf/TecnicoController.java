@@ -37,7 +37,9 @@ public class TecnicoController {
     }
 
     @PostMapping("/atender-chamado")
-    public String atenderChamado(@RequestParam("chamadoId") Long chamadoId, @RequestParam("prioridade") ChamadoModel.Prioridade prioridade, Authentication authentication) {
+    public String atenderChamado(@RequestParam("chamadoId") Long chamadoId,
+                                 @RequestParam("prioridade") ChamadoModel.Prioridade prioridade,
+                                 Authentication authentication) {
         var tecnico = tecnicoRepository.getTecnicoByEmail(authentication.getName());
 
         chamadoService.associarTecnicoAoChamado(chamadoId, tecnico);
@@ -45,7 +47,15 @@ public class TecnicoController {
 
         return "redirect:/pagina-tecnico";
     }
-    
+
+    @GetMapping("/detalhes-chamado")
+    public String detalhesChamado(@RequestParam("chamadoId") Long chamadoId, Model model) {
+        var chamado = chamadoService.findById(chamadoId).orElseThrow();
+        model.addAttribute("chamado", chamado);
+        return "detalhes-chamado-tecnico";
+    }
+
+
 
     /* PENDENTES:
         - (OK) Implementar a lógica para aparecer o nome do usuário e os chamados em aberto
@@ -53,7 +63,8 @@ public class TecnicoController {
         - (OK) Implementar a lógica para atribuir o técnico logado no chamado (atribuir chamado ao técnico)
         - (OK) Implementar a lógica para aparecer os chamados atribuido ao tecnico logado na parte debaixo
         - Implementar a lógica para aparecer os detalhes do chamado
-        - Implementar a lógica para atribuir status ao chamado, através do formulário
+        - Implementar lógica apra mudança de status na página de detalhes do chamado.
+        - Implementar a lógica para atribuir novo status e nova prioridade ao chamado atribuido , através do formulário
         - Implementar a lógica para reformatar a data
     */
 

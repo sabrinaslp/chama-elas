@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Detalhes do Chamado</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/vendor.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="/js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+
+<body id="top">
+
+<!-- preloader
+================================================== -->
+<div id="preloader">
+    <div id="loader" class="dots-jump">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+<!-- header
+================================================== -->
+<header class="s-header">
+
+
+    <nav class="header-nav">
+
+        <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+
+        <h3>Menu</h3>
+
+        <div class="header-nav__content">
+
+            <ul class="header-nav__list">
+                <li><a class="smoothscroll" href="#home" title="home">Início</a></li>
+                <li><a class="smoothscroll" href="#about" title="about">Sobre nós</a></li>
+                <li><a class="smoothscroll" href="#services" title="services">Sistema</a></li>
+                <li><a class="smoothscroll" href="#contact" title="contact">Contato</a></li>
+            </ul>
+
+            <p>© 2024 ChamaElas. Todos os direitos reservados.</p>
+
+
+        </div> <!-- end header-nav__content -->
+
+    </nav> <!-- end header-nav -->
+
+    <a class="header-menu-toggle" href="#0">
+        <span class="header-menu-icon"></span>
+    </a>
+
+</header> <!-- end s-header -->
+
+<div class="custom-form">
+    <div class="row">
+        <div class="col-md-6 text-right">
+            <div class="button-container_1">
+                <div class="home-content__button">
+                    <!-- Formulário para logout -->
+                    <form action="/pagina-tecnico" method="get">
+                        <input class="btn--primary full-width" type="submit" value="Voltar">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row form-wrapper custom-form">
+    <div class="col-eight tab-full">
+        <br>
+        <br>
+        <br>
+        <h2 style="text-align: center">Detalhes do Chamado</h2>
+
+        <!-- Detalhes do chamado -->
+        <div class="chamado-details">
+            <p><strong>Solicitante:</strong> <span>Nome do cliente que abriu</span></p>
+            <p><strong>Título:</strong> <span th:text="${chamado.titulo}"></span></p>
+            <p><strong>Descrição:</strong> <span th:text="${chamado.descricao}"></span></p>
+            <p><strong>Status:</strong> <span th:text="${chamado.status.descricao}"></span></p>
+            <p><strong>Prioridade:</strong> <span th:text="${chamado.prioridade.descricao}"></span></p>
+            <p><strong>Setor:</strong> <span th:text="${chamado.setor}"></span></p>
+            <p><strong>Data:</strong> <span th:text="${#dates.format(chamado.dataRegistroAtualizada, 'dd-MM-yyyy - HH:mm')}"></span></p>
+        </div>
+
+        <!-- Técnico Responsável -->
+        <div class="tecnico-responsavel">
+            <h3>Técnico Responsável</h3>
+            <p th:text="${chamado.tecnico.nome}">Nome do Técnico</p>
+        </div>
+
+        <!-- Alterar o status -->
+        <div class="alterar-status">
+            <h3>Alterar o status do chamado</h3>
+            <form id="statusForm">
+                <div class="form-group">
+                    <select id="statusInput" name="status" required>
+                        <option></option>
+                        <option value="Finalizado" style="color: black;">Finalizado</option>
+                        <option value="Em aberto" style="color: black;">Em aberto</option>
+                        <option value="Escalado para outro setor" style="color: black;">Escalado para outro setor</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+
+        <!-- Botão de enviar -->
+        <div class="submit-button">
+            <input class="btn--primary full-width" type="submit" value="Salvar Alterações">
+        </div>
+    </div>
+</div>
+
+
+<!-- Java Script
+================================================== -->
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
