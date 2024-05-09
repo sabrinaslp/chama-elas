@@ -22,6 +22,9 @@ public class ChamadoModel {
     private Long ticketId;
 
     @Column(columnDefinition = "TEXT")
+    private String titulo;
+
+    @Column(columnDefinition = "TEXT")
     private String descricao;
 
     private String setor;

@@ -61,13 +61,16 @@
         <div class="col-md-6 text-right">
             <div class="button-container_1">
                 <div class="home-content__button">
-                    <input class="btn--primary full-width" type="submit" value="Sair">
+                    <!-- Formulário para logout -->
+                    <form action="/logout" method="post">
+                        <input class="btn--primary full-width" type="submit" value="Sair">
+                    </form>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
+
 <div class="row form-wrapper">
     <div class="col-six tab-full">
         <h3>Chamados Abertos</h3>
@@ -79,13 +82,14 @@
                     <th>Descrição</th>
                     <th>Prioridade</th>
                     <th>Data de início</th>
-                    <th>Detalhes</th>
+                    <th>Chamado</th> <!-- Mudança de "Detalhes" para "Chamado" -->
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="chamado : ${chamados}">
+                <tr th:each="chamado : ${chamadosEmAberto}">
+                    <td th:text="${chamado.titulo}"></td>
                     <td th:text="${chamado.descricao}"></td>
-                    <td th:text="${chamado.prioridade}"></td>
+<!--                    <td th:text="${chamado.dataRegistroAtualizada}"></td>-->
                     <!-- Adicione mais colunas conforme necessário -->
                     <td>
                         <select required>
@@ -96,7 +100,12 @@
                         </select>
                     </td>
                     <td></td>
-                    <td></td>
+                    <td>
+                        <!-- Adicionando botão para atender chamado -->
+                        <div class="home-content__button">
+                            <input class="btn--primary full-width" type="submit" value="Atender Chamado">
+                        </div>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -112,7 +121,7 @@
                     <th>Prioridade</th>
                     <th>Data de início</th>
                     <th>Status</th>
-                    <th>Chamado</th>
+                    <th>Detalhes</th> <!-- Mudança de "Chamado" para "Detalhes" -->
                 </tr>
                 </thead>
                 <tbody>
@@ -134,40 +143,12 @@
                             <option value="finalizado" style="color: black;">Finalizado</option>
                             <option value="Aberto" style="color: black;">Aberto</option>
                             <option value="Aberto" style="color: black;">Em atendimento</option>
-
                         </select>
                     </td>
-
                     <td>
+                        <!-- Adicionando botão para visualizar detalhes -->
                         <div class="home-content__button">
-                            <input class="btn--primary full-width" type="submit" value="Abrir chamado">
-                        </div>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <select>
-                            <option></option>
-                            <option value="alta" style="color: black;">Alta</option>
-                            <option value="media" style="color: black;">Média</option>
-                            <option value="baixa" style="color: black;">Baixa</option>
-                        </select>
-                    </td>
-                    <td></td>
-                    <td>
-                        <select>
-                            <option></option>
-                            <option value="finalizado" style="color: black;">Finalizado</option>
-                            <option value="Aberto" style="color: black;">Aberto</option>
-                            <option value="Aberto" style="color: black;">Em atendimento</option>
-                        </select>
-                    </td>
-                    <td class="test-buton">
-                        <div class="home-content__button">
-                            <input class="btn--primary full-width" type="submit" value="Abrir chamado">
+                            <input class="btn--primary full-width" type="submit" value="Visualizar Detalhes">
                         </div>
                     </td>
                 </tr>
@@ -175,7 +156,7 @@
             </table>
         </div>
     </div>
-</div> <!-- end row -->
+</div>
 <!-- Java Script ================================================== -->
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/js/plugins.js"></script>

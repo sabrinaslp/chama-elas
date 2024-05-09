@@ -5,6 +5,7 @@ import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel.TicketStatus;
 
 public record ChamadoDTO(
         Long ticketId,
+        String titulo,
         String descricao,
         String departamento,
         String status,
@@ -14,6 +15,7 @@ public record ChamadoDTO(
     public static ChamadoDTO fromModel(ChamadoModel chamadoModel) {
         return new ChamadoDTO(
                 chamadoModel.getTicketId(),
+                chamadoModel.getTitulo(),
                 chamadoModel.getDescricao(),
                 chamadoModel.getSetor(),
                 chamadoModel.getStatus().getDescricao(),
@@ -24,6 +26,7 @@ public record ChamadoDTO(
     public static ChamadoModel toModel(ChamadoDTO chamadoDTO) {
         ChamadoModel chamadoModel = new ChamadoModel();
         chamadoModel.setTicketId(chamadoDTO.ticketId());
+        chamadoModel.setTitulo(chamadoDTO.titulo());
         chamadoModel.setDescricao(chamadoDTO.descricao());
         chamadoModel.setSetor(chamadoDTO.departamento());
         chamadoModel.setStatus(getTicketStatus(chamadoDTO.status()));

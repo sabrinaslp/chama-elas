@@ -18,30 +18,17 @@ public class TecnicoController {
 
     @GetMapping("/pagina-tecnico")
     public String paginaTecnico(Model model, Authentication authentication) {
-        // Recuperando o nome do usuário autenticado
-        String nomeUsuario = authentication.getName();
+        String emailUsuario = authentication.getName();
 
-        // Adicionando o nome do usuário ao modelo
+        // Obtendo o nome do usuário a partir do e-mail
+        String nomeUsuario = emailUsuario.split("@")[0];
+        nomeUsuario = nomeUsuario.substring(0, 1).toUpperCase() + nomeUsuario.substring(1);
+
         model.addAttribute("nomeUsuario", nomeUsuario);
 
-        // Recuperando os chamados em aberto
-        List<ChamadoModel> chamados = chamadoService.getChamadosEmAberto();
+        List<ChamadoModel> chamadosEmAberto = chamadoService.getChamadosEmAberto();
+        model.addAttribute("chamadosEmAberto", chamadosEmAberto);
 
-        // Adicionando os chamados ao modelo
-        model.addAttribute("chamados", chamados);
-
-        // Retornando a página
         return "tecnico-chamados";
     }
-
-
-
-
-
-
-
-
-
-
-
 }

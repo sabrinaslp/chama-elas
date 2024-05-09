@@ -83,21 +83,28 @@
             <p th:text="${successMessage}" style="margin-bottom: 0;"></p>
             <i class="fa fa-check alert-box__close" aria-hidden="true"></i>
         </div>
+        <div th:if="${erroAutenticacao}" class="alert-box alert-box--success hideit" style="text-align: center">
+            <p th:text="${erroAutenticacao}" style="margin-bottom: 0;"></p>
+        </div>
         <div class="login-form">
-            <form action="/login" method="post">
+            <form action="/login" method="post" style="margin-bottom: 1rem;">
                 <div class="form-group">
                     <label for="loginEmail">Seu email</label>
-                    <input class="form-control" type="email" placeholder="Seu email" id="loginEmail" name="username" required>
+                    <input class="form-control full-width" type="email" placeholder="Seu email" id="loginEmail" name="username" required>
                 </div>
                 <div class="form-group">
                     <label for="loginPassword">Sua senha</label>
-                    <input class="form-control" type="password" placeholder="Sua senha" id="loginPassword" name="password" required>
+                    <input class="form-control full-width" type="password" placeholder="Sua senha" id="loginPassword" name="password" required>
                 </div>
                 <button type="submit" class="btn btn--primary full-width">Login</button>
+            </form>
+            <form action="/cadastro-usuario" method="get">
+                <button type="submit" style="margin-top: -20px;" class="btn btn--stroke full-width">Cadastre-se</button>
             </form>
         </div>
     </div>
 </div>
+
 
 <!-- Java Script
 ================================================== -->
