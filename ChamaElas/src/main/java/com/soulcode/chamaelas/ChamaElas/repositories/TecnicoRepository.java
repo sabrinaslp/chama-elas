@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TecnicoRepository extends JpaRepository<TecnicoModel ,Long> {
     TecnicoModel findByNome(String nome);
+
+    TecnicoModel getTecnicoByEmail(String emailUsuario);
 }

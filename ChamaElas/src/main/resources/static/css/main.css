@@ -4361,12 +4361,17 @@ margin-top:80px;
     height: auto; /* Permitindo que a altura seja ajustada automaticamente */
 }
 
-
-
-
 /* Reduzindo o espaçamento entre as colunas */
 
 .team-member {
     margin-left: -10px;
     margin-right: 100px;
+}
+
+.chamado-details p, .tecnico-responsavel p {
+  color: white;
+}
+
+.chamado-details strong, .tecnico-responsavel h3, .alterar-status h3 {
+  color: #FFD900;
 }
