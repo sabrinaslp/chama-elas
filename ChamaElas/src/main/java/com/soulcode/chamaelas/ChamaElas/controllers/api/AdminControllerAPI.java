@@ -13,6 +13,7 @@ public class AdminControllerAPI {
 
     @Autowired
     private AdminRepository adminRepository;
+
     @RequestMapping(value = "/criar-admin", method = RequestMethod.POST)
     public AdminModel criarAdmin(@RequestBody AdminModel admin) {
         return adminRepository.save(admin);

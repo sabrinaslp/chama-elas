@@ -37,6 +37,7 @@ public class UsuarioService {
     public List<ChamadoModel> listarChamadosUsuario(ClienteModel cliente) {
         return chamadoRepository.findByCliente(cliente);
     }
+
     // Listar todos os chamados criados pelo usuário que ainda estão em aberto
     public List<ChamadoModel> listarChamadosEmAbertoDoUsuario(ClienteModel usuario) {
         return chamadoRepository.findByClienteAndStatus(usuario, ChamadoModel.TicketStatus.ABERTO);
