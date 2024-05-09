@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba0dc791-a15a-44c9-9843-69f38623fcf0" name="Changes" comment="Organizando páginas HTML">
+    <list default="true" id="ba0dc791-a15a-44c9-9843-69f38623fcf0" name="Changes" comment="Adicionando página para detalhes do chamado">
+      <change afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_21_11__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_21_11__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_22_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_22_14__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_05_2024_18_39__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_05_2024_18_39__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/UsuarioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/UsuarioModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/dto/UsuarioDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/dto/UsuarioDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,12 +43,12 @@
     &quot;assignee&quot;: &quot;szrayane&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/sabrinaslp/chama-elas.git&quot;,
-    &quot;accountId&quot;: &quot;c180cfd3-06af-470b-8632-504f5321ed9a&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/szrayane/chama-elas.git",
+    "accountId": "26288faf-82cb-4b0b-8e62-001a28479690"
   }
-}</component>
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -70,7 +78,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/chama-elas/ChamaElas/src/main/resources/templates&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sabrina/Desktop/chama-elas/ChamaElas/src/main/resources/templates&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -84,6 +92,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Sabrina\Desktop\chama-elas\ChamaElas\src\main\resources\templates" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Sabrina\Desktop\chama-elas\ChamaElas\src\main\resources\static" />
     </key>
@@ -98,13 +109,6 @@
       </method>
     </configuration>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -118,6 +122,8 @@
       <workItem from="1715179061518" duration="87000" />
       <workItem from="1715179258275" duration="101000" />
       <workItem from="1715179469071" duration="12946000" />
+      <workItem from="1715257147845" duration="21228000" />
+      <workItem from="1715281070767" duration="6580000" />
     </task>
     <task id="LOCAL-00001" summary="implementação spring security">
       <option name="closed" value="true" />
@@ -207,7 +213,63 @@
       <option name="project" value="LOCAL" />
       <updated>1715218995592</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Ajustando link para cadastro de usuário">
+      <option name="closed" value="true" />
+      <created>1715257736127</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1715257736127</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Adicionando &quot;titulo&quot; para os chamados">
+      <option name="closed" value="true" />
+      <created>1715263614752</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1715263614752</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Ajustes na pagina específica do técnico">
+      <option name="closed" value="true" />
+      <created>1715266052869</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715266052869</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Implementação do alterar a prioridade e o status do chamado quando clicar em atender">
+      <option name="closed" value="true" />
+      <created>1715272914052</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715272914052</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Ajustes na criação do usuário para criar conforme o tipo específico (Cliente ou Técnico)">
+      <option name="closed" value="true" />
+      <created>1715276425775</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1715276425775</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Implementação da lógica para atribuir técnico ao chamado e também separar os chamados atribuidos">
+      <option name="closed" value="true" />
+      <created>1715282929086</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1715282929086</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Adicionando página para detalhes do chamado">
+      <option name="closed" value="true" />
+      <created>1715286134084</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1715286134084</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +298,13 @@
     <MESSAGE value="Adicionando Chamado Controller e Setor Controller" />
     <MESSAGE value="Tela de administrador" />
     <MESSAGE value="Organizando páginas HTML" />
-    <option name="LAST_COMMIT_MESSAGE" value="Organizando páginas HTML" />
+    <MESSAGE value="Ajustando link para cadastro de usuário" />
+    <MESSAGE value="Adicionando &quot;titulo&quot; para os chamados" />
+    <MESSAGE value="Ajustes na pagina específica do técnico" />
+    <MESSAGE value="Implementação do alterar a prioridade e o status do chamado quando clicar em atender" />
+    <MESSAGE value="Ajustes na criação do usuário para criar conforme o tipo específico (Cliente ou Técnico)" />
+    <MESSAGE value="Implementação da lógica para atribuir técnico ao chamado e também separar os chamados atribuidos" />
+    <MESSAGE value="Adicionando página para detalhes do chamado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adicionando página para detalhes do chamado" />
   </component>
 </project>

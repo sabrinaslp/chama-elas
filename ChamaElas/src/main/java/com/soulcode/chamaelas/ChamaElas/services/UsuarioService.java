@@ -40,6 +40,10 @@ public class UsuarioService {
     @Autowired
     private TecnicoRepository tecnicoRepository;
 
+    @Autowired
+    private EmailService emailService;
+
+
     // Listar todos os chamados criados pelo usuário
     public List<ChamadoModel> listarChamadosUsuario(ClienteModel cliente) {
         return chamadoRepository.findByCliente(cliente);
@@ -59,8 +63,6 @@ public class UsuarioService {
         autenticacaoService.verificarCadastroUsuario(nome, email, senha, confirmacaoSenha);
         FuncaoModel funcaoNovoUsuario = atribuirFuncaoAoUsuario(funcao);
 
-        System.out.println(funcaoNovoUsuario.getNome());
-
         if (funcaoNovoUsuario.getNome().equals(FuncaoModel.Values.CLIENTE.getNome())) {
             cadastrarNovoCliente(nome, email, senha, funcaoNovoUsuario, endereco);
         } else if (funcaoNovoUsuario.getNome().equals(FuncaoModel.Values.TECNICO.getNome())) {
@@ -68,6 +70,9 @@ public class UsuarioService {
         } else {
             throw new IllegalArgumentException("Função de usuário inválida: " + funcaoNovoUsuario);
         }
+
+        // Envio de e-mail de boas-vindas
+        emailService.enviarEmailBoasVindas(email, nome);
 
         model.addAttribute("successMessage", "Usuário cadastrado com sucesso! Faça o login para acessar sua conta.");
     }
@@ -102,16 +107,6 @@ public class UsuarioService {
         };
     }
 
-    private UsuarioModel criarUsuario(String nome, String email, String senha, FuncaoModel funcaoNovoUsuario) {
-        UsuarioModel usuarioModel = new UsuarioModel();
-        usuarioModel.setNome(nome);
-        usuarioModel.setEmail(email);
-        usuarioModel.setSenha(senha);
-        usuarioModel.setFuncao(funcaoNovoUsuario);
-
-        return usuarioModel;
-    }
-
     // Listar todos os chamados criados pelo usuário
     public List<ChamadoModel> listarTodosOsChamadosDoUsuario(ClienteModel usuario) {
         return chamadoRepository.findByCliente(usuario);
@@ -124,19 +119,6 @@ public class UsuarioService {
                     "Usuário não encontrado");
         }
         return UsuarioDTO.fromModel(usuario.get());
-    }
-
-    public ClienteModel getTecnicoLogado() {
-        // Obtém o contexto de autenticação do Spring Security
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        // Verifica se a autenticação não é nula e se o principal (usuário) é do tipo ClienteModel
-        if (authentication != null && authentication.getPrincipal() instanceof TecnicoModel) {
-            // Retorna o cliente autenticado
-            return (ClienteModel) authentication.getPrincipal();
-        } else {
-            // Se não houver cliente autenticado, retorna null
-            return null;
-        }
     }
 
     public ClienteModel getClienteLogado() {

@@ -1,7 +1,7 @@
 package com.soulcode.chamaelas.ChamaElas.models.dto;
 import com.soulcode.chamaelas.ChamaElas.models.FuncaoModel;
 import com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;
-import java.time.Instant;
+import java.time.LocalDate;
 
 public record UsuarioDTO(
         Long usuarioId,
@@ -10,7 +10,7 @@ public record UsuarioDTO(
         String senha,
         boolean estaAtivo,
         FuncaoModel funcao,
-        Instant dataRegistro
+       LocalDate dataRegistro
 ){
     public static UsuarioDTO fromModel(UsuarioModel usuarioModel) {
         return new UsuarioDTO(

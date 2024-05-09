@@ -3,7 +3,7 @@
 <head>
     <!--- basic page needs ================================================== -->
     <meta charset="utf-8">
-    <title>ChamaElas</title>
+    <title>ChamaElas - Dashboard Técnico</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- mobile specific metas ================================================== -->
@@ -52,7 +52,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 text-center"> <!-- Texto à esquerda em telas médias e grandes -->
-            <h2>Olá, <span th:text="${nomeUsuario}"></span>!</h2>
+            <h2>Olá, <span th:text="${nome}"></span>!</h2>
         </div>
     </div>
 </div>
@@ -89,22 +89,25 @@
                 <tr th:each="chamado : ${chamadosEmAberto}">
                     <td th:text="${chamado.titulo}"></td>
                     <td th:text="${chamado.descricao}"></td>
-                    <td th:text="${chamado.dataRegistroAtualizada}"></td>
-                    <td>
-                        <select required>
-                            <option></option>
-                            <option value="alta" style="color: black;">Alta</option>
-                            <option value="media" style="color: black;">Média</option>
-                            <option value="baixa" style="color: black;">Baixa</option>
-                        </select>
-                    </td>
-                    <td class="text-center">
-                        <!-- Adicionando botão para atender chamado -->
-                        <div class="home-content__button" style="margin-top: 0.5rem;">
-                            <input class="btn--primary full-width" type="submit" value="Atender Chamado">
-                        </div>
-                    </td>
-
+                    <td th:text="${#dates.format(chamado.dataRegistroAtualizada, 'dd-MM-yyyy - [HH:mm]')}"></td>
+                    <form action="/atender-chamado" method="post">
+                        <td>
+                            <label>
+                                <select name="prioridade" required>
+                                    <option></option>
+                                    <option value="ALTA" style="color: black;">Alta</option>
+                                    <option value="MEDIA" style="color: black;">Média</option>
+                                    <option value="BAIXA" style="color: black;">Baixa</option>
+                                </select>
+                            </label>
+                        </td>
+                        <td class="text-center">
+                            <input type="hidden" name="chamadoId" th:value="${chamado.ticketId}">
+                            <div class="home-content__button" style="margin-top: 0.5rem;">
+                                <input class="btn--primary full-width" type="submit" value="Atender Chamado">
+                            </div>
+                        </td>
+                    </form>
                 </tr>
                 </tbody>
             </table>
@@ -118,37 +121,24 @@
                     <th>Título</th>
                     <th>Descrição</th>
                     <th>Data de início</th>
-                    <th>Prioridade</th>
                     <th>Status</th>
-                    <th>Detalhes</th> <!-- Mudança de "Chamado" para "Detalhes" -->
+                    <th>Detalhes</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td> <!-- Coluna vazia para a data de início -->
-                    <td>
-                        <select required>
-                            <option></option>
-                            <option value="alta" style="color: black;">Alta</option>
-                            <option value="media" style="color: black;">Média</option>
-                            <option value="baixa" style="color: black;">Baixa</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select>
-                            <option></option>
-                            <option value="finalizado" style="color: black;">Finalizado</option>
-                            <option value="Aberto" style="color: black;">Aberto</option>
-                            <option value="Aberto" style="color: black;">Em atendimento</option>
-                        </select>
-                    </td>
-                    <td class="text-center">
-                        <div class="home-content__button" style="margin-top: 0.5rem;">
-                            <input class="btn--primary full-width" type="submit" value="Visualizar">
-                        </div>
-                    </td>
+                <tr th:each="chamado : ${chamadosAtribuidos}">
+                    <td th:text="${chamado.titulo}"></td>
+                    <td th:text="${chamado.descricao}"></td>
+                    <td th:text="${#dates.format(chamado.dataRegistroAtualizada, 'dd-MM-yyyy - [HH:mm]')}"></td>
+                    <td th:text="${chamado.status.descricao}"></td>
+                    <form action="/detalhes-chamado" method="get">
+                        <input type="hidden" name="chamadoId" th:value="${chamado.ticketId}">
+                        <td class="text-center">
+                            <div class="home-content__button" style="margin-top: 0.5rem;">
+                                <input class="btn--primary full-width" type="submit" value="Visualizar">
+                            </div>
+                        </td>
+                    </form>
                 </tr>
                 </tbody>
             </table>

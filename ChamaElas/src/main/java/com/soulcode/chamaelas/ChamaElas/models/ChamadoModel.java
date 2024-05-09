@@ -48,11 +48,18 @@ public class ChamadoModel {
     @ManyToOne
     private AdminModel adminAtribuido;
 
+    @Getter
     public enum Prioridade {
-        AGUARDANDO,
-        BAIXA,
-        MEDIA,
-        ALTA;
+        AGUARDANDO("Aguardando técnico"),
+        BAIXA("Baixa"),
+        MEDIA("Média"),
+        ALTA("Alta");
+
+        private final String descricao;
+
+        Prioridade(String descricao) {
+            this.descricao = descricao;
+        }
     }
 
     @Getter
@@ -69,6 +76,4 @@ public class ChamadoModel {
         }
 
     }
-
-
 }

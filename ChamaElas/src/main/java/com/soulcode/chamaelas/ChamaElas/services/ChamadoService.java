@@ -4,7 +4,9 @@ import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
 import com.soulcode.chamaelas.ChamaElas.models.ClienteModel;
 import com.soulcode.chamaelas.ChamaElas.models.TecnicoModel;
 import com.soulcode.chamaelas.ChamaElas.repositories.ChamadoRepository;
+import com.soulcode.chamaelas.ChamaElas.repositories.TecnicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -17,6 +19,9 @@ public class ChamadoService {
 
     @Autowired
     private ChamadoRepository chamadoRepository;
+
+    @Autowired
+    private TecnicoRepository tecnicoRepository;
 
     @Autowired
     private UsuarioService usuarioService;
@@ -72,7 +77,6 @@ public class ChamadoService {
         return usuarioService.listarChamadosUsuario(cliente);
     }
 
-
     // Edita um chamado do usuário
     public ChamadoModel editarChamadoUsuario(Long ticketId) {
         return chamadoRepository.findById(ticketId).orElse(null);
@@ -115,10 +119,40 @@ public class ChamadoService {
 
     // Listar todos os chamados atribuidos do Tecnico Logado
     public List<ChamadoModel> getChamadosAtribuidosAoTecnicoLogado() {
-        TecnicoModel tecnicoLogado = (TecnicoModel) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return chamadoRepository.findByTecnico(tecnicoLogado);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String emailTecnico = authentication.getName();
+
+        TecnicoModel tecnicoLogado = tecnicoRepository.getTecnicoByEmail(emailTecnico);
+        if (tecnicoLogado != null) {
+            return chamadoRepository.findByTecnico(tecnicoLogado);
+        } else {
+            return null;
+        }
     }
 
+    // Altera o status e a prioridade do chamado na página do técnico
+    public void alteraStatusEPrioridadeDoChamado(Long chamadoId, ChamadoModel.Prioridade prioridade) {
+        ChamadoModel chamado = chamadoRepository.findById(chamadoId)
+                .orElseThrow(() -> new RuntimeException("Chamado não encontrado"));
+
+        chamado.setStatus(ChamadoModel.TicketStatus.EM_ANDAMENTO);
+        chamado.setPrioridade(prioridade);
+
+        chamadoRepository.save(chamado);
+    }
+
+    public void alterarStatusChamado(Long chamadoId, ChamadoModel.TicketStatus status) {
+        Optional<ChamadoModel> optionalChamado = chamadoRepository.findById(chamadoId);
+        if (optionalChamado.isPresent()) {
+            ChamadoModel chamado = optionalChamado.get();
+            chamado.setStatus(status);
+            chamadoRepository.save(chamado);
+        } else {
+            throw new RuntimeException("Chamado não encontrado");
+        }
+    }
+
+    // Cria chamados ficticios para serem realizados testes
     public void criaChamadosFicticios() {
         ChamadoModel chamado1 = new ChamadoModel();
         chamado1.setTitulo("Chamado Teste 1");
@@ -135,6 +169,23 @@ public class ChamadoService {
         chamado2.setStatus(ChamadoModel.TicketStatus.ABERTO);
         chamado2.setPrioridade(null);
         chamadoRepository.save(chamado2);
+    }
+
+    public void associarTecnicoAoChamado(Long chamadoId, TecnicoModel tecnico) {
+        ChamadoModel chamado = chamadoRepository.findById(chamadoId)
+                .orElseThrow(() -> new RuntimeException("Chamado não encontrado"));
+
+        chamado.setTecnico(tecnico);
+        chamadoRepository.save(chamado);
+    }
+
+    public void desassociarTecnicoChamado(Long chamadoId, ChamadoModel.TicketStatus novoStatus) {
+        ChamadoModel chamado = chamadoRepository.findById(chamadoId)
+                .orElseThrow(() -> new RuntimeException("Chamado não encontrado"));
+        if (novoStatus == ChamadoModel.TicketStatus.ABERTO) {
+            chamado.setTecnico(null);
+            chamadoRepository.save(chamado);
+        }
     }
 
 }
