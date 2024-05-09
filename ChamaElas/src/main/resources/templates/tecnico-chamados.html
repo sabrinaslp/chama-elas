@@ -52,7 +52,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 text-center"> <!-- Texto à esquerda em telas médias e grandes -->
-            <h2>Olá, <span th:text="${nomeUsuario}"></span>!</h2>
+            <h2>Olá, <span th:text="${nome}"></span>!</h2>
         </div>
     </div>
 </div>
@@ -123,14 +123,15 @@
                     <th>Data de início</th>
                     <th>Prioridade</th>
                     <th>Status</th>
-                    <th>Detalhes</th> <!-- Mudança de "Chamado" para "Detalhes" -->
+                    <th>Detalhes</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td> <!-- Coluna vazia para a data de início -->
+                <!-- Iterar sobre os chamados atribuídos -->
+                <tr th:each="chamado : ${chamadosAtribuidos}">
+                    <td th:text="${chamado.titulo}"></td>
+                    <td th:text="${chamado.descricao}"></td>
+                    <td th:text="${chamado.dataRegistroAtualizada}"></td>
                     <td>
                         <select required>
                             <option></option>
@@ -144,7 +145,7 @@
                             <option></option>
                             <option value="finalizado" style="color: black;">Finalizado</option>
                             <option value="Aberto" style="color: black;">Aberto</option>
-                            <option value="Aberto" style="color: black;">Em atendimento</option>
+                            <option value="Em atendimento" style="color: black;">Em atendimento</option>
                         </select>
                     </td>
                     <td class="text-center">

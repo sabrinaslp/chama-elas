@@ -4,10 +4,13 @@ import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
 import com.soulcode.chamaelas.ChamaElas.models.ClienteModel;
 import com.soulcode.chamaelas.ChamaElas.models.TecnicoModel;
 import com.soulcode.chamaelas.ChamaElas.repositories.ChamadoRepository;
+import com.soulcode.chamaelas.ChamaElas.repositories.TecnicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +19,9 @@ public class ChamadoService {
 
     @Autowired
     private ChamadoRepository chamadoRepository;
+
+    @Autowired
+    private TecnicoRepository tecnicoRepository;
 
     @Autowired
     private UsuarioService usuarioService;
@@ -108,8 +114,15 @@ public class ChamadoService {
 
     // Listar todos os chamados atribuidos do Tecnico Logado
     public List<ChamadoModel> getChamadosAtribuidosAoTecnicoLogado() {
-        TecnicoModel tecnicoLogado = (TecnicoModel) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return chamadoRepository.findByTecnico(tecnicoLogado);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String emailTecnico = authentication.getName();
+
+        TecnicoModel tecnicoLogado = tecnicoRepository.getTecnicoByEmail(emailTecnico);
+        if (tecnicoLogado != null) {
+            return chamadoRepository.findByTecnico(tecnicoLogado);
+        } else {
+            return null;
+        }
     }
 
     // Altera o status e a prioridade do chamado na página do técnico
@@ -142,4 +155,11 @@ public class ChamadoService {
         chamadoRepository.save(chamado2);
     }
 
+    public void associarTecnicoAoChamado(Long chamadoId, TecnicoModel tecnico) {
+        ChamadoModel chamado = chamadoRepository.findById(chamadoId)
+                .orElseThrow(() -> new RuntimeException("Chamado não encontrado"));
+
+        chamado.setTecnico(tecnico);
+        chamadoRepository.save(chamado);
+    }
 }

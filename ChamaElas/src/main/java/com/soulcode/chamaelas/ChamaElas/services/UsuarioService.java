@@ -102,16 +102,6 @@ public class UsuarioService {
         };
     }
 
-    private UsuarioModel criarUsuario(String nome, String email, String senha, FuncaoModel funcaoNovoUsuario) {
-        UsuarioModel usuarioModel = new UsuarioModel();
-        usuarioModel.setNome(nome);
-        usuarioModel.setEmail(email);
-        usuarioModel.setSenha(senha);
-        usuarioModel.setFuncao(funcaoNovoUsuario);
-
-        return usuarioModel;
-    }
-
     // Listar todos os chamados criados pelo usuário
     public List<ChamadoModel> listarTodosOsChamadosDoUsuario(ClienteModel usuario) {
         return chamadoRepository.findByCliente(usuario);
@@ -124,19 +114,6 @@ public class UsuarioService {
                     "Usuário não encontrado");
         }
         return UsuarioDTO.fromModel(usuario.get());
-    }
-
-    public ClienteModel getTecnicoLogado() {
-        // Obtém o contexto de autenticação do Spring Security
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        // Verifica se a autenticação não é nula e se o principal (usuário) é do tipo ClienteModel
-        if (authentication != null && authentication.getPrincipal() instanceof TecnicoModel) {
-            // Retorna o cliente autenticado
-            return (ClienteModel) authentication.getPrincipal();
-        } else {
-            // Se não houver cliente autenticado, retorna null
-            return null;
-        }
     }
 
     public ClienteModel getClienteLogado() {
