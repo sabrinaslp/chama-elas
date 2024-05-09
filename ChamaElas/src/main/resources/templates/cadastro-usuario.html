@@ -87,7 +87,7 @@
             <p th:text="${error}" style="margin-bottom: 0;"></p>
             <i class="fa fa-times alert-box__close" aria-hidden="true"></i>
         </div>
-        <form action="/cadastro-usuario" method="post">
+        <form action="/cadastro-usuario" method="post" id="cadastroForm">
             <div>
                 <label for="nameInput">Nome</label>
                 <input class="full-width" type="text" name="nome" placeholder="Nome completo" id="nameInput" required>
@@ -112,10 +112,24 @@
                     <option value="Tecnico" style="color: black;">Técnico</option>
                 </select>
             </div>
-
+            <div id="clienteFields" style="display: none;">
+                <div>
+                    <label for="endereco">Endereço</label>
+                    <input class="full-width" type="text" name="endereco" placeholder="Endereço" id="endereco">
+                </div>
+            </div>
+            <div id="tecnicoFields" style="display: none;">
+                <div>
+                    <label for="setor">Setor</label>
+                    <input class="full-width" type="text" name="setor" placeholder="Setor" id="setor">
+                </div>
+                <div>
+                    <label for="telefone">Telefone</label>
+                    <input class="full-width" type="text" name="telefone" placeholder="Telefone" id="telefone">
+                </div>
+            </div>
             <input class="btn--primary full-width" type="submit" value="Enviar">
         </form>
-
     </div>
 </div>
 
@@ -123,6 +137,26 @@
 
 <!-- Java Script
 ================================================== -->
+<script>
+    document.getElementById("userTypeInput").addEventListener("change", function() {
+        var userType = this.value;
+        var clienteFields = document.getElementById("clienteFields");
+        var tecnicoFields = document.getElementById("tecnicoFields");
+
+        if (userType === "Cliente") {
+            clienteFields.style.display = "block";
+            tecnicoFields.style.display = "none";
+        } else if (userType === "Tecnico") {
+            clienteFields.style.display = "none";
+            tecnicoFields.style.display = "block";
+        } else {
+            clienteFields.style.display = "none";
+            tecnicoFields.style.display = "none";
+        }
+    });
+</script>
+
+
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>

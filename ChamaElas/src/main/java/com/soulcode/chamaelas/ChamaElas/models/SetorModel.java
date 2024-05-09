@@ -1,8 +1,12 @@
 package com.soulcode.chamaelas.ChamaElas.models;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
+@Getter
+@Setter
 @Entity
 @Table(name = "tb_setores")
 public class SetorModel {
@@ -18,19 +22,4 @@ public class SetorModel {
 
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNameSector() {
-        return nomeSetor;
-    }
-
-    public void setNameSector(String nomeSetor) {
-        this.nomeSetor = nomeSetor;
-    }
 }
