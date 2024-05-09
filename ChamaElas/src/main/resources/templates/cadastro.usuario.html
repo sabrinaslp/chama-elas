@@ -78,24 +78,40 @@
 
 
 
-<div class="row form-wrapper justify-content-center align-items-center" style="height: 100vh;">
-    <div class="col-md-6">
-        <h3 class="text-center">Olá novamente!</h3>
+
+<div class="custom-form">
+    <div class="col-six tab-full">
+        <h2>Bem vindo!</h2>
+        <h3>Formulário de Cadastro</h3>
         <form>
-            <div class="form-group">
-                <label for="loginEmail">Seu email</label>
-                <input class="form-control" type="email" placeholder="Seu email" id="loginEmail" required>
+            <div>
+                <label for="emailInput">E-mail</label>
+                <input class="full-width" type="email" placeholder="test@mailbox.com" id="emailInput" required>
             </div>
-            <div class="form-group">
-                <label for="loginPassword">Sua senha</label>
-                <input class="form-control" type="password" placeholder="Sua senha" id="loginPassword" required>
+            <div>
+                <label for="phoneInput">Telefone</label>
+                <input class="full-width" type="tel" pattern="[0-9]{10,}" placeholder="Somente números" id="phoneInput" required>
             </div>
-            <a class="btn btn--primary full-width" href="#0">Login</a>
+            <div>
+                <label for="userTypeInput">Tipo de login</label>
+                <select class="full-width" id="userTypeInput" required>
+                    <option value="">Selecione o tipo de usuário</option>
+                    <option value="user" style="color: black;">Usuário</option>
+                    <option value="technician" style="color: black;">Técnico</option>
+                </select>
+            </div>
+            <div>
+                <label for="passwordInput">Senha</label>
+                <input class="full-width" type="password" placeholder="Sua senha" id="passwordInput" required>
+            </div>
+            <div>
+                <label for="confirmPasswordInput">Confirmar Senha</label>
+                <input class="full-width" type="password" placeholder="Confirme sua senha" id="confirmPasswordInput" required>
+            </div>
+            <input class="btn--primary full-width" type="submit" value="Enviar">
         </form>
     </div>
 </div>
-
-
 
 
 
