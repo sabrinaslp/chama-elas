@@ -31,7 +31,7 @@ public class TecnicoController {
         model.addAttribute("chamados", chamados);
 
         // Retornando a página
-        return "dashboard-tecnico";
+        return "tecnico-chamados";
     }
 
 

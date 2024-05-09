@@ -1,8 +1,6 @@
 package com.soulcode.chamaelas.ChamaElas.config;
-import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
 import com.soulcode.chamaelas.ChamaElas.models.FuncaoModel;
 import com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;
-import com.soulcode.chamaelas.ChamaElas.repositories.ChamadoRepository;
 import com.soulcode.chamaelas.ChamaElas.repositories.FuncaoRepository;
 import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
 import com.soulcode.chamaelas.ChamaElas.services.ChamadoService;
@@ -46,7 +44,7 @@ public class AdminConfig implements CommandLineRunner {
             var user = new UsuarioModel();
 
             user.setEmail("admin@chamaelas.com");
-            user.setPassword(passwordEncoder.encode("1234"));
+            user.setSenha(passwordEncoder.encode("1234"));
             user.setFuncao(funcaoAdmin);
             usuarioRepository.save(user);
 
