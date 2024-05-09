@@ -55,17 +55,13 @@ public class TecnicoController {
         return "detalhes-chamado-tecnico";
     }
 
-
-
-    /* PENDENTES:
-        - (OK) Implementar a lógica para aparecer o nome do usuário e os chamados em aberto
-        - (OK) Implementar a lógica para atribuir prioridade ao chamado, através do formulário
-        - (OK) Implementar a lógica para atribuir o técnico logado no chamado (atribuir chamado ao técnico)
-        - (OK) Implementar a lógica para aparecer os chamados atribuido ao tecnico logado na parte debaixo
-        - Implementar a lógica para aparecer os detalhes do chamado
-        - Implementar lógica apra mudança de status na página de detalhes do chamado.
-        - Implementar a lógica para atribuir novo status e nova prioridade ao chamado atribuido , através do formulário
-        - Implementar a lógica para reformatar a data
-    */
-
+    @PostMapping("/alterar-status")
+    public String alterarStatusChamado(@RequestParam("chamadoId") Long chamadoId,
+                                       @RequestParam("status") ChamadoModel.TicketStatus status) {
+        if (status == ChamadoModel.TicketStatus.ABERTO) {
+            chamadoService.desassociarTecnicoChamado(chamadoId, status);
+        }
+        chamadoService.alterarStatusChamado(chamadoId, status);
+        return "redirect:/pagina-tecnico";
+    }
 }

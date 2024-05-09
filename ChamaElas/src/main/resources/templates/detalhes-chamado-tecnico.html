@@ -98,7 +98,7 @@
         <br>
         <br>
         <br>
-        <h2 style="text-align: center">Detalhes do Chamado</h2>
+        <h2 style="text-align: center; color: #FFD900;">Detalhes do Chamado</h2>
 
         <!-- Detalhes do chamado -->
         <div class="chamado-details">
@@ -108,7 +108,7 @@
             <p><strong>Status:</strong> <span th:text="${chamado.status.descricao}"></span></p>
             <p><strong>Prioridade:</strong> <span th:text="${chamado.prioridade.descricao}"></span></p>
             <p><strong>Setor:</strong> <span th:text="${chamado.setor}"></span></p>
-            <p><strong>Data:</strong> <span th:text="${#dates.format(chamado.dataRegistroAtualizada, 'dd-MM-yyyy - HH:mm')}"></span></p>
+            <p><strong>Data da solicitação:</strong> <span th:text="${#dates.format(chamado.dataRegistroAtualizada, 'dd-MM-yyyy - HH:mm')}"></span></p>
         </div>
 
         <!-- Técnico Responsável -->
@@ -120,21 +120,20 @@
         <!-- Alterar o status -->
         <div class="alterar-status">
             <h3>Alterar o status do chamado</h3>
-            <form id="statusForm">
+            <form action="/alterar-status" id="statusForm" method="post">
                 <div class="form-group">
                     <select id="statusInput" name="status" required>
                         <option></option>
-                        <option value="Finalizado" style="color: black;">Finalizado</option>
-                        <option value="Em aberto" style="color: black;">Em aberto</option>
-                        <option value="Escalado para outro setor" style="color: black;">Escalado para outro setor</option>
+                        <option value="FECHADO" style="color: black;">Finalizado</option>
+                        <option value="ABERTO" style="color: black;">Em aberto</option>
+                        <option value="ENCAMINHADO" style="color: black;">Escalado para outro setor</option>
                     </select>
                 </div>
+                <div class="submit-button">
+                    <input type="hidden" name="chamadoId" th:value="${chamado.ticketId}">
+                    <input class="btn--primary full-width" type="submit" value="Salvar Alterações">
+                </div>
             </form>
-        </div>
-
-        <!-- Botão de enviar -->
-        <div class="submit-button">
-            <input class="btn--primary full-width" type="submit" value="Salvar Alterações">
         </div>
     </div>
 </div>

@@ -126,19 +126,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <!-- Iterar sobre os chamados atribuídos -->
                 <tr th:each="chamado : ${chamadosAtribuidos}">
                     <td th:text="${chamado.titulo}"></td>
                     <td th:text="${chamado.descricao}"></td>
                     <td th:text="${#dates.format(chamado.dataRegistroAtualizada, 'dd-MM-yyyy - [HH:mm]')}"></td>
-                    <td>
-                        <select>
-                            <option></option>
-                            <option value="finalizado" style="color: black;">Finalizado</option>
-                            <option value="Aberto" style="color: black;">Aberto</option>
-                            <option value="Em atendimento" style="color: black;">Em atendimento</option>
-                        </select>
-                    </td>
+                    <td th:text="${chamado.status.descricao}"></td>
                     <form action="/detalhes-chamado" method="get">
                         <input type="hidden" name="chamadoId" th:value="${chamado.ticketId}">
                         <td class="text-center">

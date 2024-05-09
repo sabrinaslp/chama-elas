@@ -10,7 +10,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -136,6 +135,17 @@ public class ChamadoService {
         chamadoRepository.save(chamado);
     }
 
+    public void alterarStatusChamado(Long chamadoId, ChamadoModel.TicketStatus status) {
+        Optional<ChamadoModel> optionalChamado = chamadoRepository.findById(chamadoId);
+        if (optionalChamado.isPresent()) {
+            ChamadoModel chamado = optionalChamado.get();
+            chamado.setStatus(status);
+            chamadoRepository.save(chamado);
+        } else {
+            throw new RuntimeException("Chamado não encontrado");
+        }
+    }
+
     // Cria chamados ficticios para serem realizados testes
     public void criaChamadosFicticios() {
         ChamadoModel chamado1 = new ChamadoModel();
@@ -162,4 +172,14 @@ public class ChamadoService {
         chamado.setTecnico(tecnico);
         chamadoRepository.save(chamado);
     }
+
+    public void desassociarTecnicoChamado(Long chamadoId, ChamadoModel.TicketStatus novoStatus) {
+        ChamadoModel chamado = chamadoRepository.findById(chamadoId)
+                .orElseThrow(() -> new RuntimeException("Chamado não encontrado"));
+        if (novoStatus == ChamadoModel.TicketStatus.ABERTO) {
+            chamado.setTecnico(null);
+            chamadoRepository.save(chamado);
+        }
+    }
+
 }
