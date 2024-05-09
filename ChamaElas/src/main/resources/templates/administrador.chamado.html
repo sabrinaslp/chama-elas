@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-br">
+<head>
+    <!-- basic page needs ================================================== -->
+    <meta charset="utf-8">
+    <title>ChamaElas</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS ================================================== -->
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/vendor.css">
+    <link rel="stylesheet" href="../static/css/main.css"> <!-- Este é o arquivo principal de estilos -->
+    <link rel="stylesheet" href="../static/css/custom-styles.css"> <!-- Este arquivo contém estilos personalizados -->
+
+    <!-- script ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body id="top">
+
+<div class="container">
+
+    <header class="s-header">
+        <!-- Seu código de cabeçalho aqui -->
+    </header>
+
+    <div class="form-and-table row">
+        <div class="col-six tab-full">
+            <div class="custom-form">
+                <h2>Bem vindo!</h2>
+                <br>
+                <br>
+                <div class="filter-chamados">
+                    <h6 class="filter-title">Filtrar chamados:</h6>
+                    <div class="select-container">
+                        <select class="custom-select" id="prioridades" required>
+                            <option value="" style="color: black;">Selecione a prioridade do chamado</option>
+                            <option style="color: black;">Aberto</option>
+                            <option value="user" style="color: black;">Finalizado</option>
+                            <option value="technician" style="color: black;">Em atendimento</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <br>
+
+            <form>
+                <label for="exampleMessage"></label>
+                <textarea class="full-width" placeholder="Descrição do chamado" id="exampleMessage"></textarea>
+            </form>
+        </div>
+
+        <div class="col-six tab-full">
+            <div class="table-responsive">
+                <table class="custom-table">
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Assunto</th>
+                        <th>Prioridade</th>
+                        <th>Setor</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="table-cell"></td>
+                        <td class="table-cell"></td>
+                        <td class="table-cell"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="table-cell"></td>
+                        <td class="table-cell"></td>
+                        <td class="table-cell"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="table-cell"></td>
+                        <td class="table-cell"></td>
+                        <td class="table-cell"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="table-cell"></td>
+                        <td class="table-cell"></td>
+                        <td class="table-cell"></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="4" class="table-cell">Total de chamados: </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Caixa de login do usuário -->
+    <div class="user-login-info">
+        <i class="fas fa-envelope"></i> <!-- Ícone de e-mail -->
+        <!-- Aqui você pode adicionar os detalhes do login do usuário -->
+        Usuário: Andressa <br>
+        <!-- Adicione mais informações conforme necessário -->
+    </div>
+
+</div> <!-- end container -->
+
+<!-- Java Script ================================================== -->
+<script src="../templates/js/jquery-3.2.1.min.js"></script>
+<script src="../templates/js/plugins.js"></script>
+<script src="../templates/js/main.js"></script>
+
+</body>
+</html>

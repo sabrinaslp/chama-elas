@@ -1004,3 +1004,23 @@ position: absolute;
     transform: translateY(-20%);
     transform: translateX(-300%);
 }
+
+
+
+.filter-title {
+position: absolute;
+    margin-right: 80px;
+    transform: translateY(40%);
+        transform: translateX(-1%);
+        margin-top:70px;
+}
+
+
+.select{
+display: flex;
+
+right: 50;
+    top: 60%;
+    transform: translateY(-%);
+    transform: translateX(-40%);
+}
