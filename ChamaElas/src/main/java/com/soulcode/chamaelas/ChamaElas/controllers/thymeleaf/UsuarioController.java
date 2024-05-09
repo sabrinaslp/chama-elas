@@ -26,9 +26,12 @@ public class UsuarioController {
                                        @RequestParam("senha") String senha,
                                        @RequestParam("confirmaSenha") String confirmacaoSenha,
                                        @RequestParam("funcao") String funcao,
+                                       @RequestParam(value = "endereco", required = false) String endereco,
+                                       @RequestParam(value = "telefone", required = false) String telefone,
+                                       @RequestParam(value = "setor", required = false) String setor,
                                        Model model) {
         try {
-            usuarioService.cadastrarNovoUsuario(nome, email, senha, confirmacaoSenha, funcao, model);
+            usuarioService.cadastrarNovoUsuario(nome, email, senha, confirmacaoSenha, funcao, endereco, telefone, setor, model);
             return "login-usuario";
         } catch (DataIntegrityViolationException | IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());

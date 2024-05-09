@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @Entity
-@DiscriminatorValue("tech")
+@DiscriminatorValue("tecnico")
 public class TecnicoModel extends UsuarioModel {
 
     private String setor;

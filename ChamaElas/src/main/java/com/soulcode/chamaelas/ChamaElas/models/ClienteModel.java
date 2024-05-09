@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @Entity
-@DiscriminatorValue("client")
+@DiscriminatorValue("cliente")
 public class ClienteModel extends UsuarioModel {
 
     private String endereco;

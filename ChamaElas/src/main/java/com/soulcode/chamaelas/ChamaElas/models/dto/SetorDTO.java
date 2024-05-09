@@ -13,24 +13,14 @@ public record SetorDTO(Long id, String nomeSetor) {
     }
 
     public static SetorModel toModel(SetorDTO setorDTO) {
-        SetorModel setor = new SetorModel();
-        setor.setId(setorDTO.id());
-        setor.setNameSector(setorDTO.nomeSetor());
-        return setor;
+        return convert(setorDTO);
     }
 
     public static SetorModel convert(SetorDTO setorDTO){
         SetorModel sector = new SetorModel();
-        sector.setId(setorDTO.getId());
-        sector.setNameSector(setorDTO.getNomeSetor());
+        sector.setId(setorDTO.id());
+        sector.setNomeSetor(setorDTO.nomeSetor());
         return sector;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getNomeSetor() {
-        return nomeSetor;
-    }
 }
