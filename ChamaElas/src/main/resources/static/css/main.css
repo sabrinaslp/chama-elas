@@ -4223,8 +4223,150 @@ color: #ffd900; /* Amarelo dos botões */
     display: block;
     margin: 0 auto;
 }
+/* Estilos personalizados */
 
-.login-form .form-group input[type="email"],
-.login-form .form-group input[type="password"] {
-  width: 100%;
+.custom-form {
+    width: 100%;
+    max-width: 600px; /* ou outro valor desejado */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.custom-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.custom-select, .custom-textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.custom-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.clear {
+    clear: both;
+}
+
+.table-container {
+    margin-top: 20px; /* Adicione um espaçamento superior para separar do formulário */
+}
+.form-and-table {
+    clear: both;
+}
+
+.table-container {
+    margin-top: 20px; /* Adicione um espaçamento superior para separar do formulário */
+}
+.form-and-table {
+    margin: 0 auto; /* Centraliza a div na página */
+    text-align: center; /* Centraliza o conteúdo dentro da div */
+}
+
+.table-container {
+    margin-top: 20px; /* Adicione um espaçamento superior para separar do formulário */
+    display: inline-block; /* Isso garante que a div tenha apenas o tamanho necessário em torno do conteúdo */
+    text-align: left; /* Alinha o conteúdo da tabela à esquerda */
+}
+.table-cell {
+    border: 1px solid #ccc; /* Adiciona uma borda de 1px sólida cinza em volta de cada célula */
+    padding: 8px; /* Adiciona um espaçamento interno de 8px dentro de cada célula */
+}
+.filter-chamados {
+    float: left px; /* move o elemento para a esquerda */
+    width:%; /* define a largura para 50% da página */
+    /* Adicione mais estilos conforme necessário */
+    position: absolute;
+        right: 0;
+        top: 10%;
+        transform: translateY(250%);
+        transform: translateX(-420%);
+}
+.user-login-info {
+    position: absolute;
+    top: 60px; /* Ajuste conforme necessário */
+    right: 50px; /* Ajuste conforme necessário */
+    padding: 5px;
+    border: 2px solid #ffd900; /* Cor e largura da borda */
+    background-color: #0000; /* Cor de fundo da caixa */
+    border-radius: 5px; /* Borda arredondada */
+    transform: translateX(-200%);
+}
+
+.custom-table th,
+        .custom-table td {
+            border: 1px solid white; /* Define a cor branca para as linhas da tabela */
+            padding: 15px;
+        }
+
+
+
+
+/* Adicione este trecho ao seu arquivo de estilos CSS */
+
+.filter-chamados {
+    display: flex;
+    align-items: center;
+}
+
+.filter-title {
+    margin-right: 10px;
+}
+
+.select-container {
+margin-top:80px;
+        transform: translateX(80%);
+
+}
+
+.test-buton{
+ padding: 6px 6px; /* Ajuste o padding conforme desejado */
+    font-size: 14px; /* Ajuste o tamanho da fonte conforme desejado */
+}
+
+
+.form-wrapper {
+    height: 100vh;
+}
+
+.form-wrapper .col-md-6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-wrapper form {
+    width: 100%;
+}
+
+.form-wrapper .btn--primary {
+    width: 100%;
+}
+.team-member img {
+    width: 35%; /* Definindo a largura da imagem como 100% */
+    height: auto; /* Permitindo que a altura seja ajustada automaticamente */
+}
+
+
+
+
+/* Reduzindo o espaçamento entre as colunas */
+
+.team-member {
+    margin-left: -10px;
+    margin-right: 100px;
 }
