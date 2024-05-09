@@ -1,8 +1,11 @@
 package com.soulcode.chamaelas.ChamaElas.config;
+import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
 import com.soulcode.chamaelas.ChamaElas.models.FuncaoModel;
 import com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;
+import com.soulcode.chamaelas.ChamaElas.repositories.ChamadoRepository;
 import com.soulcode.chamaelas.ChamaElas.repositories.FuncaoRepository;
 import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
+import com.soulcode.chamaelas.ChamaElas.services.ChamadoService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -22,6 +25,9 @@ public class AdminConfig implements CommandLineRunner {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    private ChamadoService chamadoService;
 
     @Override
     @Transactional
@@ -43,6 +49,9 @@ public class AdminConfig implements CommandLineRunner {
             user.setPassword(passwordEncoder.encode("1234"));
             user.setFuncao(funcaoAdmin);
             usuarioRepository.save(user);
+
+            // CRIANDO CHAMADOS FICTICIOS PARA TESTE
+            chamadoService.criaChamadosFicticios();
         }
     }
 }

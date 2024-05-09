@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="pt-br">
+<html class="no-js" lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <!--- basic page needs ================================================== -->
     <meta charset="utf-8">
@@ -52,7 +52,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 text-center"> <!-- Texto à esquerda em telas médias e grandes -->
-            <h2>Bem vindo!</h2>
+            <h2>Olá, <span th:text="${nomeUsuario}"></span>!</h2>
         </div>
 
     </div>
@@ -84,24 +84,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <select required>
-                            <option></option>
-                            <option value="alta" style="color: black;">Alta</option>
-                            <option value="media" style="color: black;">Média</option>
-                            <option value="baixa" style="color: black;">Baixa</option>
-                        </select>
-                    </td>
-                    <td></td>
-                    <td></td>
-
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
+                <tr th:each="chamado : ${chamados}">
+                    <td th:text="${chamado.descricao}"></td>
+                    <td th:text="${chamado.prioridade}"></td>
+                    <!-- Adicione mais colunas conforme necessário -->
                     <td>
                         <select required>
                             <option></option>

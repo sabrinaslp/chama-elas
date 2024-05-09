@@ -112,4 +112,21 @@ public class ChamadoService {
         TecnicoModel tecnicoLogado = (TecnicoModel) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return chamadoRepository.findByTecnico(tecnicoLogado);
     }
+
+    public void criaChamadosFicticios() {
+        ChamadoModel chamado1 = new ChamadoModel();
+        chamado1.setDescricao("Chamado Teste 1");
+        chamado1.setSetor("Administrativo");
+        chamado1.setStatus(ChamadoModel.TicketStatus.ABERTO);
+        chamado1.setPrioridade(ChamadoModel.Prioridade.AGUARDANDO);
+        chamadoRepository.save(chamado1);
+
+        ChamadoModel chamado2 = new ChamadoModel();
+        chamado2.setDescricao("Chamado Teste 2");
+        chamado2.setSetor("TI");
+        chamado2.setStatus(ChamadoModel.TicketStatus.ABERTO);
+        chamado2.setPrioridade(ChamadoModel.Prioridade.AGUARDANDO);
+        chamadoRepository.save(chamado2);
+    }
+
 }
