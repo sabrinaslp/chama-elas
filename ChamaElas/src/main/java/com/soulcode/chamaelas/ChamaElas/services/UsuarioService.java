@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.server.ResponseStatusException;
@@ -33,10 +34,14 @@ public class UsuarioService {
     @Autowired
     private AutenticacaoService autenticacaoService;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     // Listar todos os chamados criados pelo usuário
     public List<ChamadoModel> listarChamadosUsuario(ClienteModel cliente) {
         return chamadoRepository.findByCliente(cliente);
     }
+
     // Listar todos os chamados criados pelo usuário que ainda estão em aberto
     public List<ChamadoModel> listarChamadosEmAbertoDoUsuario(ClienteModel usuario) {
         return chamadoRepository.findByClienteAndStatus(usuario, ChamadoModel.TicketStatus.ABERTO);
@@ -51,6 +56,8 @@ public class UsuarioService {
         autenticacaoService.verificarCadastroUsuario(nome, email, senha, confirmacaoSenha);
         var funcaoNovoUsuario = atribuirFuncaoAoUsuario(funcao);
         var usuarioModel = criarUsuario(nome, email, senha, funcaoNovoUsuario);
+        String senhaCodificada = bCryptPasswordEncoder.encode(usuarioModel.getSenha());
+        usuarioModel.setSenha(senhaCodificada);
         usuarioRepository.save(usuarioModel);
 
         model.addAttribute("successMessage", "Usuário cadastrado com sucesso! Faça o login para acessar sua conta.");

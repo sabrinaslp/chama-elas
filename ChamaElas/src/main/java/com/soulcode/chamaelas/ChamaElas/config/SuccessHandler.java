@@ -19,12 +19,12 @@ public class SuccessHandler implements AuthenticationSuccessHandler {
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         String role = authorities.stream().findFirst().map(GrantedAuthority::getAuthority).orElse("");
 
-        if (role.equals("USER")){
-            response.sendRedirect("/dashboard-usuario");
-        } else if (role.equals("TECH")){
-            response.sendRedirect("/dashboard-tecnico");
-        } else if (role.equals("ADMIN")){
-            response.sendRedirect("/dashboard-admin");
+        if (role.equals("Cliente")){
+            response.sendRedirect("/usuario-chamados");
+        } else if (role.equals("Técnico")){
+            response.sendRedirect("/pagina-tecnico");
+        } else if (role.equals("Admin")){
+            response.sendRedirect("/administrador-chamado");
         }
     }
 }

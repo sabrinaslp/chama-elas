@@ -4,19 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba0dc791-a15a-44c9-9843-69f38623fcf0" name="Changes" comment="Adicionando Chamado Controller e Setor Controller">
-      <change afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/administrador.chamado.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/cadastro.usuario.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/login.usuario.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/abertura.chamado.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/abertura.chamado.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/botoes.usuarios.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/botoes.usuarios.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/login.administrador.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/login.administrador.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/login.tecnico.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/login.tecnico.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/styles.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/styles.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/tecnicos.chamados.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/tecnicos.chamados.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/usuario.chamados.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/usuario.chamados.html" afterDir="false" />
+    <list default="true" id="ba0dc791-a15a-44c9-9843-69f38623fcf0" name="Changes" comment="Organizando páginas HTML">
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +24,7 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="implementacao-tecnico-controller" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,34 +55,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ChamaElasApplication.executor": "Run",
-    "Maven.ChamaElas [clean].executor": "Run",
-    "Maven.ChamaElas [install].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.ChamaElasApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/chama-elas/ChamaElas/src/main/resources/templates",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ChamaElasApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.ChamaElas [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.ChamaElas [install].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ChamaElasApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/chama-elas/ChamaElas/src/main/resources/templates&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Sabrina\Desktop\chama-elas\ChamaElas\src\main\resources\static" />
@@ -210,7 +199,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715194535528</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Organizando páginas HTML">
+      <option name="closed" value="true" />
+      <created>1715218995592</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1715218995592</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +235,7 @@
     <MESSAGE value="Ajuste no método obterOuCriarFuncao" />
     <MESSAGE value="Adicionando Chamado Controller e Setor Controller" />
     <MESSAGE value="Tela de administrador" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tela de administrador" />
+    <MESSAGE value="Organizando páginas HTML" />
+    <option name="LAST_COMMIT_MESSAGE" value="Organizando páginas HTML" />
   </component>
 </project>
