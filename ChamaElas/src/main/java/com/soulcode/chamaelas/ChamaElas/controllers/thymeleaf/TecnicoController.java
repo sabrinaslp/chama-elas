@@ -7,6 +7,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -32,9 +34,15 @@ public class TecnicoController {
         return "tecnico-chamados";
     }
 
+    @PostMapping("/atender-chamado")
+    public String atenderChamado(@RequestParam("chamadoId") Long chamadoId, @RequestParam("prioridade") ChamadoModel.Prioridade prioridade) {
+        chamadoService.alteraStatusEPrioridadeDoChamado(chamadoId, prioridade);
+        return "redirect:/pagina-tecnico";
+    }
+
     /* PENDENTES:
         - (OK) Implementar a lógica para aparecer o nome do usuário e os chamados em aberto
-        - Implementar a lógica para atribuir prioridade ao chamado, através do formulário
+        - (OK) Implementar a lógica para atribuir prioridade ao chamado, através do formulário
         - Implementar a lógica para aparecer os chamados atribuido ao tecnico logado na parte debaixo
         - Implementar a lógica para aparecer os detalhes do chamado
         - Implementar a lógica para atribuir status ao chamado, através do formulário

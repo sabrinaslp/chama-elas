@@ -66,7 +66,6 @@ public class ChamadoService {
         return usuarioService.listarChamadosUsuario(cliente);
     }
 
-
     // Edita um chamado do usuário
     public ChamadoModel editarChamadoUsuario(Long ticketId) {
         return chamadoRepository.findById(ticketId).orElse(null);
@@ -113,6 +112,18 @@ public class ChamadoService {
         return chamadoRepository.findByTecnico(tecnicoLogado);
     }
 
+    // Altera o status e a prioridade do chamado na página do técnico
+    public void alteraStatusEPrioridadeDoChamado(Long chamadoId, ChamadoModel.Prioridade prioridade) {
+        ChamadoModel chamado = chamadoRepository.findById(chamadoId)
+                .orElseThrow(() -> new RuntimeException("Chamado não encontrado"));
+
+        chamado.setStatus(ChamadoModel.TicketStatus.EM_ANDAMENTO);
+        chamado.setPrioridade(prioridade);
+
+        chamadoRepository.save(chamado);
+    }
+
+    // Cria chamados ficticios para serem realizados testes
     public void criaChamadosFicticios() {
         ChamadoModel chamado1 = new ChamadoModel();
         chamado1.setTitulo("Chamado Teste 1");
