@@ -40,6 +40,10 @@ public class UsuarioService {
     @Autowired
     private TecnicoRepository tecnicoRepository;
 
+    @Autowired
+    private EmailService emailService;
+
+
     // Listar todos os chamados criados pelo usuário
     public List<ChamadoModel> listarChamadosUsuario(ClienteModel cliente) {
         return chamadoRepository.findByCliente(cliente);
@@ -59,8 +63,6 @@ public class UsuarioService {
         autenticacaoService.verificarCadastroUsuario(nome, email, senha, confirmacaoSenha);
         FuncaoModel funcaoNovoUsuario = atribuirFuncaoAoUsuario(funcao);
 
-        System.out.println(funcaoNovoUsuario.getNome());
-
         if (funcaoNovoUsuario.getNome().equals(FuncaoModel.Values.CLIENTE.getNome())) {
             cadastrarNovoCliente(nome, email, senha, funcaoNovoUsuario, endereco);
         } else if (funcaoNovoUsuario.getNome().equals(FuncaoModel.Values.TECNICO.getNome())) {
@@ -68,6 +70,9 @@ public class UsuarioService {
         } else {
             throw new IllegalArgumentException("Função de usuário inválida: " + funcaoNovoUsuario);
         }
+
+        // Envio de e-mail de boas-vindas
+        emailService.enviarEmailBoasVindas(email, nome);
 
         model.addAttribute("successMessage", "Usuário cadastrado com sucesso! Faça o login para acessar sua conta.");
     }

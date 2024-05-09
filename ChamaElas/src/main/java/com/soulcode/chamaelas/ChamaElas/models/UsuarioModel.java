@@ -1,9 +1,12 @@
 package com.soulcode.chamaelas.ChamaElas.models;
+
+import com.soulcode.chamaelas.ChamaElas.models.FuncaoModel;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,6 +32,8 @@ public class UsuarioModel implements Serializable {
 
     private String senha;
 
+    public LocalDate dataExpiracaoTeste;
+
     @Column(name = "esta_ativo", nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
     private boolean estaAtivo;
 
@@ -37,7 +42,7 @@ public class UsuarioModel implements Serializable {
     private FuncaoModel funcao;
 
     @CreationTimestamp
-    private Instant dataRegistro;
+    private LocalDate dataRegistro;
 
 
     public void desativarUsuario() {
@@ -54,5 +59,10 @@ public class UsuarioModel implements Serializable {
     public String getPassword() {
         return this.senha;
     }
+
+    public void setDataExpiracaoTeste(LocalDate dataExpiracaoTeste) {
+        this.dataExpiracaoTeste = dataExpiracaoTeste;
+    }
+
 
 }
