@@ -31,4 +31,14 @@ public class TecnicoController {
 
         return "tecnico-chamados";
     }
+
+    /* PENDENTES:
+        - (OK) Implementar a lógica para aparecer o nome do usuário e os chamados em aberto
+        - Implementar a lógica para atribuir prioridade ao chamado, através do formulário
+        - Implementar a lógica para aparecer os chamados atribuido ao tecnico logado na parte debaixo
+        - Implementar a lógica para aparecer os detalhes do chamado
+        - Implementar a lógica para atribuir status ao chamado, através do formulário
+        - Implementar a lógica para reformatar a data
+    */
+
 }

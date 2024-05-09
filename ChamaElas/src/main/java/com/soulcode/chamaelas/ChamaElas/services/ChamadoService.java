@@ -119,7 +119,7 @@ public class ChamadoService {
         chamado1.setDescricao("Problema na impressora");
         chamado1.setSetor("Administrativo");
         chamado1.setStatus(ChamadoModel.TicketStatus.ABERTO);
-        chamado1.setPrioridade(ChamadoModel.Prioridade.AGUARDANDO);
+        chamado1.setPrioridade(null);
         chamadoRepository.save(chamado1);
 
         ChamadoModel chamado2 = new ChamadoModel();
@@ -127,7 +127,7 @@ public class ChamadoService {
         chamado2.setDescricao("Problema no teclado");
         chamado2.setSetor("TI");
         chamado2.setStatus(ChamadoModel.TicketStatus.ABERTO);
-        chamado2.setPrioridade(ChamadoModel.Prioridade.AGUARDANDO);
+        chamado2.setPrioridade(null);
         chamadoRepository.save(chamado2);
     }
 

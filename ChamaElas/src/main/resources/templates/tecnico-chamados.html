@@ -80,8 +80,8 @@
                 <tr>
                     <th>Título</th>
                     <th>Descrição</th>
-                    <th>Prioridade</th>
                     <th>Data de início</th>
+                    <th>Prioridade</th>
                     <th>Chamado</th> <!-- Mudança de "Detalhes" para "Chamado" -->
                 </tr>
                 </thead>
@@ -89,8 +89,7 @@
                 <tr th:each="chamado : ${chamadosEmAberto}">
                     <td th:text="${chamado.titulo}"></td>
                     <td th:text="${chamado.descricao}"></td>
-<!--                    <td th:text="${chamado.dataRegistroAtualizada}"></td>-->
-                    <!-- Adicione mais colunas conforme necessário -->
+                    <td th:text="${chamado.dataRegistroAtualizada}"></td>
                     <td>
                         <select required>
                             <option></option>
@@ -99,13 +98,13 @@
                             <option value="baixa" style="color: black;">Baixa</option>
                         </select>
                     </td>
-                    <td></td>
-                    <td>
+                    <td class="text-center">
                         <!-- Adicionando botão para atender chamado -->
-                        <div class="home-content__button">
+                        <div class="home-content__button" style="margin-top: 0.5rem;">
                             <input class="btn--primary full-width" type="submit" value="Atender Chamado">
                         </div>
                     </td>
+
                 </tr>
                 </tbody>
             </table>
@@ -118,8 +117,8 @@
                 <tr>
                     <th>Título</th>
                     <th>Descrição</th>
-                    <th>Prioridade</th>
                     <th>Data de início</th>
+                    <th>Prioridade</th>
                     <th>Status</th>
                     <th>Detalhes</th> <!-- Mudança de "Chamado" para "Detalhes" -->
                 </tr>
@@ -128,6 +127,7 @@
                 <tr>
                     <td></td>
                     <td></td>
+                    <td></td> <!-- Coluna vazia para a data de início -->
                     <td>
                         <select required>
                             <option></option>
@@ -136,7 +136,6 @@
                             <option value="baixa" style="color: black;">Baixa</option>
                         </select>
                     </td>
-                    <td></td>
                     <td>
                         <select>
                             <option></option>
@@ -145,10 +144,9 @@
                             <option value="Aberto" style="color: black;">Em atendimento</option>
                         </select>
                     </td>
-                    <td>
-                        <!-- Adicionando botão para visualizar detalhes -->
-                        <div class="home-content__button">
-                            <input class="btn--primary full-width" type="submit" value="Visualizar Detalhes">
+                    <td class="text-center">
+                        <div class="home-content__button" style="margin-top: 0.5rem;">
+                            <input class="btn--primary full-width" type="submit" value="Visualizar">
                         </div>
                     </td>
                 </tr>
