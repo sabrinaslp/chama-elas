@@ -7,6 +7,7 @@ import com.soulcode.chamaelas.ChamaElas.repositories.ChamadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;
@@ -56,7 +57,12 @@ public class ChamadoService {
     }
 
     // Cria um novo chamado
-    public ChamadoModel criarChamado() {
+    public ChamadoModel criarChamado(Long id, String descricao, String prioridade, Model model ) {
+        ChamadoModel novoChamado = new ChamadoModel();
+        return chamadoRepository.save(novoChamado);
+    }
+    public ChamadoModel criarChamado()
+    {
         ChamadoModel novoChamado = new ChamadoModel();
         return chamadoRepository.save(novoChamado);
     }
