@@ -3,12 +3,15 @@ package com.soulcode.chamaelas.ChamaElas.services;
 import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
 import com.soulcode.chamaelas.ChamaElas.models.ClienteModel;
 import com.soulcode.chamaelas.ChamaElas.models.TecnicoModel;
+import com.soulcode.chamaelas.ChamaElas.models.dto.ChamadoDTO;
+import com.soulcode.chamaelas.ChamaElas.models.dto.ClienteDTO;
 import com.soulcode.chamaelas.ChamaElas.repositories.ChamadoRepository;
 import com.soulcode.chamaelas.ChamaElas.repositories.TecnicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;
@@ -61,15 +64,30 @@ public class ChamadoService {
     }
 
     // Cria um novo chamado
-    public ChamadoModel criarChamado() {
+    public ChamadoModel criarChamado(String titulo, String descricao,  ClienteModel model ) {
+     //   ChamadoDTO novoChamado = new ChamadoDTO(id,"", descricao ,"" ,"0",prioridade);
+
+        ChamadoModel novoChamado = new ChamadoModel();
+        novoChamado.setTitulo(titulo);
+        novoChamado.setDescricao(descricao);
+        //novoChamado.setSetor(prioridade);
+        novoChamado.setStatus(ChamadoModel.TicketStatus.ABERTO);
+        novoChamado.setCliente(model);
+
+        return chamadoRepository.save(novoChamado);
+    }
+    public ChamadoModel criarChamado()
+    {
         ChamadoModel novoChamado = new ChamadoModel();
         return chamadoRepository.save(novoChamado);
     }
 
     // Lista chamados relacionados ao usuário
-    public List<ChamadoModel> listarChamadosUsuario(ClienteModel cliente) {
+    public List<ChamadoModel> listarChamadosCliente(ClienteModel cliente) {
         return usuarioService.listarChamadosUsuario(cliente);
     }
+
+
 
     // Edita um chamado do usuário
     public ChamadoModel editarChamadoUsuario(Long ticketId) {

@@ -32,7 +32,7 @@ public class ChamadoControllerAPI {
             return Collections.emptyList();
         }
         // Lista os chamados do cliente logado
-        return chamadoService.listarChamadosUsuario(clienteLogado);
+        return chamadoService.listarChamadosCliente(clienteLogado);
     }
 
 

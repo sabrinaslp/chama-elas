@@ -59,7 +59,7 @@ public class UsuarioController {
 
         if (tokenValido) {
             // Se o token for válido, redirecione para a página de abertura de chamados
-            return "redirect:/abertura-chamados";
+            return "redirect:/pagina-cliente";
         } else {
             // Se o token for inválido, retorne para a página de validação com uma mensagem de erro
             model.addAttribute("error", "Token inválido. Por favor, verifique novamente.");

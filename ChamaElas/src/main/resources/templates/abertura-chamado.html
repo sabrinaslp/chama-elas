@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="pt-br">
+<html class="no-js" lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 
     <!--- basic page needs
@@ -15,13 +15,13 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="../static/css/base.css">
-    <link rel="stylesheet" href="../static/css/vendor.css">
-    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/vendor.css">
+    <link rel="stylesheet" href="/css/main.css">
 
     <!-- script
     ================================================== -->
-    <script src="../templates/js/modernizr.js"></script>
+    <script src="/js/modernizr.js"></script>
 
     <!-- favicons
     ================================================== -->
@@ -84,34 +84,37 @@
         <br>
         <br>
         <br>
-        <h2>Bem vindo !</h2>
+
         <h3>Abertura de Chamado</h3>
-        <form>
-            <div class="form-group">
-                <label for="nameInput">Nome:</label>
-                <input class="full-width" type="text" placeholder="Seu nome completo" id="nameInput" required>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center"> <!-- Texto à esquerda em telas médias e grandes -->
+                    <h2>Olá, <span th:text="${nomeUsuario}"></span>!</h2>
+                </div>
             </div>
+        </div>
+
+        <div th:if="${error}" class="alert-box alert-box--error" style="text-align: center">
+            <p th:text="${error}" style="margin-bottom: 0;"></p>
+            <i class="fa fa-times alert-box__close" aria-hidden="true"></i>
+        </div>
+        <form action="/grava-chamado" method="post">
+
             <div class="form-group">
-                <label for="emailInput">E-mail</label>
-                <input class="full-width" type="email" placeholder="Seu e-mail" id="emailInput" required>
+                <label for="tituloInput">Titulo</label>
+                <input class="form-control full-width" placeholder="Descreve o titulo" id="tituloInput" name="titulo" required>
             </div>
+
             <div class="form-group">
-                <label for="urgencyInput">Urgência do Chamado</label>
-                <select class="full-width" id="urgencyInput" required>
-                    <option value="" style="color: black;">Selecione a urgência do chamado</option>
-                    <option value="low"style="color: black;">Baixa</option>
-                    <option value="medium"style="color: black;">Média</option>
-                    <option value="high"style="color: black;">Alta</option>
-                </select>
+                <label for="descricaoInput">Descrição do Problema</label>
+                <textarea class="full-width"  name="descricao" placeholder="Descreva o problema detalhadamente" id="descricaoInput" required></textarea>
+
             </div>
-            <div class="form-group">
-                <label for="issueDescriptionInput">Descrição do Problema</label>
-                <textarea class="full-width" placeholder="Descreva o problema detalhadamente" id="issueDescriptionInput" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="photoInput">Anexar Arquivo</label>
-                <input class="full-width" type="file" id="photoInput">
-            </div>
+            <!-- <div class="form-group">
+                 <label for="photoInput">Anexar Arquivo</label>
+                 <input class="full-width" type="file" id="photoInput">
+             </div>-->
             <input class="btn--primary full-width" type="submit" value="Abrir Chamado">
         </form>
     </div>
@@ -122,9 +125,9 @@
 
 <!-- Java Script
 ================================================== -->
-<script src="../static/js/jquery-3.2.1.min.js"></script>
-<script src="../static/js/plugins.js"></script>
-<script src="../static/js/main.js"></script>
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
 
 
 </body>
