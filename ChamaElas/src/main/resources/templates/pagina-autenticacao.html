@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>ChamaElas</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/vendor.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="/js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+
+<body id="top">
+
+<!-- preloader
+================================================== -->
+<div id="preloader">
+    <div id="loader" class="dots-jump">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+<!-- header
+================================================== -->
+<header class="s-header">
+
+
+    <nav class="header-nav">
+
+        <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+
+        <h3>Menu</h3>
+
+        <div class="header-nav__content">
+
+            <ul class="header-nav__list">
+                <li><a class="smoothscroll" href="#home" title="home">Início</a></li>
+                <li><a class="smoothscroll" href="#about" title="about">Sobre nós</a></li>
+                <li><a class="smoothscroll" href="#services" title="services">Sistema</a></li>
+                <li><a class="smoothscroll" href="#contact" title="contact">Contato</a></li>
+            </ul>
+
+            <p>© 2024 ChamaElas. Todos os direitos reservados.</p>
+
+
+        </div> <!-- end header-nav__content -->
+
+    </nav> <!-- end header-nav -->
+
+    <a class="header-menu-toggle" href="#0">
+        <span class="header-menu-icon"></span>
+    </a>
+
+</header> <!-- end s-header -->
+
+<div class="row form-wrapper justify-content-center align-items-center" style="height: 100vh;">
+    <div class="col-md-6">
+        <h3 class="text-center">Verificação de cadastro</h3>
+        <div th:if="${error}" class="alert-box alert-box--error hideit" style="text-align: center">
+            <p th:text="${error}" style="margin-bottom: 0;"></p>
+        </div>
+        <!-- Formulário para solicitar token de autenticação -->
+        <div class="login-form">
+            <form action="/verificar-token" method="post" style="margin-bottom: 1rem;">
+                <div class="form-group">
+                    <label for="authToken">Informe o token recebido pelo e-mail</label>
+                    <input class="form-control full-width" type="text" placeholder="Digite o token recebido" id="authToken" name="authToken" required>
+                </div>
+                <button type="submit" class="btn btn--primary full-width">Verificar Token</button>
+            </form>
+        </div>
+        <!-- Fim do formulário de solicitação de token -->
+
+    </div>
+</div>
+
+
+<!-- Java Script
+================================================== -->
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
+
+</body>
+</html>
