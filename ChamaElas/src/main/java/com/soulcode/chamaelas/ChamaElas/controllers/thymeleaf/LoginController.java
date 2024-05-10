@@ -11,6 +11,9 @@ public class LoginController {
         return "login-usuario";
     }
 
-
+    @GetMapping("/pagina-autenticacao")
+    public String showPaginaAutenticaco() {
+        return "pagina-autenticacao";
+    }
 
 }
