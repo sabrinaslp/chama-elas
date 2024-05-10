@@ -52,16 +52,25 @@ public class TecnicoController {
     public String detalhesChamado(@RequestParam("chamadoId") Long chamadoId, Model model) {
         var chamado = chamadoService.findById(chamadoId).orElseThrow();
         model.addAttribute("chamado", chamado);
+
+        if (chamado.getStatus() == ChamadoModel.TicketStatus.FECHADO && chamado.getMotivoEncerramento() != null) {
+            model.addAttribute("motivoEncerramento", chamado.getMotivoEncerramento());
+        }
+
         return "detalhes-chamado-tecnico";
     }
 
     @PostMapping("/alterar-status")
     public String alterarStatusChamado(@RequestParam("chamadoId") Long chamadoId,
-                                       @RequestParam("status") ChamadoModel.TicketStatus status) {
+                                       @RequestParam("status") ChamadoModel.TicketStatus status,
+                                       @RequestParam(value = "motivoEncerramento", required = false) String motivoEncerramento) {
         if (status == ChamadoModel.TicketStatus.ABERTO) {
-            chamadoService.desassociarTecnicoChamado(chamadoId, status);
+            chamadoService.desassociarDadosAtribuidosAoChamado(chamadoId, status);
+        } else if (status == ChamadoModel.TicketStatus.FECHADO && motivoEncerramento != null) {
+            chamadoService.definirMotivoEncerramento(chamadoId, status, motivoEncerramento);
+        } else {
+            chamadoService.alterarStatusChamado(chamadoId, status);
         }
-        chamadoService.alterarStatusChamado(chamadoId, status);
         return "redirect:/pagina-tecnico";
     }
 }
