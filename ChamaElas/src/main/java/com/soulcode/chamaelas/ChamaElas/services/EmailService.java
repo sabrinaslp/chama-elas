@@ -20,11 +20,12 @@ public class EmailService {
     @Value("${spring.mail.password}")
     private String password;
 
-    public void enviarEmailBoasVindas(String destinatario, String nomeUsuario) {
+    public void enviarEmailBoasVindas(String destinatario, String nomeUsuario, String token) {
         String assunto = "Bem-vindo(a) ao ChamaElas!";
         String corpo = "<html><body>" +
                 "<p>Olá, <strong>" + nomeUsuario + "</strong>!</p>" +
                 "<p>Você se registrou em nossa aplicação e tem direito a 7 dias de teste gratuito! Aproveite para conhecer todos os recursos e funcionalidades.</p>" +
+                "<p>Seu token de confirmação é: <strong>" + token + "</strong></p>" +
                 "<p>Atenciosamente,<br>ChamaElas</p>" +
                 "</body></html>";
 

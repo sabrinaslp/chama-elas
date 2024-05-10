@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba0dc791-a15a-44c9-9843-69f38623fcf0" name="Changes" comment="Adicionando página para detalhes do chamado">
-      <change afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/EmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_21_11__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_21_11__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_22_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_22_14__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_05_2024_18_39__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_05_2024_18_39__Changes_.xml" afterDir="false" />
+    <list default="true" id="ba0dc791-a15a-44c9-9843-69f38623fcf0" name="Changes" comment="Implementação envio automático de email após cadastro">
+      <change afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/GerarToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/TokenModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/UsuarioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/UsuarioModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/dto/UsuarioDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/dto/UsuarioDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/UsuarioService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,12 +39,12 @@
     &quot;assignee&quot;: &quot;szrayane&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/szrayane/chama-elas.git",
-    "accountId": "26288faf-82cb-4b0b-8e62-001a28479690"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/szrayane/chama-elas.git&quot;,
+    &quot;accountId&quot;: &quot;26288faf-82cb-4b0b-8e62-001a28479690&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -269,7 +265,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715286134084</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Implementação envio automático de email após cadastro">
+      <option name="closed" value="true" />
+      <created>1715290700269</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1715290700269</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,6 +309,7 @@
     <MESSAGE value="Ajustes na criação do usuário para criar conforme o tipo específico (Cliente ou Técnico)" />
     <MESSAGE value="Implementação da lógica para atribuir técnico ao chamado e também separar os chamados atribuidos" />
     <MESSAGE value="Adicionando página para detalhes do chamado" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adicionando página para detalhes do chamado" />
+    <MESSAGE value="Implementação envio automático de email após cadastro" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementação envio automático de email após cadastro" />
   </component>
 </project>
