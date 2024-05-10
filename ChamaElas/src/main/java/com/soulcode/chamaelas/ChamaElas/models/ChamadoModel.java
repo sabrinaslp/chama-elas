@@ -48,6 +48,9 @@ public class ChamadoModel {
     @ManyToOne
     private AdminModel adminAtribuido;
 
+    @Column(columnDefinition = "TEXT")
+    private String motivoEncerramento;
+
     @Getter
     public enum Prioridade {
         AGUARDANDO("Aguardando técnico"),
