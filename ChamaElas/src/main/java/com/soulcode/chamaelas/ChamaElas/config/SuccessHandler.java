@@ -20,7 +20,7 @@ public class SuccessHandler implements AuthenticationSuccessHandler {
         String role = authorities.stream().findFirst().map(GrantedAuthority::getAuthority).orElse("");
 
         if (role.equals("Cliente")){
-            response.sendRedirect("/usuario-chamados");
+            response.sendRedirect("/pagina-cliente");
         } else if (role.equals("Técnico")){
             response.sendRedirect("/pagina-tecnico");
         } else if (role.equals("Admin")){
