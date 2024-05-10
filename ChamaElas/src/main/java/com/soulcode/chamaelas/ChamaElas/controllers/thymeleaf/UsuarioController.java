@@ -1,4 +1,5 @@
 package com.soulcode.chamaelas.ChamaElas.controllers.thymeleaf;
+
 import com.soulcode.chamaelas.ChamaElas.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -16,7 +17,6 @@ public class UsuarioController {
 
     @GetMapping("/cadastro-usuario")
     public String mostrarPaginaCadastroUsuario() {
-
         return "cadastro-usuario";
     }
 
@@ -40,7 +40,7 @@ public class UsuarioController {
             // Chama o serviço para cadastrar o novo usuário
             usuarioService.cadastrarNovoUsuario(nome, email, senha, confirmacaoSenha, funcao, endereco, telefone, setor, token, model);
 
-            // Redireciona para a página de autenticação
+            // Redireciona para a página de validação do token
             return "redirect:/pagina-autenticacao";
         } catch (DataIntegrityViolationException | IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());
@@ -48,6 +48,22 @@ public class UsuarioController {
         } catch (Exception e) {
             model.addAttribute("error", "Ocorreu um erro ao processar o cadastro do usuário.");
             return "cadastro-usuario";
+        }
+    }
+
+    // Método para lidar com a validação do token
+    @PostMapping("/verificar-token")
+    public String verificarToken(@RequestParam("authToken") String authToken, Model model) {
+        // Lógica para verificar o token no banco de dados
+        boolean tokenValido = usuarioService.verificarToken(authToken);
+
+        if (tokenValido) {
+            // Se o token for válido, redirecione para a página de abertura de chamados
+            return "redirect:/abertura-chamados";
+        } else {
+            // Se o token for inválido, retorne para a página de validação com uma mensagem de erro
+            model.addAttribute("error", "Token inválido. Por favor, verifique novamente.");
+            return "pagina-autenticacao";
         }
     }
 }

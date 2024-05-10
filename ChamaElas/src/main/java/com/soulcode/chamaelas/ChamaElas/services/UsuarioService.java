@@ -135,9 +135,9 @@ public class UsuarioService {
         return chamadoRepository.findByCliente(usuario);
     }
 
-    public UsuarioDTO UsuarioPorEmail(String email){
+    public UsuarioDTO UsuarioPorEmail(String email) {
         Optional<UsuarioModel> usuario = usuarioRepository.findByEmail(email);
-        if(usuario.isEmpty()){
+        if (usuario.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                     "Usuário não encontrado");
         }
@@ -175,4 +175,23 @@ public class UsuarioService {
         // Retorna o token como uma string
         return tokenBuilder.toString();
     }
+
+
+    public boolean verificarToken(String token) {
+        // Lógica para verificar se o token existe no banco de dados
+        Optional<UsuarioModel> usuarioOptional = usuarioRepository.findByToken(token);
+
+        // Se o token existir no banco de dados
+        if (usuarioOptional.isPresent()) {
+            UsuarioModel usuario = usuarioOptional.get();
+
+            // Retorna o resultado da verificação de token na classe UsuarioModel
+            return usuario.verificarToken(token, usuario.getToken());
+        } else {
+            // Se o token não existir no banco de dados, retorna false
+            return false;
+        }
+    }
 }
+
+
