@@ -22,21 +22,29 @@ public class SecurityConfig {
         return new SuccessHandler();
     }
 
+
     @Bean
     public SecurityFilterChain securityFilter(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests( authorize -> authorize
-                        .requestMatchers( "/", "/assets/**", "/css/**", "/images/**", "/js/**", "/criar-usuario", "/atualizar-usuario/**",
-                                "/pagina-autenticacao", "/cadastro-usuario","/pagina-cliente","/abertura-chamado", "/login").permitAll()
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/", "/assets/**", "/css/**", "/images/**", "/js/**", "/criar-usuario", "/atualizar-usuario/**",
+                                "/pagina-autenticacao", "/verificar-token", "/cadastro-usuario", "/pagina-cliente", "/abertura-chamado", "/login").permitAll()
                         .anyRequest().authenticated())
-                .formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login")
-                        .successHandler(authenticationSuccessHandler()).permitAll())
-                .logout(form -> form.invalidateHttpSession(true).clearAuthentication(true)
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .successHandler(authenticationSuccessHandler())
+                        .permitAll())
+                .logout(form -> form
+                        .invalidateHttpSession(true)
+                        .clearAuthentication(true)
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                        .logoutSuccessUrl("/login?logout").permitAll())
+                        .logoutSuccessUrl("/login?logout")
+                        .permitAll())
                 .csrf(AbstractHttpConfigurer::disable);
         return http.build();
     }
+
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
