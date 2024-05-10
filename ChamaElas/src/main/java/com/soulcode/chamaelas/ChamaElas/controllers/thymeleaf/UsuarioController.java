@@ -1,6 +1,8 @@
 package com.soulcode.chamaelas.ChamaElas.controllers.thymeleaf;
 
 import com.soulcode.chamaelas.ChamaElas.services.UsuarioService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -51,17 +53,16 @@ public class UsuarioController {
         }
     }
 
-    // Método para lidar com a validação do token
     @PostMapping("/verificar-token")
-    public String verificarToken(@RequestParam("authToken") String authToken, Model model) {
-        // Lógica para verificar o token no banco de dados
+    public String verificarToken(@RequestParam("authToken") String authToken, HttpServletRequest request, HttpServletResponse response, Model model) {
         boolean tokenValido = usuarioService.verificarToken(authToken);
 
         if (tokenValido) {
-            // Se o token for válido, redirecione para a página de abertura de chamados
-            return "redirect:/pagina-cliente";
+            // Invalida a sessão do usuário
+            request.getSession().invalidate();
+            // Redireciona para a página de login
+            return "redirect:/login";
         } else {
-            // Se o token for inválido, retorne para a página de validação com uma mensagem de erro
             model.addAttribute("error", "Token inválido. Por favor, verifique novamente.");
             return "pagina-autenticacao";
         }

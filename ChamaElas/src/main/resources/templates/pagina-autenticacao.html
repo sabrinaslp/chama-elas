@@ -1,90 +1,76 @@
 <!DOCTYPE html>
 <html class="no-js" lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-
-    <!--- basic page needs
-    ================================================== -->
+    <!-- Metas e links para CSS -->
     <meta charset="utf-8">
     <title>ChamaElas</title>
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <!-- mobile specific metas
-    ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSS
-    ================================================== -->
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/vendor.css">
     <link rel="stylesheet" href="/css/main.css">
-
-    <!-- script
-    ================================================== -->
-    <script src="/js/modernizr.js"></script>
-
-    <!-- favicons
-    ================================================== -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-
+    <style>
+        /* Estilos CSS personalizados */
+        .alert-box--info {
+            background-color: #333; /* Cor de fundo quase preta */
+            padding: 10px; /* Espaçamento interno */
+            border-radius: 12px; /* Bordas arredondadas */
+        }
+        .alert-box--info p {
+            margin: 0; /* Remove margem interna */
+            color: #ddd; /* Cor do texto */
+            font-size: 14px; /* Tamanho da fonte */
+            font-family: Arial, sans-serif; /* Fonte */
+        }
+        .alert-box--info span {
+            font-size: 12px; /* Tamanho do ícone */
+            color: #aaa; /* Cor do ícone */
+        }
+        .form-control {
+            line-height: 30px; /* Altura da linha */
+        }
+        .form-group label {
+            margin-bottom: 5px;
+            display: block; /* Faz com que as etiquetas ocupem sua própria linha */
+        }
+        /* Layout Options */
+        .login-form {
+            text-align: center; /* Centraliza o formulário horizontalmente */
+        }
+    </style>
 </head>
-
-
 <body id="top">
-
-<!-- preloader
-================================================== -->
-<div id="preloader">
-    <div id="loader" class="dots-jump">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-</div>
-
-<!-- header
-================================================== -->
+<!-- Estrutura HTML da página -->
 <header class="s-header">
-
-
     <nav class="header-nav">
-
         <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
-
         <h3>Menu</h3>
-
         <div class="header-nav__content">
-
             <ul class="header-nav__list">
                 <li><a class="smoothscroll" href="#home" title="home">Início</a></li>
                 <li><a class="smoothscroll" href="#about" title="about">Sobre nós</a></li>
                 <li><a class="smoothscroll" href="#services" title="services">Sistema</a></li>
                 <li><a class="smoothscroll" href="#contact" title="contact">Contato</a></li>
             </ul>
-
             <p>© 2024 ChamaElas. Todos os direitos reservados.</p>
-
-
-        </div> <!-- end header-nav__content -->
-
-    </nav> <!-- end header-nav -->
-
-    <a class="header-menu-toggle" href="#0">
-        <span class="header-menu-icon"></span>
-    </a>
-
-</header> <!-- end s-header -->
-
+        </div>
+    </nav>
+    <a class="header-menu-toggle" href="#0"><span class="header-menu-icon"></span></a>
+</header>
 <div class="row form-wrapper justify-content-center align-items-center" style="height: 100vh;">
     <div class="col-md-6">
         <h3 class="text-center">Verificação de cadastro</h3>
-        <div th:if="${error}" class="alert-box alert-box--error hideit" style="text-align: center">
-            <p th:text="${error}" style="margin-bottom: 0;"></p>
+        <!-- Mensagem sobre a necessidade de login -->
+        <div class="alert-box alert-box--info" style="text-align: center; margin-bottom: 2px;"> <!-- Adicionado display flex e align-items e justify-content para centralizar vertical e horizontalmente -->
+            <p><span style="font-size: 12px;">&#9432;</span> Por favor, faça login após validar o token.</p>
         </div>
-        <!-- Formulário para solicitar token de autenticação -->
+        <!-- Formulário de verificação de token -->
         <div class="login-form">
             <form action="/verificar-token" method="post" style="margin-bottom: 1rem;">
+                <!-- Campos do formulário -->
                 <div class="form-group">
                     <label for="authToken">Informe o token recebido pelo e-mail</label>
                     <input class="form-control full-width" type="text" placeholder="Digite o token recebido" id="authToken" name="authToken" required>
@@ -92,17 +78,15 @@
                 <button type="submit" class="btn btn--primary full-width">Verificar Token</button>
             </form>
         </div>
-        <!-- Fim do formulário de solicitação de token -->
-
+        <!-- Mensagem de token inválido -->
+        <div th:if="${error}" class="alert-box alert-box--error hideit" style="text-align: center; margin-top: 2px; margin-bottom: 0.5rem;">
+            <p th:text="${error}" style="margin-bottom: 0;"></p>
+        </div>
     </div>
 </div>
-
-
-<!-- Java Script
-================================================== -->
+<!-- Scripts JS -->
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
-
 </body>
 </html>
