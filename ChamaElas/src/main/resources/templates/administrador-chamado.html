@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="pt-br">
+<html class="no-js" lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <!-- basic page needs ================================================== -->
     <meta charset="utf-8">
@@ -35,7 +35,7 @@
     <div class="form-and-table row">
         <div class="col-six tab-full">
             <div class="custom-form">
-                <h2>Bem vindo!</h2>
+                <h2>Olá, <span th:text="${nomeUsuario}"></span>!</h2>
                 <br>
                 <br>
                 <div class="filter-chamados">
@@ -49,73 +49,67 @@
                         </select>
                     </div>
                 </div>
-
             </div>
-            <br>
-            <br>
 
-            <form>
-                <label for="exampleMessage"></label>
-                <textarea class="full-width" placeholder="Descrição do chamado" id="exampleMessage"></textarea>
-            </form>
-        </div>
+            <div class="row form-wrapper mover-tabela">
+                <div class="col-six tab-full">
+                    <h3>Chamados</h3>
+                    <div class="table-responsive">
+                        <table class="custom-table" style="width: 100%;">
+                            <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Descrição</th>
+                                <th>Data de início</th>
+                                <th>Cliente</th>
+                                <th>Técnico</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="chamado : ${listaChamados}">
+                                <td th:text="${chamado.titulo}"></td>
+                                <td th:text="${chamado.descricao}"></td>
+                                <td th:text="${#dates.format(chamado.dataRegistroAtualizada, 'dd-MM-yyyy - [HH:mm]')}"></td>
+                                <td th:if="${chamado.cliente != null}" th:text="${chamado.cliente.getNome()}"></td>
+                                <td th:if="${chamado.tecnico != null}" th:text="${chamado.tecnico.getNome()}"></td>
+                                <!--<form action="/atender-chamado" method="post">
+                                    <td>
 
-        <div class="col-six tab-full">
-            <div class="table-responsive">
-                <table class="custom-table">
-                    <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Assunto</th>
-                        <th>Prioridade</th>
-                        <th>Setor</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="table-cell"></td>
-                        <td class="table-cell"></td>
-                        <td class="table-cell"></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="table-cell"></td>
-                        <td class="table-cell"></td>
-                        <td class="table-cell"></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="table-cell"></td>
-                        <td class="table-cell"></td>
-                        <td class="table-cell"></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="table-cell"></td>
-                        <td class="table-cell"></td>
-                        <td class="table-cell"></td>
-                        <td></td>
-                    </tr>
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <td colspan="4" class="table-cell">Total de chamados: </td>
-                    </tr>
-                    </tfoot>
-                </table>
+                                        <label>
+                                            <select name="prioridade" required>
+                                                <option></option>
+                                                <option value="ALTA" style="color: black;">Alta</option>
+                                                <option value="MEDIA" style="color: black;">Média</option>
+                                                <option value="BAIXA" style="color: black;">Baixa</option>
+                                            </select>
+                                        </label>
+                                    </td>
+                                    <td class="text-center">
+                                        <input type="hidden" name="chamadoId" th:value="${chamado.ticketId}">
+                                        <div class="home-content__button" style="margin-top: 0.5rem;">
+                                            <input class="btn--primary full-width" type="submit" value="Atender Chamado">
+                                        </div>
+                                    </td>
+                                </form>-->
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+
+                </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Caixa de login do usuário -->
-    <div class="user-login-info">
-        <i class="fas fa-envelope"></i> <!-- Ícone de e-mail -->
-        <!-- Aqui você pode adicionar os detalhes do login do usuário -->
-        Usuário: Andressa <br>
-        <!-- Adicione mais informações conforme necessário -->
-    </div>
-
-</div> <!-- end container -->
+<!-- Caixa de login do usuário -->
+<div class="user-login-info" >
+    <i class="fas fa-envelope"></i> <!-- Ícone de e-mail -->
+    <!-- Aqui você pode adicionar os detalhes do login do usuário -->
+    Usuário: Andressa <br>
+    <!-- Adicione mais informações conforme necessário -->
+</div>
 
 <!-- Java Script ================================================== -->
 <script src="/js/jquery-3.2.1.min.js"></script>

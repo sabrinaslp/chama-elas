@@ -3,10 +3,14 @@ package com.soulcode.chamaelas.ChamaElas.services;
 import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
 import com.soulcode.chamaelas.ChamaElas.models.ClienteModel;
 import com.soulcode.chamaelas.ChamaElas.models.TecnicoModel;
+import com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;
 import com.soulcode.chamaelas.ChamaElas.models.dto.ChamadoDTO;
 import com.soulcode.chamaelas.ChamaElas.models.dto.ClienteDTO;
 import com.soulcode.chamaelas.ChamaElas.repositories.ChamadoRepository;
 import com.soulcode.chamaelas.ChamaElas.repositories.TecnicoRepository;
+import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,6 +24,8 @@ import java.util.Optional;
 public class ChamadoService {
 
     @Autowired
+    private UsuarioRepository usuarioRepository;
+    @Autowired
     private ChamadoRepository chamadoRepository;
 
     @Autowired
@@ -27,6 +33,14 @@ public class ChamadoService {
 
     @Autowired
     private UsuarioService usuarioService;
+
+
+    @Getter
+    @Setter
+    private String nomeCliente;
+
+    // Outros métodos
+
 
     // Salva o chamado no banco
     public ChamadoModel save(ChamadoModel chamado) {
@@ -64,8 +78,8 @@ public class ChamadoService {
     }
 
     // Cria um novo chamado
-    public ChamadoModel criarChamado(String titulo, String descricao,  ClienteModel model ) {
-     //   ChamadoDTO novoChamado = new ChamadoDTO(id,"", descricao ,"" ,"0",prioridade);
+    public ChamadoModel criarChamado(String titulo, String descricao, ClienteModel model) {
+        //   ChamadoDTO novoChamado = new ChamadoDTO(id,"", descricao ,"" ,"0",prioridade);
 
         ChamadoModel novoChamado = new ChamadoModel();
         novoChamado.setTitulo(titulo);
@@ -76,8 +90,8 @@ public class ChamadoService {
 
         return chamadoRepository.save(novoChamado);
     }
-    public ChamadoModel criarChamado()
-    {
+
+    public ChamadoModel criarChamado() {
         ChamadoModel novoChamado = new ChamadoModel();
         return chamadoRepository.save(novoChamado);
     }
@@ -86,7 +100,6 @@ public class ChamadoService {
     public List<ChamadoModel> listarChamadosCliente(ClienteModel cliente) {
         return usuarioService.listarChamadosUsuario(cliente);
     }
-
 
 
     // Edita um chamado do usuário
@@ -125,7 +138,9 @@ public class ChamadoService {
 
     // Lista todos os chamados para o administrador
     public List<ChamadoModel> listarTodosChamadosAdmin() {
-        return chamadoRepository.findAll();
+        List<ChamadoModel> chamados = chamadoRepository.findAll();
+        return chamados;
+
     }
 
 

@@ -4375,3 +4375,11 @@ margin-top:80px;
 .chamado-details strong, .tecnico-responsavel h3, .alterar-status h3 {
   color: #FFD900;
 }
+
+.mover-tabela{
+ display: flex;
+align-items: center;
+margin-bottom:10px;
+transform: translateY(-20%);
+
+}

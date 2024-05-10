@@ -4,16 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba0dc791-a15a-44c9-9843-69f38623fcf0" name="Changes" comment="Implementação gerar token para validação cadastro">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_21_11__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_21_11__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_22_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_22_14__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_05_2024_18_39__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_05_2024_18_39__Changes_.xml" afterDir="false" />
+    <list default="true" id="ba0dc791-a15a-44c9-9843-69f38623fcf0" name="Changes" comment="Atualização index.html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/thymeleaf/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/thymeleaf/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/pagina-autenticacao.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/pagina-autenticacao.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/thymeleaf/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/thymeleaf/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/ChamadoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/ChamadoModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/ChamadoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/ChamadoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/administrador-chamado.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/administrador-chamado.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/tecnico-chamados.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/tecnico-chamados.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,35 +66,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ChamaElasApplication.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Maven.ChamaElas [clean].executor": "Run",
-    "Maven.ChamaElas [install].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.ChamaElasApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/chama-elas",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ChamaElasApplication.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Maven.ChamaElas [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.ChamaElas [install].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ChamaElasApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/chama-elas&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Sabrina\Desktop\chama-elas\ChamaElas\src\main\resources\templates" />
@@ -304,7 +305,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715304456781</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Atualização index.html">
+      <option name="closed" value="true" />
+      <created>1715372072112</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1715372072112</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,6 +351,7 @@
     <MESSAGE value="Adicionando página para detalhes do chamado" />
     <MESSAGE value="Implementação envio automático de email após cadastro" />
     <MESSAGE value="Implementação gerar token para validação cadastro" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementação gerar token para validação cadastro" />
+    <MESSAGE value="Atualização index.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="Atualização index.html" />
   </component>
 </project>
