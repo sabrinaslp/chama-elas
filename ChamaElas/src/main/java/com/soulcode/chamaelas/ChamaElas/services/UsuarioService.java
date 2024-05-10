@@ -16,6 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class UsuarioService {
@@ -44,8 +45,6 @@ public class UsuarioService {
     @Autowired
     private EmailService emailService;
 
-    @Autowired
-    private TokenModel tokenModel;
 
     // Listar todos os chamados criados pelo usuário
     public List<ChamadoModel> listarChamadosUsuario(ClienteModel cliente) {
@@ -62,6 +61,11 @@ public class UsuarioService {
         return chamadoRepository.findById(id);
     }
 
+    public UsuarioModel obterUsuarioPorEmail(String email) {
+        Optional<UsuarioModel> usuarioOptional = usuarioRepository.findByEmail(email);
+        return usuarioOptional.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado"));
+    }
+
     public void cadastrarNovoUsuario(String nome, String email, String senha, String confirmacaoSenha, String funcao, String endereco, String telefone, String setor, String tokenRecebido, Model model) {
         autenticacaoService.verificarCadastroUsuario(nome, email, senha, confirmacaoSenha);
         FuncaoModel funcaoNovoUsuario = atribuirFuncaoAoUsuario(funcao);
@@ -74,14 +78,19 @@ public class UsuarioService {
             throw new IllegalArgumentException("Função de usuário inválida: " + funcaoNovoUsuario);
         }
 
-        // Gerar o token após o cadastro do usuário
-        String token = tokenModel.gerarToken();
+        // Obter o usuário recém-criado
+        UsuarioModel usuario = obterUsuarioPorEmail(email);
+
+        // Gerar o token no usuário
+        String token = usuario.gerarToken();
+        usuario.setToken(token);
+        usuarioRepository.save(usuario);
 
         // Envio de e-mail de boas-vindas com o token
         emailService.enviarEmailBoasVindas(email, nome, token);
 
         // Verificar se o token recebido é igual ao token gerado
-        boolean tokenValido = tokenModel.verificarToken(tokenRecebido, token);
+        boolean tokenValido = usuario.verificarToken(tokenRecebido, token);
 
         if (tokenValido) {
             model.addAttribute("successMessage", "Usuário cadastrado com sucesso! Faça o login para acessar sua conta.");
@@ -89,6 +98,7 @@ public class UsuarioService {
             model.addAttribute("errorMessage", "O token de confirmação é inválido. Por favor, verifique o token recebido por e-mail.");
         }
     }
+
 
     private void cadastrarNovoCliente(String nome, String email, String senha, FuncaoModel funcao, String endereco) {
         ClienteDTO clienteDTO = new ClienteDTO(null, nome, email, endereco);
@@ -145,5 +155,24 @@ public class UsuarioService {
             // Se não houver cliente autenticado, retorna null
             return null;
         }
+    }
+
+    // Método para gerar um token de 6 dígitos
+    public String gerarToken() {
+        // Define o tamanho do token
+        int tamanhoToken = 6;
+        // Cria um StringBuilder para construir o token
+        StringBuilder tokenBuilder = new StringBuilder();
+        // Cria um objeto Random
+        Random random = new Random();
+        // Adiciona dígitos aleatórios ao token até atingir o tamanho desejado
+        for (int i = 0; i < tamanhoToken; i++) {
+            // Gera um dígito aleatório de 0 a 9
+            int digito = random.nextInt(10);
+            // Adiciona o dígito ao token
+            tokenBuilder.append(digito);
+        }
+        // Retorna o token como uma string
+        return tokenBuilder.toString();
     }
 }
