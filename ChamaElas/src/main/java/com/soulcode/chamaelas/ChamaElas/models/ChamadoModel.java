@@ -51,6 +51,9 @@ public class ChamadoModel {
     @Column(columnDefinition = "TEXT")
     private String motivoEncerramento;
 
+    public void setNomeCliente(String nome) {
+    }
+
     @Getter
     public enum Prioridade {
         AGUARDANDO("Aguardando técnico"),
