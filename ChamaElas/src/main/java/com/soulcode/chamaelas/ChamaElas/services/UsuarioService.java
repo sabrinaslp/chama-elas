@@ -1,4 +1,5 @@
 package com.soulcode.chamaelas.ChamaElas.services;
+
 import com.soulcode.chamaelas.ChamaElas.models.*;
 import com.soulcode.chamaelas.ChamaElas.models.dto.ClienteDTO;
 import com.soulcode.chamaelas.ChamaElas.models.dto.TecnicoDTO;
@@ -43,6 +44,8 @@ public class UsuarioService {
     @Autowired
     private EmailService emailService;
 
+    @Autowired
+    private TokenModel tokenModel;
 
     // Listar todos os chamados criados pelo usuário
     public List<ChamadoModel> listarChamadosUsuario(ClienteModel cliente) {
@@ -59,7 +62,7 @@ public class UsuarioService {
         return chamadoRepository.findById(id);
     }
 
-    public void cadastrarNovoUsuario(String nome, String email, String senha, String confirmacaoSenha, String funcao, String endereco, String telefone, String setor, Model model) {
+    public void cadastrarNovoUsuario(String nome, String email, String senha, String confirmacaoSenha, String funcao, String endereco, String telefone, String setor, String tokenRecebido, Model model) {
         autenticacaoService.verificarCadastroUsuario(nome, email, senha, confirmacaoSenha);
         FuncaoModel funcaoNovoUsuario = atribuirFuncaoAoUsuario(funcao);
 
@@ -71,10 +74,20 @@ public class UsuarioService {
             throw new IllegalArgumentException("Função de usuário inválida: " + funcaoNovoUsuario);
         }
 
-        // Envio de e-mail de boas-vindas
-        emailService.enviarEmailBoasVindas(email, nome);
+        // Gerar o token após o cadastro do usuário
+        String token = tokenModel.gerarToken();
 
-        model.addAttribute("successMessage", "Usuário cadastrado com sucesso! Faça o login para acessar sua conta.");
+        // Envio de e-mail de boas-vindas com o token
+        emailService.enviarEmailBoasVindas(email, nome, token);
+
+        // Verificar se o token recebido é igual ao token gerado
+        boolean tokenValido = tokenModel.verificarToken(tokenRecebido, token);
+
+        if (tokenValido) {
+            model.addAttribute("successMessage", "Usuário cadastrado com sucesso! Faça o login para acessar sua conta.");
+        } else {
+            model.addAttribute("errorMessage", "O token de confirmação é inválido. Por favor, verifique o token recebido por e-mail.");
+        }
     }
 
     private void cadastrarNovoCliente(String nome, String email, String senha, FuncaoModel funcao, String endereco) {

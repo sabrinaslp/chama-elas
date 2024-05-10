@@ -173,13 +173,28 @@ public class ChamadoService {
         chamadoRepository.save(chamado);
     }
 
-    public void desassociarTecnicoChamado(Long chamadoId, ChamadoModel.TicketStatus novoStatus) {
+    public void desassociarDadosAtribuidosAoChamado(Long chamadoId, ChamadoModel.TicketStatus novoStatus) {
         ChamadoModel chamado = chamadoRepository.findById(chamadoId)
                 .orElseThrow(() -> new RuntimeException("Chamado não encontrado"));
         if (novoStatus == ChamadoModel.TicketStatus.ABERTO) {
             chamado.setTecnico(null);
+            if (chamado.getStatus() == ChamadoModel.TicketStatus.FECHADO) {
+                chamado.setMotivoEncerramento(null);
+                chamado.setStatus(ChamadoModel.TicketStatus.ABERTO);
+            }
             chamadoRepository.save(chamado);
         }
     }
 
+    public void definirMotivoEncerramento(Long chamadoId, ChamadoModel.TicketStatus novoStatus, String motivoEncerramento) {
+        Optional<ChamadoModel> optionalChamado = chamadoRepository.findById(chamadoId);
+        if (optionalChamado.isPresent()) {
+            ChamadoModel chamado = optionalChamado.get();
+            chamado.setStatus(novoStatus);
+            chamado.setMotivoEncerramento(motivoEncerramento);
+            chamadoRepository.save(chamado);
+        } else {
+            throw new RuntimeException("Chamado não encontrado com o ID: " + chamadoId);
+        }
+    }
 }

@@ -9,7 +9,8 @@ public record ChamadoDTO(
         String descricao,
         String departamento,
         String status,
-        String prioridade
+        String prioridade,
+        String motivoEncerramento
 ) {
 
     public static ChamadoDTO fromModel(ChamadoModel chamadoModel) {
@@ -19,7 +20,8 @@ public record ChamadoDTO(
                 chamadoModel.getDescricao(),
                 chamadoModel.getSetor(),
                 chamadoModel.getStatus().getDescricao(),
-                chamadoModel.getPrioridade().name()
+                chamadoModel.getPrioridade().name(),
+                chamadoModel.getMotivoEncerramento()
         );
     }
 
@@ -31,6 +33,7 @@ public record ChamadoDTO(
         chamadoModel.setSetor(chamadoDTO.departamento());
         chamadoModel.setStatus(getTicketStatus(chamadoDTO.status()));
         chamadoModel.setPrioridade(getPrioridade(chamadoDTO.prioridade()));
+        chamadoModel.setMotivoEncerramento(chamadoDTO.motivoEncerramento());
         return chamadoModel;
     }
 
