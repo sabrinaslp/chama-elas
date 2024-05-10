@@ -1,5 +1,4 @@
 package com.soulcode.chamaelas.ChamaElas.controllers.thymeleaf;
-
 import com.soulcode.chamaelas.ChamaElas.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -32,17 +31,17 @@ public class UsuarioController {
                                        @RequestParam(value = "setor", required = false) String setor,
                                        Model model) {
         try {
-
+            // Gera um token
             String token = usuarioService.gerarToken();
 
-            // Adicionar o token ao modelo
+            // Adiciona o token ao modelo
             model.addAttribute("tokenRecebido", token);
 
-            // Chamar o serviço para cadastrar o novo usuário
+            // Chama o serviço para cadastrar o novo usuário
             usuarioService.cadastrarNovoUsuario(nome, email, senha, confirmacaoSenha, funcao, endereco, telefone, setor, token, model);
 
-            // Retornar para a página de login
-            return "login-usuario";
+            // Redireciona para a página de autenticação
+            return "redirect:/pagina-autenticacao";
         } catch (DataIntegrityViolationException | IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());
             return "cadastro-usuario";
