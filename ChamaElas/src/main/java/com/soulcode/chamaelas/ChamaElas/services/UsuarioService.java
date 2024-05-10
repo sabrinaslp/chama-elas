@@ -1,4 +1,5 @@
 package com.soulcode.chamaelas.ChamaElas.services;
+
 import com.soulcode.chamaelas.ChamaElas.models.*;
 import com.soulcode.chamaelas.ChamaElas.models.dto.ClienteDTO;
 import com.soulcode.chamaelas.ChamaElas.models.dto.TecnicoDTO;
@@ -15,6 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class UsuarioService {
@@ -59,7 +61,12 @@ public class UsuarioService {
         return chamadoRepository.findById(id);
     }
 
-    public void cadastrarNovoUsuario(String nome, String email, String senha, String confirmacaoSenha, String funcao, String endereco, String telefone, String setor, Model model) {
+    public UsuarioModel obterUsuarioPorEmail(String email) {
+        Optional<UsuarioModel> usuarioOptional = usuarioRepository.findByEmail(email);
+        return usuarioOptional.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado"));
+    }
+
+    public void cadastrarNovoUsuario(String nome, String email, String senha, String confirmacaoSenha, String funcao, String endereco, String telefone, String setor, String tokenRecebido, Model model) {
         autenticacaoService.verificarCadastroUsuario(nome, email, senha, confirmacaoSenha);
         FuncaoModel funcaoNovoUsuario = atribuirFuncaoAoUsuario(funcao);
 
@@ -71,11 +78,27 @@ public class UsuarioService {
             throw new IllegalArgumentException("Função de usuário inválida: " + funcaoNovoUsuario);
         }
 
-        // Envio de e-mail de boas-vindas
-        emailService.enviarEmailBoasVindas(email, nome);
+        // Obter o usuário recém-criado
+        UsuarioModel usuario = obterUsuarioPorEmail(email);
 
-        model.addAttribute("successMessage", "Usuário cadastrado com sucesso! Faça o login para acessar sua conta.");
+        // Gerar o token no usuário
+        String token = usuario.gerarToken();
+        usuario.setToken(token);
+        usuarioRepository.save(usuario);
+
+        // Envio de e-mail de boas-vindas com o token
+        emailService.enviarEmailBoasVindas(email, nome, token);
+
+        // Verificar se o token recebido é igual ao token gerado
+        boolean tokenValido = usuario.verificarToken(tokenRecebido, token);
+
+        if (tokenValido) {
+            model.addAttribute("successMessage", "Usuário cadastrado com sucesso! Faça o login para acessar sua conta.");
+        } else {
+            model.addAttribute("errorMessage", "O token de confirmação é inválido. Por favor, verifique o token recebido por e-mail.");
+        }
     }
+
 
     private void cadastrarNovoCliente(String nome, String email, String senha, FuncaoModel funcao, String endereco) {
         ClienteDTO clienteDTO = new ClienteDTO(null, nome, email, endereco);
@@ -112,9 +135,9 @@ public class UsuarioService {
         return chamadoRepository.findByCliente(usuario);
     }
 
-    public UsuarioDTO UsuarioPorEmail(String email){
+    public UsuarioDTO UsuarioPorEmail(String email) {
         Optional<UsuarioModel> usuario = usuarioRepository.findByEmail(email);
-        if(usuario.isEmpty()){
+        if (usuario.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                     "Usuário não encontrado");
         }
@@ -133,4 +156,42 @@ public class UsuarioService {
             return null;
         }
     }
+
+    // Método para gerar um token de 6 dígitos
+    public String gerarToken() {
+        // Define o tamanho do token
+        int tamanhoToken = 6;
+        // Cria um StringBuilder para construir o token
+        StringBuilder tokenBuilder = new StringBuilder();
+        // Cria um objeto Random
+        Random random = new Random();
+        // Adiciona dígitos aleatórios ao token até atingir o tamanho desejado
+        for (int i = 0; i < tamanhoToken; i++) {
+            // Gera um dígito aleatório de 0 a 9
+            int digito = random.nextInt(10);
+            // Adiciona o dígito ao token
+            tokenBuilder.append(digito);
+        }
+        // Retorna o token como uma string
+        return tokenBuilder.toString();
+    }
+
+
+    public boolean verificarToken(String token) {
+        // Lógica para verificar se o token existe no banco de dados
+        Optional<UsuarioModel> usuarioOptional = usuarioRepository.findByToken(token);
+
+        // Se o token existir no banco de dados
+        if (usuarioOptional.isPresent()) {
+            UsuarioModel usuario = usuarioOptional.get();
+
+            // Retorna o resultado da verificação de token na classe UsuarioModel
+            return usuario.verificarToken(token, usuario.getToken());
+        } else {
+            // Se o token não existir no banco de dados, retorna false
+            return false;
+        }
+    }
 }
+
+

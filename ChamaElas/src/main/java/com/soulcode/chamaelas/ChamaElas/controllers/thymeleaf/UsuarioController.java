@@ -31,8 +31,17 @@ public class UsuarioController {
                                        @RequestParam(value = "setor", required = false) String setor,
                                        Model model) {
         try {
-            usuarioService.cadastrarNovoUsuario(nome, email, senha, confirmacaoSenha, funcao, endereco, telefone, setor, model);
-            return "login-usuario";
+            // Gera um token
+            String token = usuarioService.gerarToken();
+
+            // Adiciona o token ao modelo
+            model.addAttribute("tokenRecebido", token);
+
+            // Chama o serviço para cadastrar o novo usuário
+            usuarioService.cadastrarNovoUsuario(nome, email, senha, confirmacaoSenha, funcao, endereco, telefone, setor, token, model);
+
+            // Redireciona para a página de validação do token
+            return "redirect:/pagina-autenticacao";
         } catch (DataIntegrityViolationException | IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());
             return "cadastro-usuario";
@@ -42,4 +51,19 @@ public class UsuarioController {
         }
     }
 
+    // Método para lidar com a validação do token
+    @PostMapping("/verificar-token")
+    public String verificarToken(@RequestParam("authToken") String authToken, Model model) {
+        // Lógica para verificar o token no banco de dados
+        boolean tokenValido = usuarioService.verificarToken(authToken);
+
+        if (tokenValido) {
+            // Se o token for válido, redirecione para a página de abertura de chamados
+            return "redirect:/abertura-chamados";
+        } else {
+            // Se o token for inválido, retorne para a página de validação com uma mensagem de erro
+            model.addAttribute("error", "Token inválido. Por favor, verifique novamente.");
+            return "pagina-autenticacao";
+        }
+    }
 }

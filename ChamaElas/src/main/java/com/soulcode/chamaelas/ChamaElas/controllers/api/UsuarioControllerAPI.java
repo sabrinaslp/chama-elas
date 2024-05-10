@@ -38,8 +38,10 @@ public class UsuarioControllerAPI {
         }
     }
 
+
     @DeleteMapping("/excluir-usuario/{id}")
     public void excluirUsuario(@PathVariable Long id) {
         usuarioRepository.deleteById(id);
     }
+
 }

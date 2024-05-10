@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Random;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -44,6 +45,8 @@ public class UsuarioModel implements Serializable {
     @CreationTimestamp
     private LocalDate dataRegistro;
 
+    private String token;
+
 
     public void desativarUsuario() {
         this.estaAtivo = false;
@@ -64,5 +67,20 @@ public class UsuarioModel implements Serializable {
         this.dataExpiracaoTeste = dataExpiracaoTeste;
     }
 
+    // Método para gerar um token aleatório
+    public String gerarToken() {
+        int min = 100000;
+        int max = 999999;
+        int tokenInt = (int) (Math.random() * (max - min + 1) + min);
+        // Converter o número para uma string
+        return String.valueOf(tokenInt);
+    }
 
+    public boolean verificarToken(String tokenRecebido, String tokenOriginal) {
+        return tokenRecebido.equals(tokenOriginal);
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }
