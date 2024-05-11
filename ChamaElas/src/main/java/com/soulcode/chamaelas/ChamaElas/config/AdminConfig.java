@@ -43,6 +43,7 @@ public class AdminConfig implements CommandLineRunner {
 
             var user = new UsuarioModel();
 
+            user.setNome("Admin");
             user.setEmail("admin@chamaelas.com");
             user.setSenha(passwordEncoder.encode("1234"));
             user.setFuncao(funcaoAdmin);

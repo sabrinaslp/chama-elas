@@ -28,7 +28,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/", "/assets/**", "/css/**", "/images/**", "/js/**", "/criar-usuario", "/atualizar-usuario/**",
-                                "/pagina-autenticacao", "/verificar-token", "/cadastro-usuario", "/pagina-cliente", "/abertura-chamado", "/login","/administrador-chamado").permitAll()
+                                "/pagina-autenticacao", "/verificar-token", "/cadastro-usuario", "/pagina-cliente", "/abertura-chamado", "/login").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginPage("/login")
