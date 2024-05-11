@@ -47,6 +47,7 @@ public class UsuarioController {
         } catch (DataIntegrityViolationException | IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());
             return "cadastro-usuario";
+
         } catch (Exception e) {
             model.addAttribute("error", "Ocorreu um erro ao processar o cadastro do usuário.");
             return "cadastro-usuario";
