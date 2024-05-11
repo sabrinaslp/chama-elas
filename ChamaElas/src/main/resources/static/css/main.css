@@ -4411,3 +4411,14 @@ width: 50%; /* Ajuste conforme necessário */
 
       transform: translateX(115%);
     }
+
+
+    .mover-btn{
+    display: flex;
+    align-items: center;
+    margin-bottom:10px;
+    margin-top: 150px; /* Ajuste a margem superior conforme necessário */
+    transform: translateY(100%);
+    transform: translateX(440%);
+    border-radius: 5px;
+    }

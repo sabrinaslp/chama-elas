@@ -63,7 +63,7 @@
                 <div class="home-content__button">
                     <!-- Formulário para logout -->
                     <form action="/logout" method="post">
-                        <input class="btn--primary full-width" type="submit" value="Sair">
+                        <input class="btn--primary full-width" type="submit" value="Sair" style=" border-radius: 5px;">
                     </form>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                         <td class="text-center">
                             <input type="hidden" name="chamadoId" th:value="${chamado.ticketId}">
                             <div class="home-content__button" style="margin-top: 0.5rem;">
-                                <input class="btn--primary full-width" type="submit" value="Atender Chamado">
+                                <input class="btn--primary full-width" type="submit" value="Atender Chamado" style=" border-radius: 5px;">
                             </div>
                         </td>
                     </form>
@@ -135,7 +135,7 @@
                         <input type="hidden" name="chamadoId" th:value="${chamado.ticketId}">
                         <td class="text-center">
                             <div class="home-content__button" style="margin-top: 0.5rem;">
-                                <input class="btn--primary full-width" type="submit" value="Visualizar">
+                                <input class="btn--primary full-width" type="submit" value="Visualizar" style=" border-radius: 5px;">
                             </div>
                         </td>
                     </form>
