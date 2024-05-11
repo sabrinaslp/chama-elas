@@ -4364,7 +4364,7 @@ margin-top:80px;
 /* Reduzindo o espaçamento entre as colunas */
 
 .team-member {
-    margin-left: -10px;
+
     margin-right: 100px;
 }
 
@@ -4377,9 +4377,37 @@ margin-top:80px;
 }
 
 .mover-tabela{
- display: flex;
-align-items: center;
-margin-bottom:10px;
-transform: translateY(-20%);
 
 }
+.filter-chamados {
+    display: flex;
+    align-items: center;
+    transform:translateX(-380%)
+}
+
+.filter-title {
+    margin-right: 10px;
+}
+
+.select-container {
+    /* Adicione estas propriedades para garantir que o seletor de prioridades seja visível */
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Estilos para centralizar a tabela */
+.mover-tabela
+{
+width: 50%; /* Ajuste conforme necessário */
+    margin: 0 auto; /* Centralizar horizontalmente */
+    position: absolute; /* Define o posicionamento absoluto */
+    top: 50%; /* Posiciona a 50% da parte superior */
+    left: 40%; /* Posiciona a 50% da parte esquerda */
+    transform: translate(-30%, -30%); /* Move o bloco de volta em 50% da sua própria largura e altura */
+    }
+
+    .mover-titulo2{
+
+      transform: translateX(115%);
+    }
