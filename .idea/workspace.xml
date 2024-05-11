@@ -8,7 +8,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/abertura-chamado.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/abertura-chamado.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/administrador-chamado.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/administrador-chamado.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/cadastro-usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/cadastro-usuario.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/detalhes-chamado-tecnico.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/detalhes-chamado-tecnico.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/login-usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/login-usuario.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/pagina-autenticacao.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/pagina-autenticacao.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/tecnico-chamados.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/tecnico-chamados.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/usuario-chamados.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/usuario-chamados.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -314,7 +321,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715439038107</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Atualização página admin">
+      <option name="closed" value="true" />
+      <created>1715449096509</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1715449096510</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
