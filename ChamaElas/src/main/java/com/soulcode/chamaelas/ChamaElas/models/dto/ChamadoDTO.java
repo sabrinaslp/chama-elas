@@ -22,6 +22,7 @@ public record ChamadoDTO(
                 chamadoModel.getStatus().getDescricao(),
                 chamadoModel.getPrioridade().name(),
                 chamadoModel.getMotivoEncerramento()
+
         );
     }
 

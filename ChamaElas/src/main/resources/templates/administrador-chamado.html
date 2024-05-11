@@ -72,25 +72,6 @@
                                 <td th:text="${#dates.format(chamado.dataRegistroAtualizada, 'dd-MM-yyyy - [HH:mm]')}"></td>
                                 <td th:if="${chamado.cliente != null}" th:text="${chamado.cliente.getNome()}"></td>
                                 <td th:if="${chamado.tecnico != null}" th:text="${chamado.tecnico.getNome()}"></td>
-                                <!--<form action="/atender-chamado" method="post">
-                                    <td>
-
-                                        <label>
-                                            <select name="prioridade" required>
-                                                <option></option>
-                                                <option value="ALTA" style="color: black;">Alta</option>
-                                                <option value="MEDIA" style="color: black;">Média</option>
-                                                <option value="BAIXA" style="color: black;">Baixa</option>
-                                            </select>
-                                        </label>
-                                    </td>
-                                    <td class="text-center">
-                                        <input type="hidden" name="chamadoId" th:value="${chamado.ticketId}">
-                                        <div class="home-content__button" style="margin-top: 0.5rem;">
-                                            <input class="btn--primary full-width" type="submit" value="Atender Chamado">
-                                        </div>
-                                    </td>
-                                </form>-->
                             </tr>
                             </tbody>
                         </table>
