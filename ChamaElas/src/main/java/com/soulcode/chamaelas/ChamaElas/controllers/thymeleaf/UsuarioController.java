@@ -54,15 +54,13 @@ public class UsuarioController {
         }
     }
 
-    @PostMapping("/verificar-token")
+    @PostMapping("/pagina-autenticacao")
     public String verificarToken(@RequestParam("authToken") String authToken, HttpServletRequest request, HttpServletResponse response, Model model) {
         boolean tokenValido = usuarioService.verificarToken(authToken);
 
         if (tokenValido) {
-            // Invalida a sessão do usuário
-            request.getSession().invalidate();
-            // Redireciona para a página de login
-            return "redirect:/login";
+            // Redireciona o usuário para a página de login
+            return "redirect:/login?success=true";
         } else {
             model.addAttribute("error", "Token inválido. Por favor, verifique novamente.");
             return "pagina-autenticacao";

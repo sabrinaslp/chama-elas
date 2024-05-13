@@ -19,6 +19,10 @@ public class SuccessHandler implements AuthenticationSuccessHandler {
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         String role = authorities.stream().findFirst().map(GrantedAuthority::getAuthority).orElse("");
 
+        var authourities = authentication.getAuthorities();
+        var roles = authourities.stream().map(GrantedAuthority::getAuthority).findFirst();
+
+
         if (role.equals("Cliente")){
             response.sendRedirect("/pagina-cliente");
         } else if (role.equals("Técnico")){

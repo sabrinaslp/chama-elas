@@ -79,9 +79,8 @@
 <div class="row form-wrapper justify-content-center align-items-center" style="height: 100vh;">
     <div class="col-md-6">
         <h3 class="text-center">Olá!</h3>
-        <div th:if="${successMessage}" class="alert-box alert-box--success hideit" style="text-align: center">
-            <p th:text="${successMessage}" style="margin-bottom: 0;"></p>
-            <i class="fa fa-check alert-box__close" aria-hidden="true"></i>
+        <div th:if="${param.success}" class="alert-box alert-box--success" style="text-align: center; padding: 10px; margin-bottom: 50px;">
+            <p style="margin-bottom: 0; display: inline-block; vertical-align: middle;">Token validado com sucesso! Efetue seu login</p>
         </div>
         <div th:if="${loginError != null}" class="alert-box alert-box--error">
             <p th:text="${loginError}" style="margin-bottom: 0;"></p>
