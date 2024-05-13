@@ -14,20 +14,12 @@ import java.util.Optional;
 public class AdminService {
 
     @Autowired
-    private ChamadoService chamadoService;
-
-    @Autowired
     private ChamadoRepository chamadoRepository;
 
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    // Exibe a quantidade dos chamados EM ABERTO na página do admin
-    public int getQuantidadeChamadosEmAberto() {
-        return chamadoService.getChamadosEmAberto().size();
-    }
-
-    // Exibe a quantidade dos chamados EM ANDAMENTO na página do admin
+    // Exibe a quantidade dos chamados POR STATUS na página do admin
     public int getQuantidadeChamadosPorStatus(ChamadoModel.TicketStatus status) {
         return chamadoRepository.findByStatus(status).size();
     }
