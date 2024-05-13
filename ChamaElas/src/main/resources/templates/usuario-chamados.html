@@ -76,10 +76,10 @@
     </div>
 </div>
 <div class="row form-wrapper">
-    <div class="col-six tab-full">
+    <div class="col-six tab-full" style="margin-bottom:300px;">
         <h3>Chamados</h3>
         <div class="table-responsive">
-            <table class="custom-table" style="width: 100%;">
+            <table class="custom-table" style="width: 100%; margin-top: 30px;">
                 <thead>
                 <tr>
                     <th>Título</th>
@@ -96,7 +96,7 @@
                     <td th:text="${chamado.descricao}"></td>
 
                     <td th:text="${#dates.format(chamado.dataRegistroAtualizada, 'dd-MM-yyyy - [HH:mm]')}"></td>
-                    <td th:text="${chamado.status}"></td>
+                    <td th:text="${chamado.status.descricao}"></td>
                 </tr>
                 </tbody>
             </table>

@@ -4422,3 +4422,13 @@ width: 50%; /* Ajuste conforme necessário */
     transform: translateX(440%);
     border-radius: 5px;
     }
+
+#tituloInput {
+  color: #333;
+  background-color: #1E1E1E;
+  border: none;
+  font-size: 14px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
