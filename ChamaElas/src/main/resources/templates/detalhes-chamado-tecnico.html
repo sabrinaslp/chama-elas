@@ -121,7 +121,7 @@
         </div>
 
         <!-- Alterar o status -->
-        <div class="alterar-status">
+        <div class="alterar-status" th:if="${chamado.status.descricao != 'Finalizado'}">
             <h3>Alterar o status do chamado</h3>
             <form action="/alterar-status" id="statusForm" method="post">
                 <div class="form-group">
