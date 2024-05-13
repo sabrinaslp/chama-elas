@@ -1,5 +1,4 @@
 package com.soulcode.chamaelas.ChamaElas.controllers.thymeleaf;
-
 import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
 import com.soulcode.chamaelas.ChamaElas.models.ClienteModel;
 import com.soulcode.chamaelas.ChamaElas.repositories.ClienteRepository;
@@ -23,14 +22,15 @@ public class ClienteController {
 
     @GetMapping("/pagina-cliente")
     public String paginaUsuario(Model model, Authentication authentication) {
-        var cliente1 = clienteRepository.getClienteByEmail(authentication.getName());
-        model.addAttribute("nomeUsuario", cliente1.getNome());
+        if (authentication != null) {
+            var cliente1 = clienteRepository.getClienteByEmail(authentication.getName());
+            model.addAttribute("nomeUsuario", cliente1.getNome());
 
+            ClienteModel cliente = clienteRepository.getClienteByEmail(authentication.getName());
+            List<ChamadoModel> chamadosEmAberto = chamadoService.listarChamadosCliente(cliente);
 
-        ClienteModel cliente = clienteRepository.getClienteByEmail(authentication.getName());
-        List<ChamadoModel> chamadosEmAberto = chamadoService.listarChamadosCliente(cliente);
-
-        model.addAttribute("chamadosEmAberto", chamadosEmAberto);
+            model.addAttribute("chamadosEmAberto", chamadosEmAberto);
+        }
 
         return "usuario-chamados";
     }

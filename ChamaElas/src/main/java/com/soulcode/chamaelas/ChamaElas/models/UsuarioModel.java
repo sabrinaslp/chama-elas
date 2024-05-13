@@ -4,10 +4,15 @@ import com.soulcode.chamaelas.ChamaElas.models.FuncaoModel;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -83,4 +88,18 @@ public class UsuarioModel implements Serializable {
     public void setToken(String token) {
         this.token = token;
     }
+
+    // Método para obter as autoridades do usuário
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Set<GrantedAuthority> authorities = new HashSet<>();
+
+        // Obter as permissões do usuário a partir da sua função
+        if (this.funcao != null) {
+            String role = this.funcao.getNome(); // Supondo que a função contenha o nome da permissão
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
+        }
+
+        return authorities;
+    }
+
 }
