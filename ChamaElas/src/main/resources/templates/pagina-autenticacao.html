@@ -73,7 +73,7 @@
         </div>
         <!-- Formulário de verificação de token -->
         <div class="login-form">
-            <form action="/verificar-token" method="post" style="margin-bottom: 1rem;">
+            <form action="/pagina-autenticacao" method="post" style="margin-bottom: 1rem;">
                 <!-- Campos do formulário -->
                 <div class="form-group">
                     <label for="authToken">Token recebido</label>
@@ -92,5 +92,19 @@
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
+<script>
+    // Função para extrair parâmetros da URL
+    function obterParametroURL(nomeParametro) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(nomeParametro);
+    }
+
+    // Verificar se há um token na URL
+    const tokenURL = obterParametroURL('token');
+    if (tokenURL) {
+        // Preencher o campo de token com o token da URL
+        document.getElementById('authToken').value = tokenURL;
+    }
+</script>
 </body>
 </html>
