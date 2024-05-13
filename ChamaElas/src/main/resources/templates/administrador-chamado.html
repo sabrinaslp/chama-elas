@@ -46,11 +46,11 @@
     <div class="filter-chamados">
         <h6 class="filter-title">Filtrar chamados:</h6>
         <div class="select-container">
-            <select class="custom-select" id="prioridades" required>
-                <option value="" style="color: black;">Selecione a prioridade do chamado</option>
-                <option style="color: black;">Aberto</option>
-                <option value="user" style="color: black;">Finalizado</option>
-                <option value="technician" style="color: black;">Em atendimento</option>
+            <select class="custom-select" id="status" required onchange="filtrarChamados()">
+                <option value="" style="color: black;">Selecione o status do chamado</option>
+                <option value="Aguardando técnico" style="color: black;">Aberto</option>
+                <option value="Finalizado" style="color: black;">Finalizado</option>
+                <option value="Em atendimento" style="color: black;">Em andamento</option>
             </select>
         </div>
     </div>
@@ -76,7 +76,7 @@
         <div class="mover-tabela" style="margin-top: 130px;">
             <div class="col-six tab-full" style="margin-top: 20px;">
                 <div class="table-responsive">
-                    <table class="custom-table" style="width: 100%;">
+                    <table class="custom-table" style="width: 100%;" id="chamadosTable">
                         <thead>
                         <tr>
                             <th>Título</th>
@@ -120,6 +120,20 @@
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
-
+<script>
+    function filtrarChamados() {
+        var select = document.getElementById("status");
+        var value = select.options[select.selectedIndex].value;
+        var rows = document.getElementById("chamadosTable").getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+        for (var i = 0; i < rows.length; i++) {
+            var status = rows[i].getElementsByTagName("td")[6].innerText.trim();
+            if (value === "" || status === value) {
+                rows[i].style.display = "";
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+    }
+</script>
 </body>
 </html>
