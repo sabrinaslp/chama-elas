@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ChamadoControllerAPI {
@@ -70,4 +71,11 @@ public class ChamadoControllerAPI {
     public List<ChamadoModel> todosChamadosAdmin() {
         return chamadoService.listarTodosChamadosAdmin();
     }
-}
+
+    @GetMapping("/excluir-chamados/{ticketId}")
+    public Optional<ChamadoModel> excluirChamado(@PathVariable Long ticketId) {
+            Optional<ChamadoModel> chamado = chamadoService.findById(ticketId);
+            chamadoService.deleteById(ticketId);
+            return chamado;
+        }
+    }

@@ -51,8 +51,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 text-center"> <!-- Texto à esquerda em telas médias e grandes -->
-            <h2>Olá, <span th:text="${nomeUsuario}"></span>!</h2>
+            <h2>Olá, <span th:text="${nomeUsuario}"></span></h2>
         </div>
+    </div>
+    <div th:if="${error}" class="alert-box alert-box--error" style="text-align: center">
+        <p th:text="${error}" style="margin-bottom: 0;"></p>
+        <i class="fa fa-times alert-box__close" aria-hidden="true"></i>
     </div>
 </div>
 <div class="custom-form">
@@ -96,7 +100,18 @@
                     <td th:text="${chamado.descricao}"></td>
 
                     <td th:text="${#dates.format(chamado.dataRegistroAtualizada, 'dd-MM-yyyy - [HH:mm]')}"></td>
-                    <td th:text="${chamado.status.descricao}"></td>
+                    <td th:text="${chamado.status}"></td>
+
+                    <form id="form-excluir-chamado-${chamado.ticketId}" action="/excluir-chamado" method="get">
+                        <input type="hidden" id="chamadoId-${chamado.ticketId}" name="chamadoId" th:value="${chamado.ticketId}">
+
+                        <td>
+                            <div class="home-content__button" style="margin-top: 0.5rem;">
+                                <input class="btn--primary full-width" type="button" value="Excluir" th:onclick="'confirmarExclusao(\'' + ${chamado.ticketId} + '\')'" style="border-radius: 5px;">
+                            </div>
+                        </td>
+                    </form>
+
                 </tr>
                 </tbody>
             </table>
@@ -139,6 +154,13 @@
     </div>
 </div> <!-- end row -->
 <!-- Java Script ================================================== -->
+<script>
+    function confirmarExclusao(chamadoId) {
+     if (confirm("Tem certeza de que deseja excluir este chamado?")) {
+            window.location.href = "/excluir-chamado?chamadoId=" + chamadoId;
+        }
+    }
+</script>
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
