@@ -51,7 +51,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 text-center"> <!-- Texto à esquerda em telas médias e grandes -->
-            <h2>Olá, <span th:text="${nomeUsuario}"></span></h2>
+            <h2>Olá, <span th:text="${nomeUsuario}"></span>!</h2>
         </div>
     </div>
 </div>
@@ -76,7 +76,7 @@
     </div>
 </div>
 <div class="row form-wrapper">
-    <div class="col-six tab-full">
+    <div class="col-six tab-full" style="margin-bottom:300px;">
         <h3>Chamados</h3>
         <div class="table-responsive">
             <table class="custom-table" style="width: 100%;">
@@ -96,7 +96,7 @@
                     <td th:text="${chamado.descricao}"></td>
 
                     <td th:text="${#dates.format(chamado.dataRegistroAtualizada, 'dd-MM-yyyy - [HH:mm]')}"></td>
-                    <td th:text="${chamado.status}"></td>
+                    <td th:text="${chamado.status.descricao}"></td>
                 </tr>
                 </tbody>
             </table>
