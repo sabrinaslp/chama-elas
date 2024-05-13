@@ -19,12 +19,6 @@ public class AdminController {
     private ChamadoService chamadoService;
 
     @Autowired
-    private AdminRepository adminRepository;
-
-    @Autowired
-    private ClienteRepository clienteRepository;
-
-    @Autowired
     private AdminService adminService;
 
     @GetMapping("/administrador-chamado")
@@ -35,9 +29,15 @@ public class AdminController {
         String nomeUsuario = parts[0]; // Aqui está o nome de usuário obtido do email
 
         List<ChamadoModel> listaChamados = chamadoService.listarTodosChamadosAdmin();
+        int qtdChamadosEmAberto = adminService.getQuantidadeChamadosPorStatus(ChamadoModel.TicketStatus.ABERTO);
+        int qtdChamadosEmAndamento = adminService.getQuantidadeChamadosPorStatus(ChamadoModel.TicketStatus.EM_ANDAMENTO);
+        int qtdChamadosFinalizados = adminService.getQuantidadeChamadosPorStatus(ChamadoModel.TicketStatus.FECHADO);
 
         model.addAttribute("listaChamados", listaChamados);
         model.addAttribute("nomeUsuario", nomeUsuario);
+        model.addAttribute("quantidadeAbertos", qtdChamadosEmAberto);
+        model.addAttribute("quantidadeAndamento", qtdChamadosEmAndamento);
+        model.addAttribute("quantidadeFinalizados", qtdChamadosFinalizados);
 
         return "administrador-chamado";
     }

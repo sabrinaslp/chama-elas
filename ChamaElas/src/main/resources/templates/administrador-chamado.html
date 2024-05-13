@@ -16,9 +16,6 @@
     <link rel="stylesheet" href="/css/main.css"> <!-- Este é o arquivo principal de estilos -->
     <link rel="stylesheet" href="/css/custom-styles.css"> <!-- Este arquivo contém estilos personalizados -->
 
-    <!-- script ================================================== -->
-    <script src="/js/modernizr.js"></script>
-
     <!-- favicons ================================================== -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -32,90 +29,88 @@
         <!-- Seu código de cabeçalho aqui -->
     </header>
 
-
-
-        <div class="col-six tab-full">
-            <div class="custom-form">
-                <h2 class="mover-titulo2">Olá, <span th:text="${nomeUsuario}"></span>!</h2>
-                <br>
-                <br>
-</div>
-            </div>
+    <div class="col-six tab-full">
+        <div class="custom-form">
+            <h2 class="mover-titulo2">Olá, <span th:text="${nomeUsuario}"></span>!</h2>
+            <br>
+            <br>
+        </div>
+    </div>
 
     <div class="home-content__button  mover-btn">
         <form action="/logout" method="post">
-            <input class="btn--primary full-width" type="submit" value="Sair" style="border-radius: 5px;">
+            <input class="btn--primary full-width" type="submit" value="Sair" style="border-radius: 5px; margin-left: 53px;">
         </form>
     </div>
 
-
     <div class="filter-chamados">
-                <h6 class="filter-title">Filtrar chamados:</h6>
-                <div class="select-container">
-                    <select class="custom-select" id="prioridades" required>
-                        <option value="" style="color: black;">Selecione a prioridade do chamado</option>
-                        <option style="color: black;">Aberto</option>
-                        <option value="user" style="color: black;">Finalizado</option>
-                        <option value="technician" style="color: black;">Em atendimento</option>
-                    </select>
-                </div>
-            </div>
+        <h6 class="filter-title">Filtrar chamados:</h6>
+        <div class="select-container">
+            <select class="custom-select" id="status" required onchange="filtrarChamados()">
+                <option value="" style="color: black;">Selecione o status do chamado</option>
+                <option value="Aguardando técnico" style="color: black;">Aberto</option>
+                <option value="Finalizado" style="color: black;">Finalizado</option>
+                <option value="Em atendimento" style="color: black;">Em andamento</option>
+            </select>
+        </div>
+    </div>
 
     <div class="form-and-table row">
-
-                <div class="mover-tabela ">
-                    <div class="col-six tab-full">
-                        <h3>Chamados</h3>
-                        <div class="table-responsive">
-                            <table class="custom-table" style="width: 100%;">
-                                <thead>
-                                <tr>
-                                    <th>Título</th>
-                                    <th>Descrição</th>
-                                    <th>Data de início</th>
-                                    <th>Cliente</th>
-                                    <th>Técnico</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr th:each="chamado : ${listaChamados}">
-                                    <td th:text="${chamado.titulo}"></td>
-                                    <td th:text="${chamado.descricao}"></td>
-                                    <td th:text="${#dates.format(chamado.dataRegistroAtualizada, 'dd-MM-yyyy - [HH:mm]')}"></td>
-                                    <td th:if="${chamado.cliente != null}" th:text="${chamado.cliente.getNome()}"></td>
-                                    <td th:if="${chamado.tecnico != null}" th:text="${chamado.tecnico.getNome()}"></td>
-                                    <!--<form action="/atender-chamado" method="post">
-                                        <td>
-
-                                            <label>
-                                                <select name="prioridade" required>
-                                                    <option></option>
-                                                    <option value="ALTA" style="color: black;">Alta</option>
-                                                    <option value="MEDIA" style="color: black;">Média</option>
-                                                    <option value="BAIXA" style="color: black;">Baixa</option>
-                                                </select>
-                                            </label>
-                                        </td>
-                                        <td class="text-center">
-                                            <input type="hidden" name="chamadoId" th:value="${chamado.ticketId}">
-                                            <div class="home-content__button" style="margin-top: 0.5rem;">
-                                                <input class="btn--primary full-width" type="submit" value="Atender Chamado">
-                                            </div>
-                                        </td>
-                                    </form>-->
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+        <div class="mover-tabela">
+            <div class="col-six tab-full" style="margin-top: -100px; width: 100%;">
+                <h3>Chamados</h3>
+                <div class="table-responsive">
+                    <div class="col-six tab-full chamados-count" style="margin-bottom: 400px; display: flex;">
+                        <p class="abertos">Abertos: <span th:text="${quantidadeAbertos != null ? quantidadeAbertos : '0'}"></span></p>
+                        <p class="andamento">Em andamento: <span th:text="${quantidadeEmAndamento != null ? quantidadeEmAndamento : '0'}"></span></p>
+                        <p class="finalizados">Finalizados: <span th:text="${quantidadeFinalizados != null ? quantidadeFinalizados : '0'}"></span></p>
                         <br>
-
                     </div>
                 </div>
+                <br>
+            </div>
         </div>
+    </div>
+
+    <div class="form-and-table row">
+        <div class="mover-tabela" style="margin-top: 130px;">
+            <div class="col-six tab-full" style="margin-top: 20px;">
+                <div class="table-responsive">
+                    <table class="custom-table" style="width: 100%;" id="chamadosTable">
+                        <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Descrição</th>
+                            <th>Data de início</th>
+                            <th>Setor</th>
+                            <th>Cliente</th>
+                            <th>Técnico</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="chamado : ${listaChamados}">
+                            <td th:text="${chamado.titulo}"></td>
+                            <td th:text="${chamado.descricao}"></td>
+                            <td th:text="${#dates.format(chamado.dataRegistroAtualizada, 'dd-MM-yyyy - HH:mm')}"></td>
+                            <td th:text="${chamado.setor != null ? chamado.setor : 'Nenhum setor atribuído'}"></td>
+                            <td th:text="${chamado.cliente != null ? chamado.cliente.nome : 'Nenhum cliente atribuído'}"></td>
+                            <td th:text="${chamado.tecnico != null ? chamado.tecnico.nome : 'Nenhum técnico atribuído'}"></td>
+                            <td th:text="${chamado.status.descricao}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+
+            </div>
+        </div>
+    </div>
 </div>
+
 <!-- Caixa de login do usuário -->
 <div class="user-login-info" style="border-radius: 5px;">
-    <i class="fas fa-envelope" ></i> <!-- Ícone de e-mail -->
+    <i class="fas fa-envelope"></i> <!-- Ícone de e-mail -->
     <!-- Aqui você pode adicionar os detalhes do login do usuário -->
     Usuário: Admin <br>
     <!-- Adicione mais informações conforme necessário -->
@@ -125,9 +120,20 @@
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
-
+<script>
+    function filtrarChamados() {
+        var select = document.getElementById("status");
+        var value = select.options[select.selectedIndex].value;
+        var rows = document.getElementById("chamadosTable").getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+        for (var i = 0; i < rows.length; i++) {
+            var status = rows[i].getElementsByTagName("td")[6].innerText.trim();
+            if (value === "" || status === value) {
+                rows[i].style.display = "";
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+    }
+</script>
 </body>
 </html>
-
-
-
