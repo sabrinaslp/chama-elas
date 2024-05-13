@@ -203,6 +203,7 @@ public class ChamadoService {
                 .orElseThrow(() -> new RuntimeException("Chamado não encontrado"));
 
         chamado.setTecnico(tecnico);
+        chamado.setSetor(tecnico.getSetor());
         chamadoRepository.save(chamado);
     }
 

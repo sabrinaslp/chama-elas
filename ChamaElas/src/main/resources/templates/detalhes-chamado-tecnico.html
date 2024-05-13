@@ -102,13 +102,16 @@
 
         <!-- Detalhes do chamado -->
         <div class="chamado-details">
-            <p><strong>Solicitante:</strong> <span>Nome do cliente que abriu</span></p>
+            <p><strong>Solicitante:</strong> <span th:text="${chamado.cliente.nome}"></span></p>
             <p><strong>Título:</strong> <span th:text="${chamado.titulo}"></span></p>
             <p><strong>Descrição:</strong> <span th:text="${chamado.descricao}"></span></p>
             <p><strong>Status:</strong> <span th:text="${chamado.status.descricao}"></span></p>
             <p><strong>Prioridade:</strong> <span th:text="${chamado.prioridade.descricao}"></span></p>
             <p><strong>Setor:</strong> <span th:text="${chamado.setor}"></span></p>
             <p><strong>Data da solicitação:</strong> <span th:text="${#dates.format(chamado.dataRegistroAtualizada, 'dd-MM-yyyy - HH:mm')}"></span></p>
+            <p th:if="${chamado.status.descricao == 'Finalizado'}">
+                <strong>Motivo de Encerramento:</strong> <span th:text="${chamado.motivoEncerramento}"></span>
+            </p>
         </div>
 
         <!-- Técnico Responsável -->
@@ -118,17 +121,24 @@
         </div>
 
         <!-- Alterar o status -->
-        <div class="alterar-status">
+        <div class="alterar-status" th:if="${chamado.status.descricao != 'Finalizado'}">
             <h3>Alterar o status do chamado</h3>
             <form action="/alterar-status" id="statusForm" method="post">
                 <div class="form-group">
-                    <select id="statusInput" name="status" required>
+                    <select id="statusInput" name="status" onchange="showMotivoEncerramento(this)" required>
                         <option></option>
                         <option value="FECHADO" style="color: black;">Finalizado</option>
                         <option value="ABERTO" style="color: black;">Em aberto</option>
                         <option value="ENCAMINHADO" style="color: black;">Escalado para outro setor</option>
                     </select>
                 </div>
+
+                <!-- Campo de motivo de encerramento -->
+                <div class="form-group" id="motivoEncerramentoDiv" style="display: none;">
+                    <label for="motivoEncerramento">Motivo de Encerramento:</label>
+                    <textarea id="motivoEncerramento" name="motivoEncerramento"></textarea>
+                </div>
+
                 <div class="submit-button">
                     <input type="hidden" name="chamadoId" th:value="${chamado.ticketId}">
                     <input class="btn--primary full-width" type="submit" value="Salvar Alterações" style="border-radius: 5px;">
@@ -141,6 +151,17 @@
 
 <!-- Java Script
 ================================================== -->
+<script>
+    function showMotivoEncerramento(select) {
+        var motivoEncerramentoDiv = document.getElementById("motivoEncerramentoDiv");
+        if (select.value === "FECHADO") {
+            motivoEncerramentoDiv.style.display = "block";
+        } else {
+            motivoEncerramentoDiv.style.display = "none";
+        }
+    }
+</script>
+
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
