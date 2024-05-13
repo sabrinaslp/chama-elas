@@ -4376,9 +4376,6 @@ margin-top:80px;
   color: #FFD900;
 }
 
-.mover-tabela{
-
-}
 .filter-chamados {
     display: flex;
     align-items: center;
@@ -4432,3 +4429,35 @@ width: 50%; /* Ajuste conforme necessário */
   width: 100%;
   box-sizing: border-box;
 }
+
+.abertos {
+  border: 1px solid #ccc;
+  padding: 2px;
+  flex-grow: 1;
+  margin-right: 20px;
+  background-color: #FFF099;
+  color: #BBA31B;
+  border-radius: 5px;
+}
+
+.andamento {
+  border: 1px solid #ccc;
+  padding: 2px;
+  margin-left: 5px;
+  flex-grow: 1;
+  margin-right: 20px;
+  background-color: #D7ECFB;
+  color: #4A95CC;
+  border-radius: 5px;
+}
+
+.finalizados {
+  border: 1px solid #ccc;
+  padding: 2px;
+  margin-left: 5px;
+  flex-grow: 1;
+  background-color: #C8E675;
+  color: #758C36;
+  border-radius: 5px;
+}
+

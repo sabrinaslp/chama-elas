@@ -16,9 +16,6 @@
     <link rel="stylesheet" href="/css/main.css"> <!-- Este é o arquivo principal de estilos -->
     <link rel="stylesheet" href="/css/custom-styles.css"> <!-- Este arquivo contém estilos personalizados -->
 
-    <!-- script ================================================== -->
-    <script src="/js/modernizr.js"></script>
-
     <!-- favicons ================================================== -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -46,24 +43,38 @@
         </form>
     </div>
 
-
     <div class="filter-chamados">
-                <h6 class="filter-title">Filtrar chamados:</h6>
-                <div class="select-container">
-                    <select class="custom-select" id="prioridades" required>
-                        <option value="" style="color: black;">Selecione a prioridade do chamado</option>
-                        <option style="color: black;">Aberto</option>
-                        <option value="user" style="color: black;">Finalizado</option>
-                        <option value="technician" style="color: black;">Em atendimento</option>
-                    </select>
-                </div>
-            </div>
+        <h6 class="filter-title">Filtrar chamados:</h6>
+        <div class="select-container">
+            <select class="custom-select" id="prioridades" required>
+                <option value="" style="color: black;">Selecione a prioridade do chamado</option>
+                <option style="color: black;">Aberto</option>
+                <option value="user" style="color: black;">Finalizado</option>
+                <option value="technician" style="color: black;">Em atendimento</option>
+            </select>
+        </div>
+    </div>
 
     <div class="form-and-table row">
-
-        <div class="mover-tabela ">
-            <div class="col-six tab-full" style="margin-top: 20px;">
+        <div class="mover-tabela">
+            <div class="col-six tab-full" style="margin-top: -100px; width: 100%;">
                 <h3>Chamados</h3>
+                <div class="table-responsive">
+                    <div class="col-six tab-full chamados-count" style="margin-bottom: 400px; display: flex;">
+                        <p class="abertos">Abertos: <span th:text="${quantidadeAbertos != null ? quantidadeAbertos : '0'}"></span></p>
+                        <p class="andamento">Em andamento: <span th:text="${quantidadeEmAndamento != null ? quantidadeEmAndamento : '0'}"></span></p>
+                        <p class="finalizados">Finalizados: <span th:text="${quantidadeFinalizados != null ? quantidadeFinalizados : '0'}"></span></p>
+                        <br>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-and-table row">
+        <div class="mover-tabela" style="margin-top: 130px;">
+            <div class="col-six tab-full" style="margin-top: 20px;">
                 <div class="table-responsive">
                     <table class="custom-table" style="width: 100%;">
                         <thead>
@@ -96,6 +107,7 @@
         </div>
     </div>
 </div>
+
 <!-- Caixa de login do usuário -->
 <div class="user-login-info" style="border-radius: 5px;">
     <i class="fas fa-envelope"></i> <!-- Ícone de e-mail -->
