@@ -4379,7 +4379,8 @@ margin-top:80px;
 .filter-chamados {
     display: flex;
     align-items: center;
-    transform:translateX(-380%)
+    transform:translateX(-450%);
+
 }
 
 .filter-title {
@@ -4396,27 +4397,31 @@ margin-top:80px;
 /* Estilos para centralizar a tabela */
 .mover-tabela
 {
-width: 50%; /* Ajuste conforme necessário */
+width: 70%; /* Ajuste conforme necessário */
     margin: 0 auto; /* Centralizar horizontalmente */
     position: absolute; /* Define o posicionamento absoluto */
-    top: 50%; /* Posiciona a 50% da parte superior */
+    top: 60%; /* Posiciona a 50% da parte superior */
     left: 40%; /* Posiciona a 50% da parte esquerda */
     transform: translate(-30%, -30%); /* Move o bloco de volta em 50% da sua própria largura e altura */
     }
 
     .mover-titulo2{
 
-      transform: translateX(115%);
+      transform: translateX(150%);
     }
+
+#table-container {
+    margin-top: 120px; /* Ajuste este valor conforme necessário para mover a tabela para cima ou para baixo */
+}
 
 
     .mover-btn{
     display: flex;
     align-items: center;
     margin-bottom:10px;
-    margin-top: 150px; /* Ajuste a margem superior conforme necessário */
+    margin-top: 160px; /* Ajuste a margem superior conforme necessário */
     transform: translateY(100%);
-    transform: translateX(440%);
+    transform: translateX(480%);
     border-radius: 5px;
     }
 
@@ -4451,6 +4456,8 @@ width: 50%; /* Ajuste conforme necessário */
   border-radius: 5px;
 }
 
+
+
 .finalizados {
   border: 1px solid #ccc;
   padding: 2px;
@@ -4461,3 +4468,64 @@ width: 50%; /* Ajuste conforme necessário */
   border-radius: 5px;
 }
 
+/* Estilos específicos para o login */
+/* Estilos específicos para o login */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.login-info {
+    border-radius: 5px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+    overflow: hidden;
+    transform: translateX(-280%);
+}
+
+.login-info i {
+    color: #ffff;
+}
+
+.login-info h6 {
+    margin: 0;
+    font-size: 12px;
+    word-wrap: break-word;
+    color: #ffff;
+}
+
+/* Estilos específicos para o botão "Sair" */
+.logout-form {
+    margin-bottom: 100px; /* Ajuste a margem inferior para descer um pouco o botão */
+}
+
+.logout-button {
+    border-radius: 5px;
+    transform: translateY(300%);
+     margin-right: 600px; /* Ajuste a margem direita para mover o botão para a direita */
+
+
+}
+
+.user-login-info,
+ login-info2{
+  border-radius: 5px;
+      height: 50px;
+      display: flex;
+      justify-content: space-evenly;
+      /* padding: 10px; */
+      overflow: hidden;
+      transform: translateX(-500%);
+      transform: translateY(30px);
+      margin-right: 220px;
+      margin-left: 300px;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-content: stretch;
+      align-items: baseline;
+  }
+ }
