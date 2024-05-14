@@ -4547,9 +4547,10 @@ width: 70%; /* Ajuste conforme necessário */
 
 /* Estilos para as fotos dos membros do time */
 .team-member-photo {
-  border: 2px solid #ddd; /* Adiciona uma borda cinza */
+  border: 2px solid #FFD900; /* Adiciona uma borda cinza */
   border-radius: 10%; /* Arredonda as bordas das fotos */
   transition: transform 0.3s ease; /* Adiciona uma transição suave ao passar o mouse */
+  box-shadow: 0px 4px 8px rgba(255, 255, 0, 0.5);
 }
 
 /* Estilos para os nomes dos membros do time */
@@ -4562,4 +4563,19 @@ width: 70%; /* Ajuste conforme necessário */
 .team-member-photo:hover {
   transform: scale(1.1); /* Aumenta ligeiramente o tamanho da foto */
   border-color: #555; /* Muda a cor da borda ao passar o mouse */
+}
+/* Diminuir o tamanho dos botões dentro da tabela */
+.custom-table .btn--primary {
+    font-size: 12px; /* Altere o tamanho da fonte conforme necessário */
+    padding: 5px 10px; /* Altere o preenchimento conforme necessário */
+}
+
+/* Diminuir o tamanho das colunas */
+.custom-table th,
+.custom-table td {
+    padding: 8px; /* Altere o preenchimento conforme necessário */
+}
+
+.custom-table .button-col {
+    width: 100px; /* Ajuste a largura conforme necessário */
 }
