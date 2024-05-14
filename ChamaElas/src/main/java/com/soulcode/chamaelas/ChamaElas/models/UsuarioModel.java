@@ -38,9 +38,10 @@ public class UsuarioModel implements Serializable {
 
     private String senha;
 
+    @Column(name = "data_expiracao_teste")
     public LocalDate dataExpiracaoTeste;
 
-    @Column(name = "esta_ativo", nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
+    @Column(name = "esta_ativo", nullable = false, columnDefinition = "TINYINT(1) DEFAULT 1")
     private boolean estaAtivo;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -52,6 +53,19 @@ public class UsuarioModel implements Serializable {
 
     private String token;
 
+    // Método para definir a data de expiração para 7 dias após o registro
+    @PrePersist
+    public void definirDataExpiracaoTeste() {
+        if (this.dataRegistro == null) {
+            this.dataRegistro = LocalDate.now();
+        }
+        this.dataExpiracaoTeste = this.dataRegistro.plusDays(7);
+    }
+
+    // Método para verificar se a conta expirou
+    public boolean contaExpirada() {
+        return LocalDate.now().isAfter(this.dataExpiracaoTeste);
+    }
 
     public void desativarUsuario() {
         this.estaAtivo = false;

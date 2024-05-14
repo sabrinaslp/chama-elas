@@ -7,6 +7,7 @@ import com.soulcode.chamaelas.ChamaElas.models.dto.UsuarioDTO;
 import com.soulcode.chamaelas.ChamaElas.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -104,6 +106,7 @@ public class UsuarioService {
         ClienteDTO clienteDTO = new ClienteDTO(null, nome, email, endereco);
         ClienteModel clienteModel = ClienteDTO.toModel(clienteDTO);
         clienteModel.setFuncao(funcao);
+        clienteModel.setEstaAtivo(true);
         String senhaCodificada = criptografarSenha(senha);
         clienteModel.setSenha(senhaCodificada);
         clienteRepository.save(clienteModel);
@@ -113,6 +116,7 @@ public class UsuarioService {
         TecnicoDTO tecnicoDTO = new TecnicoDTO(null, nome, email, true, setor, telefone);
         TecnicoModel tecnicoModel = TecnicoDTO.toModel(tecnicoDTO);
         tecnicoModel.setFuncao(funcao);
+        tecnicoModel.setEstaAtivo(true);
         String senhaCodificada = criptografarSenha(senha);
         tecnicoModel.setSenha(senhaCodificada);
         tecnicoRepository.save(tecnicoModel);
@@ -176,7 +180,6 @@ public class UsuarioService {
         return tokenBuilder.toString();
     }
 
-
     public boolean verificarToken(String token) {
         // Lógica para verificar se o token existe no banco de dados
         Optional<UsuarioModel> usuarioOptional = usuarioRepository.findByToken(token);
@@ -192,6 +195,17 @@ public class UsuarioService {
             return false;
         }
     }
+
+    // Método para verificar e excluir contas expiradas
+    @Scheduled(fixedRate = 86400000) // Executa a cada 24 horas
+    public void verificarEExcluirContasExpiradas() {
+        List<UsuarioModel> usuariosExpirados = usuarioRepository.findByDataExpiracaoTesteBefore(LocalDate.now());
+        for (UsuarioModel usuario : usuariosExpirados) {
+            usuario.setEstaAtivo(false);
+            usuarioRepository.save(usuario); // Atualiza o estado do usuário para inativo
+        }
+    }
+
 }
 
 

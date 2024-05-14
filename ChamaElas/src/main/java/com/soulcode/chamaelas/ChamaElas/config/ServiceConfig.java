@@ -21,6 +21,11 @@ public class ServiceConfig implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<UsuarioModel> usuarioOptional = usuarioRepository.findByEmail(username);
         UsuarioModel usuario = usuarioOptional.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado com o email: " + username));
+
+//        if (!usuario.isEstaAtivo()) {
+//            throw new UsernameNotFoundException("Seu período de teste gratuito expirou.");
+//        }
+
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(usuario.getFuncao().getNome());
         System.out.println(usuario.getFuncao().getNome());
         return new User(usuario.getEmail(), usuario.getPassword(), Collections.singleton(authority));
