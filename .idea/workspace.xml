@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba0dc791-a15a-44c9-9843-69f38623fcf0" name="Changes" comment="Atualização página admin">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_21_11__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_21_11__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_22_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_05_2024_22_14__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_05_2024_18_39__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_05_2024_18_39__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/config/SuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/config/SuccessHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/thymeleaf/ClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/thymeleaf/ClienteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/thymeleaf/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/controllers/thymeleaf/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/UsuarioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/models/UsuarioModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/EmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/login-usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/login-usuario.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/pagina-autenticacao.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/pagina-autenticacao.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/administrador-chamado.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/administrador-chamado.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/tecnico-chamados.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/tecnico-chamados.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +110,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -326,7 +326,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715449096510</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Atualização página admin">
+      <option name="closed" value="true" />
+      <created>1715694198955</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1715694198955</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

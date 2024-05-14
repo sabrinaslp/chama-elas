@@ -11,11 +11,11 @@ import java.util.Set;
 public class UserConfig implements UserDetails {
 
     private final UsuarioModel usuarioModel;
-    private final boolean isActive;
+    private final boolean estaAtivo;
 
-    public UserConfig(UsuarioModel usuarioModel, boolean isActive) {
+    public UserConfig(UsuarioModel usuarioModel, boolean estaAtivo) {
         this.usuarioModel = usuarioModel;
-        this.isActive = isActive;
+        this.estaAtivo = estaAtivo;
     }
 
     @Override
@@ -54,6 +54,6 @@ public class UserConfig implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return isActive;
+        return estaAtivo;
     }
 }
