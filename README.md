@@ -14,7 +14,7 @@
 - [Pré-requisitos](#%EF%B8%8F-pr%C3%A9-requisitos)
 - [Tecnologias Utilizadas](#-tecnologias-utilizadas)
 - [Como utilizar](#-como-utilizar)
-- [Testando a aplicação via Postman](#-testando-a-aplica%C3%A7%C3%A3o-via-postman)
+- [Testando a aplicação via Postman](#-endpoints)
 - [Funcionalidades](#%EF%B8%8F-funcionalidades)
 - [Licença](#-licen%C3%A7a)
 - [Equipe de Desenvolvimento](#-equipe-de-desenvolvimento)
@@ -73,7 +73,7 @@ Para instalar e executar o sistema localmente, siga estas etapas:
 
 4. Acesse o sistema através do link `http://localhost:8090`.
 
-## 🔎 Rotas da aplicação
+## 🔎 Endpoints
 
 
 ## ⚙️ Funcionalidades
@@ -133,7 +133,7 @@ Para mais informações, sugestões ou dúvidas, entre em contato conosco:
             <td align="center" width="325">
                 <a href="https://github.com/sabrinaslp"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/sabrina-satriany/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <h3>Sabrina Satriany</h3>
-                <p>sabrinaslimap@gmail.com</p>
+                <p>Email: sabrinaslimap@gmail.com</p>
             </td>
         </tr>
     </table>
