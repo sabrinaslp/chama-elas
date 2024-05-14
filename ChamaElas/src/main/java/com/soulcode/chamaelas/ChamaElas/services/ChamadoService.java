@@ -30,7 +30,6 @@ public class ChamadoService {
     @Autowired
     private UsuarioService usuarioService;
 
-
     @Getter
     @Setter
     private String nomeCliente;
@@ -96,7 +95,6 @@ public class ChamadoService {
     public List<ChamadoModel> listarChamadosCliente(ClienteModel cliente) {
         return usuarioService.listarChamadosUsuario(cliente);
     }
-
 
     // Edita um chamado do usuário
     public ChamadoModel editarChamadoUsuario(Long ticketId) {
