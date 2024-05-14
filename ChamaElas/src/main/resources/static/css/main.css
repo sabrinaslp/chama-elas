@@ -4540,3 +4540,26 @@ width: 70%; /* Ajuste conforme necessário */
     margin-right: 0px; /* Ajusta a posição horizontal conforme necessário */
 
 }
+
+.linkedin-hover:hover {
+    transform: translateY(-5px); /* Mover para cima */
+}
+
+/* Estilos para as fotos dos membros do time */
+.team-member-photo {
+  border: 2px solid #ddd; /* Adiciona uma borda cinza */
+  border-radius: 10%; /* Arredonda as bordas das fotos */
+  transition: transform 0.3s ease; /* Adiciona uma transição suave ao passar o mouse */
+}
+
+/* Estilos para os nomes dos membros do time */
+.team-member-name {
+  text-align: center; /* Centraliza o texto */
+  margin-top: 10px; /* Adiciona um espaçamento superior */
+}
+
+/* Efeito de hover para as fotos */
+.team-member-photo:hover {
+  transform: scale(1.1); /* Aumenta ligeiramente o tamanho da foto */
+  border-color: #555; /* Muda a cor da borda ao passar o mouse */
+}
