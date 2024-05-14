@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>ChamaElas</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/vendor.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="/js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+
+<body id="top">
+
+<!-- preloader
+================================================== -->
+<div id="preloader">
+    <div id="loader" class="dots-jump">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+<!-- header
+================================================== -->
+<header class="s-header">
+
+
+    <nav class="header-nav">
+
+        <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+
+        <h3>Menu</h3>
+
+        <div class="header-nav__content">
+
+            <ul class="header-nav__list">
+                <li><a class="smoothscroll" href="#home" title="home">Início</a></li>
+                <li><a class="smoothscroll" href="#about" title="about">Sobre nós</a></li>
+                <li><a class="smoothscroll" href="#services" title="services">Sistema</a></li>
+                <li><a class="smoothscroll" href="#contact" title="contact">Contato</a></li>
+            </ul>
+
+            <p>© 2024 ChamaElas. Todos os direitos reservados.</p>
+
+
+        </div> <!-- end header-nav__content -->
+
+    </nav> <!-- end header-nav -->
+
+    <a class="header-menu-toggle" href="#0">
+        <span class="header-menu-icon"></span>
+    </a>
+
+</header> <!-- end s-header -->
+
+
+
+
+<div class="row form-wrapper custom-form">
+    <div class="col-eight tab-full">
+        <br>
+        <br>
+        <br>
+
+        <h3>Alteração de Chamado</h3>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center"> <!-- Texto à esquerda em telas médias e grandes -->
+                    <h2>Olá, <span th:text="${nomeUsuario}"></span>!</h2>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${error}" class="alert-box alert-box--error" style="text-align: center">
+            <p th:text="${error}" style="margin-bottom: 0;"></p>
+            <i class="fa fa-times alert-box__close" aria-hidden="true"></i>
+        </div>
+        <form action="/alterar-chamado" method="post">
+
+            <div class="form-group">
+                <label for="tituloInput">Título</label>
+                <input class="form-control full-width" placeholder="Descreva o título do chamado" id="tituloInput" name="titulo" th:value="${chamado.titulo}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="descricaoInput">Descrição do Problema</label>
+                <textarea class="full-width"  name="descricao" placeholder="Descreva o problema detalhadamente" id="descricaoInput"  th:text="${chamado.descricao}" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="setorInput">Setor</label>
+                <input class="form-control full-width" placeholder="Descreva o setor do chamado" id="setorInput" name="setor" th:value="${chamado.setor}" required>
+            </div>
+            <input type="hidden" id="chamadoId" name="chamadoId" th:value="${chamado.ticketId}">
+
+            <!-- <div class="form-group">
+                 <label for="photoInput">Anexar Arquivo</label>
+                 <input class="full-width" type="file" id="photoInput">
+             </div>-->
+        <input class="btn--primary full-width" type="submit" value="Alterar Chamado" style="border-radius: 5px;">
+        </form>
+    </div>
+</div>
+
+
+
+
+<!-- Java Script
+================================================== -->
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
