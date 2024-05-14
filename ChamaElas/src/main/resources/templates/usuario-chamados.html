@@ -17,6 +17,12 @@
     <!-- favicons ================================================== -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* Estilos para a coluna dos botões */
+        .custom-table .button-col {
+            width: 120px; /* Ajuste a largura conforme necessário */
+        }
+    </style>
 </head>
 <body id="top">
 <!-- preloader ================================================== -->
@@ -51,7 +57,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 text-center"> <!-- Texto à esquerda em telas médias e grandes -->
-            <h2>Olá, <span th:text="${nomeUsuario}"></span></h2>
+            <h2>Olá, <span th:text="${nomeUsuario}"></span>!</h2>
         </div>
     </div>
     <div th:if="${error}" class="alert-box alert-box--error" style="text-align: center">
@@ -71,7 +77,7 @@
 
                 <div class="home-content__button">
                     <form action="/logout" method="post">
-                         <input class="btn--primary full-width" type="submit" value="Sair"  style=" border-radius: 5px;">
+                        <input class="btn--primary full-width" type="submit" value="Sair"  style=" border-radius: 5px;">
                     </form>
                 </div>
             </div>
@@ -106,7 +112,7 @@
                     <form id="form-excluir-chamado-${chamado.ticketId}" action="/excluir-chamado" method="get">
                         <input type="hidden" id="chamadoId-${chamado.ticketId}" name="chamadoId" th:value="${chamado.ticketId}">
 
-                        <td>
+                        <td class="button-col">
                             <div class="home-content__button" style="margin-top: 0.5rem;">
                                 <input class="btn--primary full-width" type="button" value="Excluir" th:onclick="'confirmarExclusao(\'' + ${chamado.ticketId} + '\')'" style="border-radius: 5px;">
                             </div>
@@ -118,40 +124,40 @@
             </table>
         </div>
         <br>
-     <!--   <h3>Chamados Finalizados</h3>
-        <div class="table-responsive">
-            <table class="custom-table">
-                <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Descrição</th>
-                    <th>Prioridade</th>
-                    <th>Data de início</th>
-                    <th>Status</th>
-                    <th>Detalhes</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        -->
+        <!--   <h3>Chamados Finalizados</h3>
+           <div class="table-responsive">
+               <table class="custom-table">
+                   <thead>
+                   <tr>
+                       <th>Título</th>
+                       <th>Descrição</th>
+                       <th>Prioridade</th>
+                       <th>Data de início</th>
+                       <th>Status</th>
+                       <th>Detalhes</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   <tr>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                   </tr>
+                   </tbody>
+               </table>
+           </div>
+           -->
     </div>
 </div> <!-- end row -->
 <!-- Java Script ================================================== -->
