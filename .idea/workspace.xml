@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba0dc791-a15a-44c9-9843-69f38623fcf0" name="Changes" comment="Fotos do index">
-      <change afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/sac.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/java/com/soulcode/chamaelas/ChamaElas/services/EmailService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/static/images/hero-bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/static/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/static/images/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/static/images/sample-image.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/static/images/wheel-1000.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/static/images/wheel-2000.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/static/images/wheel-500.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChamaElas/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +62,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.ChamaElasApplication.executor": "Debug",
+    "Application.ChamaElasApplication.executor": "Run",
     "DefaultHtmlFileTemplate": "HTML File",
     "Maven.ChamaElas [clean].executor": "Run",
     "Maven.ChamaElas [install].executor": "Run",
@@ -366,7 +357,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715713772813</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Fotos do index">
+      <option name="closed" value="true" />
+      <created>1715722487309</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1715722487309</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Fotos do index">
+      <option name="closed" value="true" />
+      <created>1715724427240</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1715724427240</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
