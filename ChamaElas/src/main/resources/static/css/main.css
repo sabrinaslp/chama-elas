@@ -4511,21 +4511,32 @@ width: 70%; /* Ajuste conforme necessário */
 
 }
 
-.user-login-info,
- login-info2{
-  border-radius: 5px;
-      height: 50px;
-      display: flex;
-      justify-content: space-evenly;
-      /* padding: 10px; */
-      overflow: hidden;
-      transform: translateX(-500%);
-      transform: translateY(30px);
-      margin-right: 220px;
-      margin-left: 300px;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      align-content: stretch;
-      align-items: baseline;
-  }
+.login-info2 {
+    border-radius: 5px;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    overflow: hidden;
+    transform: translateX(-145%) translateY(10px);
+    margin-left: 200px; /* Você pode ajustar a margem esquerda conforme necessário */
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    align-items: baseline;
+}
+
+
+ .logout-form {
+     margin-top: -90px; /* Adiciona um espaçamento na parte superior */
+     margin-bottom: 30px; /* Adiciona um espaçamento na parte inferior */
+     margin-left: 22px; /* Ajusta a margem esquerda */
+     margin-right: 42px; /* Ajusta a margem direita */
  }
+
+
+.logout-button-container {
+    margin-top: 80px; /* Ajusta a posição vertical conforme necessário */
+    margin-left: 5px; /* Ajusta a posição horizontal conforme necessário */
+    margin-right: 0px; /* Ajusta a posição horizontal conforme necessário */
+
+}
