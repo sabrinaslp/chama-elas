@@ -100,7 +100,6 @@ public class ChamadoService {
         return usuarioService.listarChamadosUsuario(cliente);
     }
 
-
     // Edita um chamado do usuário
     public ChamadoModel editarChamadoUsuario(Long ticketId) {
         return chamadoRepository.findById(ticketId).orElse(null);
