@@ -46,6 +46,7 @@ public class AdminConfig implements CommandLineRunner {
             user.setNome("Admin");
             user.setEmail("admin@chamaelas.com");
             user.setSenha(passwordEncoder.encode("1234"));
+            user.setEstaAtivo(true);
             user.setFuncao(funcaoAdmin);
             usuarioRepository.save(user);
 

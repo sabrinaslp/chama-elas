@@ -3,9 +3,6 @@ package com.soulcode.chamaelas.ChamaElas.services;
 import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
 import com.soulcode.chamaelas.ChamaElas.models.ClienteModel;
 import com.soulcode.chamaelas.ChamaElas.models.TecnicoModel;
-import com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;
-import com.soulcode.chamaelas.ChamaElas.models.dto.ChamadoDTO;
-import com.soulcode.chamaelas.ChamaElas.models.dto.ClienteDTO;
 import com.soulcode.chamaelas.ChamaElas.repositories.ChamadoRepository;
 import com.soulcode.chamaelas.ChamaElas.repositories.TecnicoRepository;
 import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
@@ -15,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;
@@ -142,7 +138,6 @@ public class ChamadoService {
         return chamados;
 
     }
-
 
     // Listar todos os chamados atribuidos do Tecnico Logado
     public List<ChamadoModel> getChamadosAtribuidosAoTecnicoLogado() {
