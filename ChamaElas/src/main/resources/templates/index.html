@@ -47,34 +47,22 @@
 <!-- header
 ================================================== -->
 <header class="s-header">
-
-
     <nav class="header-nav">
-
         <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
-
         <h3>Menu</h3>
-
         <div class="header-nav__content">
-
             <ul class="header-nav__list">
-                <li><a class="smoothscroll" href="#home" title="home">Início</a></li>
+                <li><a class="smoothscroll" href="#" title="login">Login</a></li>
                 <li><a class="smoothscroll" href="#about" title="about">Sobre nós</a></li>
                 <li><a class="smoothscroll" href="#services" title="services">Sistema</a></li>
                 <li><a class="smoothscroll" href="#contact" title="contact">Contato</a></li>
             </ul>
-
             <p>© 2024 ChamaElas. Todos os direitos reservados.</p>
-
-
         </div> <!-- end header-nav__content -->
-
     </nav> <!-- end header-nav -->
-
     <a class="header-menu-toggle" href="#0">
         <span class="header-menu-icon"></span>
     </a>
-
 </header> <!-- end s-header -->
 
 
@@ -430,7 +418,7 @@
         <div class="col-md-4 px-md-2 text-center">
             <!-- Foto do membro do time 6 -->
             <a href="https://www.linkedin.com/in/cec%C3%ADlia-galv%C3%A3o?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
-                <img src="/images/token.jpg" alt="Cecília Galvão" class="team-member-photo" style="max-width: 250px;">
+                <img src="/images/Cecilia.jpg" alt="Cecília Galvão" class="team-member-photo" style="max-width: 250px;">
             </a>
             <!-- Nome do membro do time 6 -->
             <p>Cecília Galvão</p>
@@ -569,7 +557,15 @@
 
 </div> <!-- end photoSwipe background -->
 
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Função para redirecionar para a página de login quando clicar em "Login"
+        document.querySelector('a[title="login"]').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevenir o comportamento padrão do link
+            window.location.href = "/login-usuario"; // Redirecionar para a página de login
+        });
+    });
+</script>
 <!-- Java Script
 ================================================== -->
 <script src="/js/jquery-3.2.1.min.js"></script>
