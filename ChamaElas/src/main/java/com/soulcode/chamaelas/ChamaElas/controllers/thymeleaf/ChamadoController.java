@@ -69,4 +69,22 @@ public class ChamadoController {
            return "redirect:/pagina-cliente";
         }
     }
+
+    @GetMapping("/excluir-chamadoAdmin")
+    public String excluirChamadoAdmin(@RequestParam Long chamadoId, Model model, Authentication authentication) {
+        try {
+            Optional<ChamadoModel> chamado = chamadoService.findById(chamadoId);
+            ClienteModel cliente = clienteRepository.getClienteByEmail(authentication.getName());
+
+            chamadoService.deleteById(chamadoId);
+            model.addAttribute("authentication", authentication);
+            return "redirect:/administrador-chamado";
+        } catch (DataIntegrityViolationException | IllegalArgumentException e) {
+            model.addAttribute("error", e.getMessage());
+            return "redirect:/administrador-chamado";
+        } catch (Exception e) {
+            model.addAttribute("error", "Ocorreu um erro ao processar a exclusão do chamado.");
+            return "redirect:/administrador-chamado";
+        }
+    }
 }
