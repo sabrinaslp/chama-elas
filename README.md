@@ -1,17 +1,59 @@
-# ChamaElas - Sistema de Chamados Técnicos em Informática
+<p align="center">
+    <img src="https://github.com/sabrinaslp/chama-elas/assets/101300856/509ff8a4-c073-4751-9967-b008b3897737" alt="ChamaElas - Projeto Integrador #ElasTech 2ª Edição - Pagbank">
+</p>
+<p align="center">
+   <img src="https://img.shields.io/badge/Status:-Em_andamento-yellow"/>
+   <img src="https://img.shields.io/badge/Projeto Integrador:-ElasTech 2024-FE951E"/>
+</p>
+<h1 align="center">ChamaElas - Sistema de Chamados Técnicos em Informática 👩‍💻</h1>
 
-ChamaElas é um sistema de gerenciamento de chamados técnicos em informática, projetado para facilitar o registro, acompanhamento e resolução de problemas relacionados à infraestrutura tecnológica de uma organização.
 
-## Tecnologias Utilizadas
+## ✨ Índice
 
-- **Programação Orientada a Objetos**: O sistema é desenvolvido utilizando os princípios da programação orientada a objetos para criar uma estrutura modular e escalável.
-- **Java Spring Boot**: Utilizamos o framework Spring Boot para desenvolver a aplicação backend de forma rápida, eficiente e robusta.
-- **Template de Telas**: Utilizamos templates para criar interfaces de usuário intuitivas e responsivas, proporcionando uma ótima experiência para o usuário final.
-- **Banco de Dados MySQL**: Armazenamos os dados do sistema em um banco de dados MySQL, garantindo segurança, confiabilidade e escalabilidade.
-- **Versionamento no GitHub**: O código-fonte do projeto é versionado no GitHub, permitindo um controle de versão eficaz, colaboração entre os desenvolvedores e fácil acompanhamento das mudanças.
-- **API RESTful**: Disponibilizamos uma API RESTful para integração com outros sistemas e serviços, permitindo uma comunicação flexível e eficiente.
+- [Sobre](#-sobre)
+- [Pré-requisitos](#%EF%B8%8F-pr%C3%A9-requisitos)
+- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [Como utilizar](#-como-utilizar)
+- [Testando a aplicação via Postman](#-endpoints)
+- [Funcionalidades](#%EF%B8%8F-funcionalidades)
+- [Licença](#-licen%C3%A7a)
+- [Equipe de Desenvolvimento](#-equipe-de-desenvolvimento)
 
-## Instalação
+
+## 💡 Sobre
+
+Este projeto consiste no desenvolvimento de uma **interface** e **rotas** para um sistema completo de chamados técnicos em informática. 
+- Em um chamado técnico, um **usuário** solicita atendimento e um **técnico** assume essa demanda, iniciando o atendimento e modificando seu status conforme necessário.
+- Cada **chamado** inclui informações como usuário, status, setor, descrição, prioridade e data de início.
+
+## 🛠️ Pré-requisitos
+
+Antes de começar, certifique-se de que você tenha as seguintes ferramentas instaladas em sua máquina:
+- MySQL Workbench
+- Java
+- IDE (recomendamos a utilização do **Intellij**)
+
+## 💻 Tecnologias Utilizadas
+
+**Backend:**
+- Java 
+- Spring Boot
+- MySQL Workbench
+- Junit
+- Mockito
+- Postman
+  
+**Frontend:**
+- HTML
+- CSS
+- Thymeleaf
+- Bootstrap
+- Javascript
+
+**Versionamento:**
+- Git / Github
+
+## 🚀 Como utilizar
 
 Para instalar e executar o sistema localmente, siga estas etapas:
 
@@ -21,7 +63,7 @@ Para instalar e executar o sistema localmente, siga estas etapas:
    git clone https://github.com/sabrinaslp/chama-elas.git
    ```
 
-2. Configure o banco de dados MySQL de acordo com as configurações do arquivo `application.properties`.
+2. Configure sua senha para o banco de dados **MySQL** de acordo com as configurações do arquivo `application.properties`.
 
 3. Compile e execute a aplicação utilizando Maven:
 
@@ -29,15 +71,14 @@ Para instalar e executar o sistema localmente, siga estas etapas:
    mvn spring-boot:run
    ```
 
-4. Acesse o sistema em `http://localhost:8090`.
+4. Acesse o sistema através do link `http://localhost:8090`.
 
-## Como Usar
+## 🔎 Endpoints
 
-O sistema oferece uma interface intuitiva para o registro e acompanhamento de chamados técnicos. Os usuários podem criar novos chamados, visualizar o status dos chamados existentes, atribuir chamados a técnicos e acompanhar o progresso da resolução.
 
-### Perfis
+## ⚙️ Funcionalidades
 
-O ChamaElas suporta vários perfis de usuários, cada um com diferentes níveis de acesso e responsabilidades:
+O **ChamaElas** suporta vários perfis de usuários, cada um com diferentes níveis de acesso e responsabilidades:
 
 - **Usuários Comuns**: Podem registrar novos chamados e visualizar apenas os chamados atribuídos a eles.
 
@@ -45,40 +86,64 @@ O ChamaElas suporta vários perfis de usuários, cada um com diferentes níveis 
 
 - **Administradores**: Possuem acesso total ao sistema, podendo gerenciar usuários, configurar as preferências do sistema, entre outras funcionalidades avançadas.
 
-Cada perfil de usuário tem acesso apenas às funcionalidades relevantes às suas responsabilidades, garantindo uma experiência personalizada e segura para todos os usuários.
-## Licença
+**Cada perfil** de usuário tem acesso apenas às funcionalidades relevantes às suas responsabilidades, garantindo uma experiência **personalizada** e **segura** para todos os usuários.
+
+## 📝 Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
 
-## Contato
+## 👩‍💻 Equipe de Desenvolvimento:
 
 Para mais informações, sugestões ou dúvidas, entre em contato conosco:
 
-### Equipe de Desenvolvimento:
+<p align="center">
+    <table align="center" cellspacing="20">
+        <tr>
+            <td align="center" width="325">
+                <a href="https://github.com/amrodrigues"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/anna-maria-rodrigues-2b375016/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
+                <h3>Anna Maria</h3>
+                <p>Email: amrodrigues1307@gmail.com</p>
+            </td>
+            <td align="center" width="325">
+                <a href="https://github.com/andressarodrigues2172dev"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/andressa-macedo-rodrigues/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
+                <h3>Andressa Rodrigues</h3>
+                <p>Email: andressa.rodrigues.2172@gmail.com</p>
+            </td>
+            <td align="center" width="325">
+                <a href="URL_DO_PERFIL_DO_GITHUB_1"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="URL_DO_PERFIL_DO_LINKEDIN_1"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
+                <h3>Cecília Galvão</h3>
+                <p>Email: emailcecilia@gmail.com</p>
+            </td>
+        </tr>
+    </table>
+</p>
+<p align="center">
+    <table align="center" cellspacing="20">
+        <tr>
+            <td align="center" width="325">
+                <a href="https://github.com/LarissaLisboa"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/larissa-lisboa-souza/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
+                <h3>Larissa Lisboa</h3>
+                <p>Email: larissa-lisboa99@hotmail.com</p>
+            </td>
+            <td align="center" width="325">
+                <a href="https://github.com/szrayane"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/rayane-souza-a02658229/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
+                <h3>Rayane Souza</h3>
+                <p>Email: rayhsdsouza@gmail.com</p>
+            </td>
+            <td align="center" width="325">
+                <a href="https://github.com/sabrinaslp"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/sabrina-satriany/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
+                <h3>Sabrina Satriany</h3>
+                <p>Email: sabrinaslimap@gmail.com</p>
+            </td>
+        </tr>
+    </table>
+</p>
 
-- [Andressa Rodrigues](https://github.com/andressarodrigues2172dev)
-    - GitHub: [andressarodrigues2172dev](https://github.com/andressarodrigues2172dev)
-    - LinkedIn: [Andressa Rodrigues](https://www.linkedin.com/in/andressa-macedo-rodrigues/)
-    - Email: andressa.rodrigues.2172@gmail.com
 
-- [Anna Maria](https://github.com/amrodrigues)
-    - GitHub: [amrodrigues](https://github.com/amrodrigues)
-    - LinkedIn: [Anna Maria](https://www.linkedin.com/in/anna-maria-rodrigues-2b375016/)
-    - Email: amrodrigues1307@gmail.com
 
-- [Larissa Lisboa](https://github.com/LarissaLisboa)
-    - GitHub: [LarissaLisboa](https://github.com/LarissaLisboa)
-    - LinkedIn: [Larissa Lisboa](https://www.linkedin.com/in/larissa-lisboa-souza/)
-    - Email: larissa-lisboa99@hotmail.com
 
-- [Rayane Souza](https://github.com/membro4)
-    - GitHub: [szrayane](https://github.com/szrayane)
-    - LinkedIn: [Rayane Souza](https://www.linkedin.com/in/rayane-souza-a02658229/)
-    - Email: rayhsdsouza@gmail.com
 
-- [Sabrina Santriany](https://github.com/sabrinaslp)
-    - GitHub: [sabrinaslp](https://github.com/sabrinaslp)
-    - LinkedIn: [Sabrina Santriany]( https://www.linkedin.com/in/sabrina-satriany/)
-    - Email: sabrinaslimap@gmail.com
+
+
 
 ---
