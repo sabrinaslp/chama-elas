@@ -52,7 +52,7 @@
         <h3>Menu</h3>
         <div class="header-nav__content">
             <ul class="header-nav__list">
-                <li><a class="smoothscroll" href="#" title="login">Login</a></li>
+                <li><a href="/login" title="login">Login</a></li>
                 <li><a class="smoothscroll" href="#about" title="about">Sobre nós</a></li>
                 <li><a class="smoothscroll" href="#services" title="services">Sistema</a></li>
                 <li><a class="smoothscroll" href="#contact" title="contact">Contato</a></li>
@@ -557,15 +557,6 @@
 
 </div> <!-- end photoSwipe background -->
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Função para redirecionar para a página de login quando clicar em "Login"
-        document.querySelector('a[title="login"]').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevenir o comportamento padrão do link
-            window.location.href = "/login-usuario"; // Redirecionar para a página de login
-        });
-    });
-</script>
 <!-- Java Script
 ================================================== -->
 <script src="/js/jquery-3.2.1.min.js"></script>

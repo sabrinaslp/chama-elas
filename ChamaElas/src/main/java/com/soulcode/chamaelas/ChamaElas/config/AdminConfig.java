@@ -49,9 +49,6 @@ public class AdminConfig implements CommandLineRunner {
             user.setEstaAtivo(true);
             user.setFuncao(funcaoAdmin);
             usuarioRepository.save(user);
-
-            // CRIANDO CHAMADOS FICTICIOS PARA TESTE
-            chamadoService.criaChamadosFicticios();
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.soulcode.chamaelas.ChamaElas.models;
 
-import com.soulcode.chamaelas.ChamaElas.models.FuncaoModel;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -11,7 +10,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
 
 @NoArgsConstructor
