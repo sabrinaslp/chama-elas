@@ -34,7 +34,6 @@ public class ChamadoService {
     @Autowired
     private UsuarioService usuarioService;
 
-
     @Getter
     @Setter
     private String nomeCliente;
@@ -142,7 +141,6 @@ public class ChamadoService {
         return chamados;
 
     }
-
 
     // Listar todos os chamados atribuidos do Tecnico Logado
     public List<ChamadoModel> getChamadosAtribuidosAoTecnicoLogado() {
