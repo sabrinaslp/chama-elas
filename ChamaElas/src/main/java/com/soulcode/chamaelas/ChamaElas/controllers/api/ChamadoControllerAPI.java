@@ -67,15 +67,48 @@ public class ChamadoControllerAPI {
         return chamadoService.atualizarChamadoTecnico(ticketId, chamadoAtualizado);
     }
 
-    @GetMapping("/admin/todos-chamados")
+   @GetMapping("/admin/todos-chamados")
     public List<ChamadoModel> todosChamadosAdmin() {
         return chamadoService.listarTodosChamadosAdmin();
     }
 
-    @GetMapping("/excluir-chamados/{ticketId}")
-    public Optional<ChamadoModel> excluirChamado(@PathVariable Long ticketId) {
-            Optional<ChamadoModel> chamado = chamadoService.findById(ticketId);
-            chamadoService.deleteById(ticketId);
-            return chamado;
+    public class ExclusaoChamadoResponse {
+        private boolean excluido;
+        private String mensagem;
+
+        public String getMensagem() {
+            return mensagem;
         }
+
+        public void setExcluido(boolean excluido) {
+            this.excluido = excluido;
+        }
+
+        public void setMensagem(String mensagem) {
+            this.mensagem = mensagem;
+        }
+        // Construtor, getters e setters
+    }
+    @GetMapping("/excluir-chamados/{ticketId}")
+    public ExclusaoChamadoResponse excluirChamado(@PathVariable Long ticketId) {
+        Optional<ChamadoModel> chamadoOptional = chamadoService.findById(ticketId);
+        ExclusaoChamadoResponse response = new ExclusaoChamadoResponse();
+
+        if (chamadoOptional.isPresent()) {
+            ChamadoModel chamado = chamadoOptional.get();
+            if (chamado.getStatus() == ChamadoModel.TicketStatus.ABERTO) {
+                chamadoService.deleteById(ticketId);
+                response.setExcluido(true);
+                response.setMensagem("Chamado excluído com sucesso.");
+            } else {
+                response.setExcluido(false);
+                response.setMensagem("Não é possível excluir chamados "+chamado.getStatus()+".");
+            }
+        } else {
+            response.setExcluido(false);
+            response.setMensagem("Chamado não encontrado.");
+        }
+
+        return response;
+    }
     }

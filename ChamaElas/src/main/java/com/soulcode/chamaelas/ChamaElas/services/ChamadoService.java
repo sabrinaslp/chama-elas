@@ -224,4 +224,15 @@ public class ChamadoService {
             throw new RuntimeException("Chamado não encontrado com o ID: " + chamadoId);
         }
     }
+
+    public ChamadoModel alterarChamado(Long id , String titulo, String descricao,String setor, ClienteModel model) {
+
+        ChamadoModel novoChamado = chamadoRepository.getReferenceById(id);
+
+        novoChamado.setTitulo(titulo);
+        novoChamado.setDescricao(descricao);
+        novoChamado.setSetor(setor);
+
+        return chamadoRepository.save(novoChamado);
+    }
 }

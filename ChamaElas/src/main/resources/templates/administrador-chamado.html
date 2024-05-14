@@ -36,7 +36,10 @@
             <br>
         </div>
     </div>
-
+    <div th:if="${error}" class="alert-box alert-box--error" style="text-align: center">
+        <p th:text="${error}" style="margin-bottom: 0;"></p>
+        <i class="fa fa-times alert-box__close" aria-hidden="true"></i>
+    </div>
     <div class="home-content__button  mover-btn">
         <form action="/logout" method="post">
             <input class="btn--primary full-width" type="submit" value="Sair" style="border-radius: 5px; margin-left: 53px;">
@@ -98,6 +101,15 @@
                             <td th:text="${chamado.cliente != null ? chamado.cliente.nome : 'Nenhum cliente atribuído'}"></td>
                             <td th:text="${chamado.tecnico != null ? chamado.tecnico.nome : 'Nenhum técnico atribuído'}"></td>
                             <td th:text="${chamado.status.descricao}"></td>
+                            <form id="form-alterar-chamado-${chamado.ticketId}" action="/alterar-chamadoAdmin" method="get">
+                                <input type="hidden" id="chamadoId_alt-${chamado.ticketId}" name="chamadoId" th:value="${chamado.ticketId}">
+
+                                <td>
+                                    <div class="home-content__button" style="margin-top: 0.5rem;">
+                                        <input class="btn--primary full-width" type="button" value="Alterar" th:onclick="'confirmarAlteracao(\'' + ${chamado.ticketId} + '\')'" style="border-radius: 5px;">
+                                    </div>
+                                </td>
+                            </form>
                             <form id="form-excluir-chamado-${chamado.ticketId}" action="/excluir-chamadoAdmin" method="get">
                                 <input type="hidden" id="chamadoId-${chamado.ticketId}" name="chamadoId" th:value="${chamado.ticketId}">
 
@@ -107,6 +119,7 @@
                                     </div>
                                 </td>
                             </form>
+
                         </tr>
                         </tbody>
                     </table>
@@ -153,6 +166,11 @@
             window.location.href = "/excluir-chamadoAdmin?chamadoId=" + chamadoId;
         }
     }
+
+     function confirmarAlteracao(chamadoId) {
+            window.location.href = "/alterar-chamadoAdmin?chamadoId=" + chamadoId;
+    }
+
 </script>
 </script>
 </body>
