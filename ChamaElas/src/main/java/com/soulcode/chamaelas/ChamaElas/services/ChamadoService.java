@@ -132,9 +132,7 @@ public class ChamadoService {
 
     // Lista todos os chamados para o administrador
     public List<ChamadoModel> listarTodosChamadosAdmin() {
-        List<ChamadoModel> chamados = chamadoRepository.findAll();
-        return chamados;
-
+        return chamadoRepository.findAll();
     }
 
     // Listar todos os chamados atribuidos do Tecnico Logado

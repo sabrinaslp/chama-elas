@@ -107,7 +107,7 @@
                     <td th:text="${chamado.descricao}"></td>
 
                     <td th:text="${#dates.format(chamado.dataRegistroAtualizada, 'dd-MM-yyyy - [HH:mm]')}"></td>
-                    <td th:text="${chamado.status}"></td>
+                    <td th:text="${chamado.status.descricao}"></td>
 
                     <form id="form-excluir-chamado-${chamado.ticketId}" action="/excluir-chamado" method="get">
                         <input type="hidden" id="chamadoId-${chamado.ticketId}" name="chamadoId" th:value="${chamado.ticketId}">
