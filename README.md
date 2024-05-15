@@ -170,8 +170,8 @@ Para mais informações, sugestões ou dúvidas, entre em contato conosco:
             </td>
             <td align="center" width="325">
                 <h3>Cecília Galvão</h3>
-                <a href="https://github.com/ceciliagalvaoo"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="URL_DO_PERFIL_DO_LINKEDIN_1"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
-                <p>Email: emailcecilia@gmail.com</p>
+                <a href="https://github.com/ceciliagalvaoo"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/cec%C3%ADlia-galv%C3%A3o/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
+                <p>Email: ceciliabtriz@gmail.com</p>
             </td>
         </tr>
     </table>
@@ -184,7 +184,7 @@ Para mais informações, sugestões ou dúvidas, entre em contato conosco:
                 <a href="https://github.com/LarissaLisboa"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/larissa-lisboa-souza/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <p>Email: larissa-lisboa99@hotmail.com</p>
             </td>
-            <td align="center" width="350">
+            <td align="center" width="325">
                 <h3>Rayane Souza</h3>
                 <a href="https://github.com/szrayane"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/rayane-souza-a02658229/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <p>Email: rayhsdsouza@gmail.com</p>
