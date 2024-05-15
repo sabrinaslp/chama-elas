@@ -2,11 +2,10 @@
     <img src="https://github.com/sabrinaslp/chama-elas/assets/101300856/509ff8a4-c073-4751-9967-b008b3897737" alt="ChamaElas - Projeto Integrador #ElasTech 2ª Edição - Pagbank">
 </p>
 <p align="center">
-   <img src="https://img.shields.io/badge/Status:-Em_andamento-yellow"/>
+   <img src="https://img.shields.io/badge/Status:-Concluído-green"/>
    <img src="https://img.shields.io/badge/Projeto Integrador:-ElasTech 2024-FE951E"/>
 </p>
-<h1 align="center">ChamaElas - Sistema de Chamados Técnicos em Informática 👩‍💻</h1>
-
+<h1 align="center">ChamaElas - Sistema de Chamados Técnicos 👩‍💻</h1>
 
 ## ✨ Índice
 
@@ -14,11 +13,10 @@
 - [Pré-requisitos](#%EF%B8%8F-pr%C3%A9-requisitos)
 - [Tecnologias Utilizadas](#-tecnologias-utilizadas)
 - [Como utilizar](#-como-utilizar)
-- [Testando a aplicação via Postman](#-endpoints)
+- [Documentação](#-documentação)
 - [Funcionalidades](#%EF%B8%8F-funcionalidades)
 - [Licença](#-licen%C3%A7a)
 - [Equipe de Desenvolvimento](#-equipe-de-desenvolvimento)
-
 
 ## 💡 Sobre
 
@@ -33,117 +31,172 @@ Antes de começar, certifique-se de que você tenha as seguintes ferramentas ins
 - Java
 - IDE (recomendamos a utilização do **Intellij**)
 
-## 💻 Tecnologias Utilizadas
+## 💻 Tecnologias utilizadas
 
-**Backend:**
-- Java 
-- Spring Boot
-- MySQL Workbench
-- Junit
-- Mockito
-- Postman
+### Backend:
+
+<p>
+    <span>
+        <img width="48" height="48" src="https://img.icons8.com/color/48/java-coffee-cup-logo--v1.png" alt="java-coffee-cup-logo--v1" title="Java"/>
+    </span>
+    <span>
+        <img width="48" height="48" src="https://img.icons8.com/color/48/spring-logo.png" alt="spring-logo" title="Spring Boot"/>
+    </span>
+    <span>
+        <img width="48" height="48" src="https://img.icons8.com/color/48/mysql-logo.png" alt="mysql-logo" title="MySQL Workbench"/>
+    </span>
+    <span>
+        <img height="48" src="https://icon.icepanel.io/Technology/svg/JUnit.svg" alt="junit-logo" title="JUnit"/>
+    </span>
+     <span>
+        <img height="48" src="https://i.imgur.com/FJUBpHg.png" alt="mockito-logo" title="Mockito"/>
+    </span>
+    <span>
+        <img height="48" src="https://i.imgur.com/KpJqwhA.png" alt="postman-logo" title="Postman"/>
+    </span>
+</p>
+
   
-**Frontend:**
-- HTML
-- CSS
-- Thymeleaf
-- Bootstrap
-- Javascript
+### Front-end:
+<p>
+    <span>
+        <img width="48" height="48" src="https://img.icons8.com/color/48/html-5--v1.png" alt="html-5--v1" title="HTML5"/>
+    </span>
+    <span>
+        <img width="48" height="48" src="https://img.icons8.com/color/48/css3.png" alt="css3" title="CSS3"/>
+    </span>
+    <span>
+        <img width="48" height="48" src="https://www.thymeleaf.org/doc/images/thymeleaf.png" alt="thymeleaf-logo" title="Thymeleaf"/>
+    </span>
+    <span>
+        <img width="48" height="48" src="https://img.icons8.com/color/48/bootstrap--v2.png" alt="bootstrap--v2" title="Bootstrap"/>
+    </span>
+    <span>
+        <img width="48" height="48" src="https://img.icons8.com/color/48/javascript--v1.png" alt="javascript--v1" title="JavaScript"/>
+    </span>
+</p>
 
-**Versionamento:**
-- Git / Github
+### Outras ferramentas:
+<p>
+    <span>
+        <img width="48" height="48" src="https://img.icons8.com/color/48/git.png" alt="git" title="Git"/>
+    </span>
+    <span>
+        <img width="48" height="48" src="https://img.icons8.com/glyph-neue/64/github.png" alt="github" title="GitHub"/>
+    </span>
+      <span>
+        <img width="48" height="48" src="https://seeklogo.com/images/I/intellij-idea-logo-F0395EF783-seeklogo.com.png" alt="git" title="Intellij"/>
+    </span>
+    <span>
+        <img width="48" height="48" src="https://static-00.iconduck.com/assets.00/swagger-icon-1024x1024-09037v1r.png" alt="github" title="Swagger"/>
+    </span>
+</p>
 
 ## 🚀 Como utilizar
 
 Para instalar e executar o sistema localmente, siga estas etapas:
 
-1. Clone o repositório do GitHub:
+**1.** Clone o repositório do GitHub:
 
    ```bash
    git clone https://github.com/sabrinaslp/chama-elas.git
    ```
 
-2. Configure sua senha para o banco de dados **MySQL** de acordo com as configurações do arquivo `application.properties`.
+**2.** Configure sua senha para o banco de dados **MySQL** de acordo com as configurações do arquivo `application.properties`.
 
-3. Compile e execute a aplicação utilizando Maven:
+**3.** Compile e execute a aplicação utilizando Maven:
 
    ```bash
    mvn spring-boot:run
    ```
 
-4. Acesse o sistema através do link `http://localhost:8090`.
+**4.** Acesse o sistema através do link `http://localhost:8090`.
 
-## 🔎 Endpoints
+## 📄 Documentação
 
+A documentação detalhada dos endpoints da nossa API está disponível no **Swagger**. Lá, você encontrará informações sobre as rotas, incluindo parâmetros, tipos de dados esperados e exemplos de solicitações e respostas.
+
+Clique [aqui](https://editor.swagger.io/) para acessar.
 
 ## ⚙️ Funcionalidades
 
 O **ChamaElas** suporta vários perfis de usuários, cada um com diferentes níveis de acesso e responsabilidades:
 
-- **Usuários Comuns**: Podem registrar novos chamados e visualizar apenas os chamados atribuídos a eles.
+- **Cliente**:
+    - [X] Podem registrar novos chamados
+    - [X] Visualização dos chamados criados pelo cliente, incluindo suas principais informações
+    - [X] Possibilidade de excluir chamados que ainda não foram atendidos por um técnico
 
-- **Técnicos**: Além de poder visualizar e comentar em chamados atribuídos a eles, os técnicos também podem definir a prioridade dos chamados, atualizar o status dos chamados e resolver os problemas relatados.
+- **Técnico**:
+    - [X] Visualização dos chamados em aberto.
+    - [X] Definição da prioridade do chamado ao assumi-lo.
+    - [X] Acesso a todos os detalhes dos chamados atribuídos ao técnico.
+    - [X] Capacidade de alterar os status dos chamados. Em caso de finalização, é necessário fornecer uma descrição sobre como o problema foi resolvido.
 
-- **Administradores**: Possuem acesso total ao sistema, podendo gerenciar usuários, configurar as preferências do sistema, entre outras funcionalidades avançadas.
+- **Administrador**:
+    - [X] Tem acesso total ao sistema.
+    - [X] Pode visualizar todos os detalhes de cada chamado.
+    - [X] Capaz de filtrar chamados por status.
+    - [X] Visualiza a quantidade de chamados em andamento, finalizados e abertos.
+    - [X] Autorizado a excluir chamados não atribuídos a um técnico ou já finalizados.
+    - [X] Responsável pelo gerenciamento de usuários, podendo ativá-los ou inativá-los conforme necessário.
 
-**Cada perfil** de usuário tem acesso apenas às funcionalidades relevantes às suas responsabilidades, garantindo uma experiência **personalizada** e **segura** para todos os usuários.
+💡 **Cada perfil** de usuário tem acesso apenas às funcionalidades relevantes às suas responsabilidades, garantindo uma experiência **personalizada** e **segura** para todos os usuários.
+<br>
+<br>
 
 ## 📝 Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
+<br>
+<br>
 
 ## 👩‍💻 Equipe de Desenvolvimento:
 
 Para mais informações, sugestões ou dúvidas, entre em contato conosco:
 
 <p align="center">
-    <table align="center" cellspacing="20">
+    <table align="center">
         <tr>
             <td align="center" width="325">
-                <a href="https://github.com/amrodrigues"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/anna-maria-rodrigues-2b375016/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <h3>Anna Maria</h3>
+                 <a href="https://github.com/amrodrigues"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/anna-maria-rodrigues-2b375016/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <p>Email: amrodrigues1307@gmail.com</p>
             </td>
             <td align="center" width="325">
-                <a href="https://github.com/andressarodrigues2172dev"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/andressa-macedo-rodrigues/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <h3>Andressa Rodrigues</h3>
+                <a href="https://github.com/andressarodrigues2172dev"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/andressa-macedo-rodrigues/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <p>Email: andressa.rodrigues.2172@gmail.com</p>
             </td>
             <td align="center" width="325">
-                <a href="URL_DO_PERFIL_DO_GITHUB_1"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="URL_DO_PERFIL_DO_LINKEDIN_1"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <h3>Cecília Galvão</h3>
+                <a href="https://github.com/ceciliagalvaoo"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="URL_DO_PERFIL_DO_LINKEDIN_1"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <p>Email: emailcecilia@gmail.com</p>
             </td>
         </tr>
     </table>
 </p>
 <p align="center">
-    <table align="center" cellspacing="20">
+    <table align="center">
         <tr>
             <td align="center" width="325">
-                <a href="https://github.com/LarissaLisboa"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/larissa-lisboa-souza/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <h3>Larissa Lisboa</h3>
+                <a href="https://github.com/LarissaLisboa"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/larissa-lisboa-souza/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <p>Email: larissa-lisboa99@hotmail.com</p>
             </td>
             <td align="center" width="325">
-                <a href="https://github.com/szrayane"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/rayane-souza-a02658229/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <h3>Rayane Souza</h3>
+                <a href="https://github.com/szrayane"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/rayane-souza-a02658229/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <p>Email: rayhsdsouza@gmail.com</p>
             </td>
             <td align="center" width="325">
-                <a href="https://github.com/sabrinaslp"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/sabrina-satriany/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <h3>Sabrina Satriany</h3>
+                <a href="https://github.com/sabrinaslp"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/sabrina-satriany/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <p>Email: sabrinaslimap@gmail.com</p>
             </td>
         </tr>
     </table>
 </p>
-
-
-
-
-
-
 
 
 ---
