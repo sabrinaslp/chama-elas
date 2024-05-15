@@ -4425,7 +4425,7 @@ width: 70%; /* Ajuste conforme necessário */
     border-radius: 5px;
     }
 
-#tituloInput {
+#tituloInput, #setorInput {
   color: white;
   background-color: #1E1E1E;
   border: none;

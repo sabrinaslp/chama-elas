@@ -76,8 +76,19 @@
 
 </header> <!-- end s-header -->
 
-
-
+<div class="custom-form">
+    <div class="row">
+        <div class="col-md-6 text-right">
+            <div class="button-container_1">
+                <div class="home-content__button">
+                    <form action="/pagina-cliente" method="get">
+                        <input class="btn--primary full-width" type="submit" value="Voltar" style="border-radius: 5px;">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="row form-wrapper custom-form">
     <div class="col-eight tab-full">
@@ -85,12 +96,12 @@
         <br>
         <br>
 
-        <h3>Abertura de Chamado</h3>
+        <h2>Abertura de Chamado</h2>
 
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center"> <!-- Texto à esquerda em telas médias e grandes -->
-                    <h2>Olá, <span th:text="${nomeUsuario}"></span>!</h2>
+                    <h3>Em que podemos ajudar, <span th:text="${nomeUsuario}"></span>?</h3>
                 </div>
             </div>
         </div>
