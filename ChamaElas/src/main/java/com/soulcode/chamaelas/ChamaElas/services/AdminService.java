@@ -24,6 +24,10 @@ public class AdminService {
         return chamadoRepository.findByStatus(status).size();
     }
 
+    public List<UsuarioModel> getUsuariosRegistrados() {
+        return usuarioRepository.findAll();
+    }
+
     // Lista chamados por prioridade
     public List<ChamadoModel> getChamadosPorPrioridade(ChamadoModel.Prioridade prioridade) {
         return chamadoRepository.findByPrioridade(prioridade);
@@ -39,6 +43,15 @@ public class AdminService {
         Optional<UsuarioModel> optionalUsuario = usuarioRepository.findById(id);
         optionalUsuario.ifPresent(usuario -> {
             usuario.desativarUsuario();
+            usuarioRepository.save(usuario);
+        });
+    }
+
+    // Ativar usuário pelo ID
+    public void ativarUsuarioPorID(Long id) {
+        Optional<UsuarioModel> optionalUsuario = usuarioRepository.findById(id);
+        optionalUsuario.ifPresent(usuario -> {
+            usuario.ativarUsuario();
             usuarioRepository.save(usuario);
         });
     }

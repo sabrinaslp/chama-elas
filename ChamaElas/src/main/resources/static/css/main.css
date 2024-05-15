@@ -4632,3 +4632,7 @@ width: 70%; /* Ajuste conforme necessário */
 margin-top:5px;
     text-align: center;
 }
+
+.align-right {
+  text-align: right;
+}

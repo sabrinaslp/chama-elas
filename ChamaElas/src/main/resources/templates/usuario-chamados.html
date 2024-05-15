@@ -82,7 +82,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <div class="row form-wrapper">
@@ -106,12 +105,12 @@
                     <td th:text="${#dates.format(chamado.dataRegistroAtualizada, 'dd-MM-yyyy - [HH:mm]')}"></td>
                     <td th:text="${chamado.status.descricao}"></td>
 
-                    <td class="button-col" th:if="${chamado.status.descricao != 'Finalizado' && chamado.status.descricao != 'Em atendimento'}">
+                    <td class="button-col" th:if="${chamado.status.descricao != 'Finalizado' && chamado.status.descricao != 'Em atendimento' && chamado.status.descricao != 'Escalado para outro setor'}">
                         <div class="home-content__button" style="margin-top: 0.5rem;">
                             <input class="btn--primary full-width" type="button" value="Excluir" th:onclick="'confirmarExclusao(\'' + ${chamado.ticketId} + '\')'" style="border-radius: 5px;">
                         </div>
                     </td>
-                    <td th:if="${chamado.status.descricao == 'Finalizado' || chamado.status.descricao == 'Em atendimento'}">
+                    <td th:if="${chamado.status.descricao == 'Finalizado' || chamado.status.descricao == 'Em atendimento' || chamado.status.descricao == 'Escalado para outro setor'}">
                         <div class="home-content__button" style="margin-top: 0.5rem;">
                             <span style="color: #121212;">---</span>
                         </div>

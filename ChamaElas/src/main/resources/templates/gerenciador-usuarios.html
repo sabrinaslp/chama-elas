@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- basic page needs ================================================== -->
+    <meta charset="utf-8">
+    <title>ChamaElas - Gerenciador de usuários</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS ================================================== -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/vendor.css">
+    <link rel="stylesheet" href="/css/main.css"> <!-- Este é o arquivo principal de estilos -->
+    <link rel="stylesheet" href="/css/custom-styles.css"> <!-- Este arquivo contém estilos personalizados -->
+
+    <!-- favicons ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+        .container {
+            margin: 0 auto;
+            max-width: 1200px; /* Defina a largura máxima conforme necessário */
+            padding: 0 20px; /* Adicione um espaçamento interno conforme necessário */
+            box-sizing: border-box; /* Inclua as bordas e o preenchimento na largura total */
+        }
+
+        .mover-tabela {
+            margin-top: -20px; /* Ajuste a margem superior conforme necessário */
+        }
+
+        body {
+            overflow-x: hidden; /* Evita rolagem horizontal */
+        }
+    </style>
+</head>
+
+<body id="top">
+
+<div class="container">
+
+    <header class="s-header">
+        <!-- Seu código de cabeçalho aqui -->
+    </header>
+
+    <div th:if="${error}" class="alert-box alert-box--error" style="text-align: center">
+        <p th:text="${error}" style="margin-bottom: 0;"></p>
+        <i class="fa fa-times alert-box__close" aria-hidden="true"></i>
+    </div>
+
+    <div class="custom-form">
+        <div class="row">
+            <div class="col-md-6 text-right">
+                <div class="button-container_1">
+                    <div class="home-content__button">
+                        <form action="/administrador-chamado" method="get">
+                            <input class="btn--primary full-width" type="submit" value="Voltar"
+                                   style="border-radius: 5px;">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-and-table row" style="margin-bottom: 1rem;">
+        <div class="mover-tabela">
+            <div class="col-six tab-full" style="width: 100%; margin-top: -30rem;">
+                <h3>Usuários registrados</h3>
+                <div class="table-responsive" style="max-height: 600px; overflow-y: auto;">
+                    <table class="custom-table" style="width: 100%;" id="chamadosTable">
+                        <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Data de Registro</th>
+                            <th>Ativo</th>
+                            <th style="width: 10%;">Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="usuario : ${listaUsuariosRegistrados}">
+                            <td th:text="${usuario.funcao.nome}"></td>
+                            <td th:text="${usuario.nome}"></td>
+                            <td th:text="${usuario.email}"></td>
+                            <td th:text="${usuario.dataRegistro}"></td>
+                            <td th:text="${usuario.estaAtivo ? 'Sim' : 'Não'}"></td>
+                            <form action="/admin-desativar-usuario" method="post">
+                                <input type="hidden" id="usuarioId" name="usuarioId" th:value="${usuario.usuarioId}">
+                                <input type="hidden" id="ativo" name="ativo" th:value="${usuario.estaAtivo}">
+                                <td th:if="${usuario.estaAtivo}">
+                                    <div class="home-content__button" style="margin-top: 0.5rem;">
+                                        <button class="btn--primary full-width" type="submit"
+                                                style="border-radius: 5px; width:150px;">Desativar
+                                        </button>
+                                    </div>
+                                </td>
+                                <td th:unless="${usuario.estaAtivo}">
+                                    <div class="home-content__button" style="margin-top: 0.5rem;">
+                                        <button class="btn--primary full-width" type="submit"
+                                                style="border-radius: 5px; width:150px;">Ativar
+                                        </button>
+                                    </div>
+                                </td>
+                            </form>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Caixa de login do usuário -->
+<div class="login-container">
+    <div class="user-login-info login-info2">
+        <i class="fas fa-envelope" style="color:#ffff;"></i> <!-- Ícone de e-mail -->
+        <!-- Aqui você pode adicionar os detalhes do login do usuário -->
+        &nbsp;<p style="color:#ffff">Usuário: Admin</p>
+        <!-- Adicione mais informações conforme necessário -->
+    </div>
+</div>
+
+<!-- Java Script ================================================== -->
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
+
+</body>
+</html>
