@@ -184,7 +184,7 @@ Para mais informações, sugestões ou dúvidas, entre em contato conosco:
                 <a href="https://github.com/LarissaLisboa"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/larissa-lisboa-souza/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <p>Email: larissa-lisboa99@hotmail.com</p>
             </td>
-            <td align="center" width="325">
+            <td align="center" width="350">
                 <h3>Rayane Souza</h3>
                 <a href="https://github.com/szrayane"><img src="https://imgur.com/mRvA6Kh.png" alt="GitHub Profile"></a><a href="https://www.linkedin.com/in/rayane-souza-a02658229/"><img src="https://imgur.com/dmA9Br7.png" alt="LinkedIn Profile" width="30px"></a>
                 <p>Email: rayhsdsouza@gmail.com</p>
