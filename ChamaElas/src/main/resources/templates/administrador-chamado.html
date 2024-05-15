@@ -19,6 +19,27 @@
     <!-- favicons ================================================== -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+        .container {
+            margin: 0 auto;
+            max-width: 1200px; /* Defina a largura máxima conforme necessário */
+            padding: 0 20px; /* Adicione um espaçamento interno conforme necessário */
+            box-sizing: border-box; /* Inclua as bordas e o preenchimento na largura total */
+        }
+
+        .mover-tabela {
+            margin-top: -20px; /* Ajuste a margem superior conforme necessário */
+        }
+
+        .chamados-count {
+            margin-top: 20px; /* Ajuste a margem superior conforme necessário */
+        }
+
+        body {
+            overflow-x: hidden; /* Evita rolagem horizontal */
+        }
+    </style>
 </head>
 
 <body id="top">
@@ -36,14 +57,25 @@
             <br>
         </div>
     </div>
+
     <div th:if="${error}" class="alert-box alert-box--error" style="text-align: center">
         <p th:text="${error}" style="margin-bottom: 0;"></p>
         <i class="fa fa-times alert-box__close" aria-hidden="true"></i>
     </div>
-    <div class="home-content__button  mover-btn">
-        <form action="/logout" method="post">
-            <input class="btn--primary full-width" type="submit" value="Sair" style="border-radius: 5px; margin-left: 53px;">
-        </form>
+
+    <div class="col-md-6 text-right">
+        <div class="button-container" style="position:absolute; right: -16rem; top:auto">
+            <div class="home-content__button">
+                <form action="/gerenciador-usuarios" method="get" style="display: inline-block;">
+                    <input class="btn--primary" type="submit" value="Gerenciador de Usuários"
+                           style="border-radius: 5px;">
+                </form>
+
+                <form action="/logout" method="post" style="display: inline-block;">
+                    <input class="btn--primary" type="submit" value="Sair" style="border-radius: 5px;">
+                </form>
+            </div>
+        </div>
     </div>
 
     <div class="filter-chamados">
@@ -61,10 +93,10 @@
 
     <div class="form-and-table row">
         <div class="mover-tabela">
-            <div class="col-six tab-full" style="margin-top: -100px; width: 100%;">
+            <div class="col-six tab-full" style="margin-top: -330px; width: 100%;">
                 <h3>Chamados</h3>
-                <div class="table-responsive">
-                    <div class="col-six tab-full chamados-count" style="margin-bottom: 400px; display: flex;">
+                <div class="table-responsive chamados-count" style="position: fixed; width: 100%; z-index: 999; margin-left: -2rem;">
+                    <div class="col-six tab-full" style="display: flex;">
                         <p class="abertos"><strong>Abertos:</strong> <span th:text="${quantidadeAbertos != null ? quantidadeAbertos : '0'}"></span></p>
                         <p class="andamento"><strong>Em andamento:</strong> <span th:text="${quantidadeEmAndamento != null ? quantidadeEmAndamento : '0'}"></span></p>
                         <p class="finalizados"><strong>Finalizados:</strong> <span th:text="${quantidadeFinalizados != null ? quantidadeFinalizados : '0'}"></span></p>
@@ -76,16 +108,16 @@
         </div>
     </div>
 
-    <div class="form-and-table row">
-        <div class="mover-tabela" style="margin-top: 130px;">
-            <div class="col-six tab-full" style="margin-top: 20px;">
-                <div class="table-responsive">
+    <div class="form-and-table row" style="margin-bottom: 8rem;">
+        <div class="mover-tabela">
+            <div class="col-six tab-full" style="width: 100%;">
+                <div class="table-responsive" style="max-height: 600px; overflow-y: auto;">
                     <table class="custom-table" style="width: 100%;" id="chamadosTable">
                         <thead>
                         <tr>
                             <th>Título</th>
                             <th>Descrição</th>
-                            <th>Data de início</th>
+                            <th>Data atualização</th>
                             <th>Setor</th>
                             <th>Cliente</th>
                             <th>Técnico</th>
@@ -103,24 +135,33 @@
                             <td th:text="${chamado.cliente != null ? chamado.cliente.nome : 'Nenhum cliente atribuído'}"></td>
                             <td th:text="${chamado.tecnico != null ? chamado.tecnico.nome : 'Nenhum técnico atribuído'}"></td>
                             <td th:text="${chamado.status.descricao}"></td>
-                            <form id="form-alterar-chamado-${chamado.ticketId}" action="/alterar-chamadoAdmin" method="get">
-                                <input type="hidden" id="chamadoId_alt-${chamado.ticketId}" name="chamadoId" th:value="${chamado.ticketId}">
+                            <form id="form-alterar-chamado-${chamado.ticketId}" action="/alterar-chamadoAdmin"
+                                  method="get">
+                                <input type="hidden" id="chamadoId_alt-${chamado.ticketId}" name="chamadoId"
+                                       th:value="${chamado.ticketId}">
 
                                 <td>
                                     <div class="home-content__button" style="margin-top: 0.5rem;">
-                                        <input class="btn--primary full-width" type="button" value="Alterar" th:onclick="'confirmarAlteracao(\'' + ${chamado.ticketId} + '\')'" style="border-radius: 5px;">
+                                        <input class="btn--primary full-width" type="button" value="Alterar"
+                                               th:onclick="'confirmarAlteracao(\'' + ${chamado.ticketId} + '\')'"
+                                               style="border-radius: 5px;">
                                     </div>
                                 </td>
                             </form>
-                            <form id="form-excluir-chamado-${chamado.ticketId}" action="/excluir-chamadoAdmin" method="get">
-                                <input type="hidden" id="chamadoId-${chamado.ticketId}" name="chamadoId" th:value="${chamado.ticketId}">
+                            <form id="form-excluir-chamado-${chamado.ticketId}" action="/excluir-chamadoAdmin"
+                                  method="get">
+                                <input type="hidden" id="chamadoId-${chamado.ticketId}" name="chamadoId"
+                                       th:value="${chamado.ticketId}">
 
-                                <td class="button-col" th:if="${chamado.status.descricao != 'Finalizado' && chamado.status.descricao != 'Em atendimento'}">
+                                <td class="button-col"
+                                    th:if="${chamado.status.descricao != 'Finalizado' && chamado.status.descricao != 'Em atendimento' && chamado.status.descricao != 'Escalado para outro setor'}">
                                     <div class="home-content__button" style="margin-top: 0.5rem;">
-                                        <input class="btn--primary full-width" type="button" value="Excluir" th:onclick="'confirmarExclusao(\'' + ${chamado.ticketId} + '\')'" style="border-radius: 5px;">
+                                        <input class="btn--primary full-width" type="button" value="Excluir"
+                                               th:onclick="'confirmarExclusao(\'' + ${chamado.ticketId} + '\')'"
+                                               style="border-radius: 5px;">
                                     </div>
                                 </td>
-                                <td th:if="${chamado.status.descricao == 'Finalizado' || chamado.status.descricao == 'Em atendimento'}">
+                                <td th:if="${chamado.status.descricao == 'Finalizado' || chamado.status.descricao == 'Em atendimento' || chamado.status.descricao == 'Escalado para outro setor' }">
                                     <div class="home-content__button" style="margin-top: 0.5rem;">
                                         <span style="color: #121212;">---</span>
                                     </div>
@@ -157,28 +198,44 @@
         var select = document.getElementById("status");
         var value = select.options[select.selectedIndex].value;
         var rows = document.getElementById("chamadosTable").getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+        var chamadosEncontrados = false; // Variável para verificar se algum chamado foi encontrado
+
+        var table = document.getElementById("chamadosTable").getElementsByTagName("tbody")[0];
+        var lastRow = table.rows[table.rows.length - 1];
+        if (lastRow.cells.length === 1) { // Verifica se a última linha contém apenas uma célula
+            table.deleteRow(table.rows.length - 1); // Remove a última linha
+        }
+
         for (var i = 0; i < rows.length; i++) {
             var status = rows[i].getElementsByTagName("td")[6].innerText.trim();
             if (value === "" || status === value) {
                 rows[i].style.display = "";
+                chamadosEncontrados = true; // Um chamado foi encontrado
             } else {
                 rows[i].style.display = "none";
             }
+        }
+
+        if (!chamadosEncontrados) {
+            var newRow = table.insertRow();
+            var cell = newRow.insertCell();
+            cell.colSpan = 9;
+            cell.style.textAlign = "center";
+            cell.innerText = "Não há chamados registrados com o filtro solicitado.";
         }
     }
 
 
     function confirmarExclusao(chamadoId) {
-     if (confirm("Tem certeza de que deseja excluir este chamado?")) {
+        if (confirm("Tem certeza de que deseja excluir este chamado?")) {
             window.location.href = "/excluir-chamadoAdmin?chamadoId=" + chamadoId;
         }
     }
 
-     function confirmarAlteracao(chamadoId) {
-            window.location.href = "/alterar-chamadoAdmin?chamadoId=" + chamadoId;
+    function confirmarAlteracao(chamadoId) {
+        window.location.href = "/alterar-chamadoAdmin?chamadoId=" + chamadoId;
     }
 
-</script>
 </script>
 </body>
 </html>

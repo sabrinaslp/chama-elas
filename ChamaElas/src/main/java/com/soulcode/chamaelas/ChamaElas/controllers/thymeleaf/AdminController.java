@@ -1,5 +1,6 @@
 package com.soulcode.chamaelas.ChamaElas.controllers.thymeleaf;
 import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
+import com.soulcode.chamaelas.ChamaElas.models.UsuarioModel;
 import com.soulcode.chamaelas.ChamaElas.services.AdminService;
 import com.soulcode.chamaelas.ChamaElas.services.ChamadoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -41,6 +44,34 @@ public class AdminController {
         return "administrador-chamado";
     }
 
+    @GetMapping("/gerenciador-usuarios")
+    public String mostrarGerenciadorUsuarios(Model model, Authentication authentication) {
+        // Obtendo o usuário autenticado
+        String email = authentication.getName();
+        String[] parts = email.split("@");
+        String nomeUsuario = parts[0]; // Aqui está o nome de usuário obtido do email
+        nomeUsuario = nomeUsuario.replaceFirst("(?i)\\b\\w", nomeUsuario.substring(0, 1).toUpperCase());
+
+        List<UsuarioModel> listaUsuariosRegistrados = adminService.getUsuariosRegistrados();
+
+
+        model.addAttribute("nomeUsuario", nomeUsuario);
+        model.addAttribute("listaUsuariosRegistrados", listaUsuariosRegistrados);
+
+        return "gerenciador-usuarios";
+    }
+
+    @PostMapping("/admin-desativar-usuario")
+    public String desativarUsuario(@RequestParam("usuarioId") Long usuarioId,
+                                   @RequestParam("ativo") boolean ativo) {
+        if (ativo) {
+            adminService.inativarUsuarioPorID(usuarioId);
+        } else {
+            adminService.ativarUsuarioPorID(usuarioId);
+        }
+
+        return "redirect:/gerenciador-usuarios";
+    }
 
 
 }

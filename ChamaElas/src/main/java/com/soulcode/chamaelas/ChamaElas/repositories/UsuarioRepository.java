@@ -15,4 +15,5 @@ public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long> {
     Optional<UsuarioModel> findByToken(String token);
 
     List<UsuarioModel> findByDataExpiracaoTesteBefore(LocalDate data);
+
 }
