@@ -5,7 +5,6 @@ import com.soulcode.chamaelas.ChamaElas.models.ClienteModel;
 import com.soulcode.chamaelas.ChamaElas.repositories.ClienteRepository;
 import com.soulcode.chamaelas.ChamaElas.repositories.UsuarioRepository;
 import com.soulcode.chamaelas.ChamaElas.services.ChamadoService;
-import com.soulcode.chamaelas.ChamaElas.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.Authentication;
@@ -17,6 +16,7 @@ import java.util.Optional;
 
 @Controller
 public class ChamadoController {
+
     @Autowired
     private ChamadoService chamadoService;
 
@@ -25,6 +25,7 @@ public class ChamadoController {
 
     @Autowired
     UsuarioRepository usuarioRepository;
+
     @GetMapping("/abertura-chamado")
     public String mostrarPaginaCadastroChamado(Model model, Authentication authentication) {
 

@@ -21,6 +21,7 @@ public class ChamadoService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
     @Autowired
     private ChamadoRepository chamadoRepository;
 
@@ -33,9 +34,6 @@ public class ChamadoService {
     @Getter
     @Setter
     private String nomeCliente;
-
-    // Outros métodos
-
 
     // Salva o chamado no banco
     public ChamadoModel save(ChamadoModel chamado) {
@@ -74,12 +72,9 @@ public class ChamadoService {
 
     // Cria um novo chamado
     public ChamadoModel criarChamado(String titulo, String descricao, ClienteModel model) {
-        //   ChamadoDTO novoChamado = new ChamadoDTO(id,"", descricao ,"" ,"0",prioridade);
-
         ChamadoModel novoChamado = new ChamadoModel();
         novoChamado.setTitulo(titulo);
         novoChamado.setDescricao(descricao);
-        //novoChamado.setSetor(prioridade);
         novoChamado.setStatus(ChamadoModel.TicketStatus.ABERTO);
         novoChamado.setCliente(model);
 
@@ -205,7 +200,6 @@ public class ChamadoService {
     }
 
     public ChamadoModel alterarChamado(Long id , String titulo, String descricao,String setor, ClienteModel model) {
-
         ChamadoModel novoChamado = chamadoRepository.getReferenceById(id);
 
         novoChamado.setTitulo(titulo);

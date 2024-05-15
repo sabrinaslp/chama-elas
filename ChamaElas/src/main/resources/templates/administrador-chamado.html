@@ -64,9 +64,9 @@
                 <h3>Chamados</h3>
                 <div class="table-responsive">
                     <div class="col-six tab-full chamados-count" style="margin-bottom: 400px; display: flex;">
-                        <p class="abertos">Abertos: <span th:text="${quantidadeAbertos != null ? quantidadeAbertos : '0'}"></span></p>
-                        <p class="andamento">Em andamento: <span th:text="${quantidadeEmAndamento != null ? quantidadeEmAndamento : '0'}"></span></p>
-                        <p class="finalizados">Finalizados: <span th:text="${quantidadeFinalizados != null ? quantidadeFinalizados : '0'}"></span></p>
+                        <p class="abertos"><strong>Abertos:</strong> <span th:text="${quantidadeAbertos != null ? quantidadeAbertos : '0'}"></span></p>
+                        <p class="andamento"><strong>Em andamento:</strong> <span th:text="${quantidadeEmAndamento != null ? quantidadeEmAndamento : '0'}"></span></p>
+                        <p class="finalizados"><strong>Finalizados:</strong> <span th:text="${quantidadeFinalizados != null ? quantidadeFinalizados : '0'}"></span></p>
                         <br>
                     </div>
                 </div>
@@ -114,9 +114,14 @@
                             <form id="form-excluir-chamado-${chamado.ticketId}" action="/excluir-chamadoAdmin" method="get">
                                 <input type="hidden" id="chamadoId-${chamado.ticketId}" name="chamadoId" th:value="${chamado.ticketId}">
 
-                                <td>
+                                <td class="button-col" th:if="${chamado.status.descricao != 'Finalizado'}">
                                     <div class="home-content__button" style="margin-top: 0.5rem;">
                                         <input class="btn--primary full-width" type="button" value="Excluir" th:onclick="'confirmarExclusao(\'' + ${chamado.ticketId} + '\')'" style="border-radius: 5px;">
+                                    </div>
+                                </td>
+                                <td th:if="${chamado.status.descricao == 'Finalizado'}">
+                                    <div class="home-content__button" style="margin-top: 0.5rem;">
+                                        <span style="color: #121212;">---</span>
                                     </div>
                                 </td>
                             </form>

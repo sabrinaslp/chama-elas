@@ -52,7 +52,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 text-center"> <!-- Texto à esquerda em telas médias e grandes -->
-            <!--<h2>Olá, <span th:text="${nome}"></span>!</h2>-->
+            <h2>Olá, <span th:text="${nome}"></span>!</h2>
         </div>
     </div>
 </div>
@@ -78,7 +78,7 @@
         <div class="user-login-info login-info">
             <i class="fas fa-envelope"></i> <!-- Ícone de e-mail -->
             <!-- Aqui você pode adicionar os detalhes do login do usuário -->
-            &nbsp;<h6 th:text="${#strings.substringBefore(nome, ' ')}"></h6>
+            &nbsp;<h6 th:text="${nome}"></h6>
             <!-- Adicione mais informações conforme necessário -->
         </div>
     </div>
@@ -98,7 +98,7 @@
                     <th>Descrição</th>
                     <th>Data de início</th>
                     <th>Prioridade</th>
-                    <th>Chamado</th> <!-- Mudança de "Detalhes" para "Chamado" -->
+                    <th>Chamado</th>
                 </tr>
                 </thead>
                 <tbody>

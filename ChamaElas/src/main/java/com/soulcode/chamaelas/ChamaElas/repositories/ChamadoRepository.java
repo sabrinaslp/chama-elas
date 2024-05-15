@@ -1,4 +1,5 @@
 package com.soulcode.chamaelas.ChamaElas.repositories;
+
 import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
 import com.soulcode.chamaelas.ChamaElas.models.ClienteModel;
 import com.soulcode.chamaelas.ChamaElas.models.TecnicoModel;

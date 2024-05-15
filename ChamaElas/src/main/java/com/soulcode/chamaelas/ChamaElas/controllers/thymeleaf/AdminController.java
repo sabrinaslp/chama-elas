@@ -1,8 +1,5 @@
 package com.soulcode.chamaelas.ChamaElas.controllers.thymeleaf;
 import com.soulcode.chamaelas.ChamaElas.models.ChamadoModel;
-import com.soulcode.chamaelas.ChamaElas.repositories.AdminRepository;
-import com.soulcode.chamaelas.ChamaElas.repositories.ChamadoRepository;
-import com.soulcode.chamaelas.ChamaElas.repositories.ClienteRepository;
 import com.soulcode.chamaelas.ChamaElas.services.AdminService;
 import com.soulcode.chamaelas.ChamaElas.services.ChamadoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +17,7 @@ public class AdminController {
     private ChamadoService chamadoService;
 
     @Autowired
-    private ChamadoRepository chamadoRepository;
+    private AdminService adminService;
 
     @GetMapping("/administrador-chamado")
     public String mostrarPaginaCadastroUsuario(Model model, Authentication authentication) {
@@ -28,11 +25,12 @@ public class AdminController {
         String email = authentication.getName();
         String[] parts = email.split("@");
         String nomeUsuario = parts[0]; // Aqui está o nome de usuário obtido do email
+        nomeUsuario = nomeUsuario.replaceFirst("(?i)\\b\\w", nomeUsuario.substring(0, 1).toUpperCase());
 
         List<ChamadoModel> listaChamados = chamadoService.listarTodosChamadosAdmin();
-        int qtdChamadosEmAberto = chamadoRepository.findByStatus(ChamadoModel.TicketStatus.ABERTO).size();
-        int qtdChamadosEmAndamento = chamadoRepository.findByStatus(ChamadoModel.TicketStatus.EM_ANDAMENTO).size();
-        int qtdChamadosFinalizados = chamadoRepository.findByStatus(ChamadoModel.TicketStatus.FECHADO).size();
+        int qtdChamadosEmAberto = adminService.getQuantidadeChamadosPorStatus(ChamadoModel.TicketStatus.ABERTO);
+        int qtdChamadosEmAndamento = adminService.getQuantidadeChamadosPorStatus(ChamadoModel.TicketStatus.EM_ANDAMENTO);
+        int qtdChamadosFinalizados = adminService.getQuantidadeChamadosPorStatus(ChamadoModel.TicketStatus.FECHADO);
 
         model.addAttribute("listaChamados", listaChamados);
         model.addAttribute("nomeUsuario", nomeUsuario);
