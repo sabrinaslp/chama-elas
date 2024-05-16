@@ -114,9 +114,13 @@ Para instalar e executar o sistema localmente, siga estas etapas:
 
 ## 📄 Documentação
 
-A documentação detalhada dos endpoints da nossa API está disponível no **Swagger**. Lá, você encontrará informações sobre as rotas, incluindo parâmetros, tipos de dados esperados e exemplos de solicitações e respostas.
+Para acessar a documentação detalhada dos endpoints da nossa API:
 
-Clique [aqui](https://editor.swagger.io/) para acessar.
+**1-** Realize o login como `Administrador` na aplicação em funcionamento.
+
+**2-** Acessar a rota `localhost:8090/swagger-ui.html`.
+
+Lá, você encontrará informações abrangentes sobre as **rotas disponíveis**, incluindo detalhes sobre os **parâmetros**, **tipos de dados** esperados e exemplos de **solicitações** e **respostas**. 
 
 ## ⚙️ Funcionalidades
 
