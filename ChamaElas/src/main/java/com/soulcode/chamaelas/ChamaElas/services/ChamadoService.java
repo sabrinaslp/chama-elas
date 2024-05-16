@@ -179,10 +179,9 @@ public class ChamadoService {
                 .orElseThrow(() -> new RuntimeException("Chamado não encontrado"));
         if (novoStatus == ChamadoModel.TicketStatus.ABERTO) {
             chamado.setTecnico(null);
-            if (chamado.getStatus() == ChamadoModel.TicketStatus.FECHADO) {
-                chamado.setMotivoEncerramento(null);
-                chamado.setStatus(ChamadoModel.TicketStatus.ABERTO);
-            }
+            chamado.setPrioridade(null);
+            chamado.setSetor(null);
+            chamado.setStatus(novoStatus);
             chamadoRepository.save(chamado);
         }
     }
